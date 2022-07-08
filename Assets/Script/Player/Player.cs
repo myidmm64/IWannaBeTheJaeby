@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [field: SerializeField]
+    private UnityEvent OnSaveButton = null;
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            OnSaveButton?.Invoke();
+        }
     }
 }

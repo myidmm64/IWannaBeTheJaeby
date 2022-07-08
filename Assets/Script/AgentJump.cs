@@ -18,6 +18,7 @@ public class AgentJump : MonoBehaviour
 
     private bool _isJumpable = true;
     protected bool _isDoubleJump = false;
+    private bool _isFirstJump = true;
 
     [SerializeField]
     private Transform _groundRayStartPos = null;
@@ -51,6 +52,7 @@ public class AgentJump : MonoBehaviour
             _isground = true;
             OnIsGrounded?.Invoke(true);
             _currentJumpCnt = 0;
+            _isFirstJump = true;
         }
         else if (hit.collider == null)
         {
@@ -77,7 +79,12 @@ public class AgentJump : MonoBehaviour
             OnIsGrounded?.Invoke(false);
             _currentJumpCnt = 1;
         }*/
-        _currentJumpCnt = 1;
+
+        if(_isFirstJump)
+        {
+            Debug.Log("내려오셨네요");
+            _currentJumpCnt = 1;
+        }
     }
 
     public void Jump(float accelerationJumpPower = 1f)
@@ -87,6 +94,7 @@ public class AgentJump : MonoBehaviour
         if (_isground == false && _currentJumpCnt >= _jumpCount)
             return;
 
+        _isFirstJump = false;
         float jumpPow = _currentJumpCnt > 0 ? _jumpPower * _secondJumpPower * accelerationJumpPower : _jumpPower * accelerationJumpPower;
         if (_isDoubleJump)
         {
@@ -116,6 +124,8 @@ public class AgentJump : MonoBehaviour
 
     public void JumpRenewal()
     {
+        if (_currentJumpCnt >= _jumpCount)
+            return; 
         _currentJumpCnt++;
         Debug.Log($"JumpCount : {_currentJumpCnt}");
     }

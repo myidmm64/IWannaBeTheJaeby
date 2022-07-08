@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Ground
   - Movement
+  - Die
+  - Save
+  - Decorate
+  - OneWay
+  - Enemy
   layers:
   - Default
   - TransparentFX
