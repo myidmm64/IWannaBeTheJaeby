@@ -31,6 +31,7 @@ public class AgentMovement : MonoBehaviour
     [field: SerializeField]
     private UnityEvent OnDashEndEvent;
 
+    [SerializeField]
     private bool _dashable = true;
     private Coroutine _dashCoroutine = null;
 
@@ -78,6 +79,14 @@ public class AgentMovement : MonoBehaviour
     {
         _dashable = false;
         yield return new WaitForSeconds(_dashInterval);
+        _dashable = true;
+    }
+
+    public void MovementDieReset()
+    {
+        if (_dashCoroutine != null)
+            StopCoroutine(_dashCoroutine);
+
         _dashable = true;
     }
 

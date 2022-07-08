@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AgentVisual : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class AgentVisual : MonoBehaviour
 
     private float _lastAmount = 0f;
     private bool _filp = false;
+
+    [field: SerializeField]
+    private UnityEvent<bool> OnFaceDirectionChange = null;
 
     private void Awake()
     {
@@ -42,6 +46,7 @@ public class AgentVisual : MonoBehaviour
             transform.localScale = -_localScale;
             _localScale.y *= -1f;
             transform.position += Vector3.right * -0.33f;
+            OnFaceDirectionChange?.Invoke(true);
         }
         else if (amount > 0 && _filp == true)
         {
@@ -49,6 +54,7 @@ public class AgentVisual : MonoBehaviour
             Debug.Log("FLip");
             transform.localScale = _localScale;
             transform.position += Vector3.right * 0.33f;
+            OnFaceDirectionChange?.Invoke(false);
         }
 
         _lastAmount = amount;

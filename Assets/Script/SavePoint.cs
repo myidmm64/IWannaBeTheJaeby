@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SavePoint : MonoBehaviour
 {
+    [SerializeField]
+    private Map _saveMap = null;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,7 +19,7 @@ public class SavePoint : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.T))
         {
-            Save.Instance.SavePointSet();
+            Save.Instance.SavePointSet(_saveMap);
         }
     }
 }

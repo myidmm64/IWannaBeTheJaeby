@@ -10,6 +10,8 @@ public class MapChanger : MonoBehaviour
     private Map _nextStage = null;
     [SerializeField]
     private Transform _nextPosition = null;
+    [SerializeField]
+    private bool _changeMap = true;
 
 
     private void Awake()
@@ -17,26 +19,26 @@ public class MapChanger : MonoBehaviour
         _nextPosition = transform.Find("NextPosition");
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.collider.CompareTag("Player"))
-        {
-            ChangeMap(collision.gameObject);
-        }
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            ChangeMap(collision.gameObject);
+            ChangeMap(collision.transform.root.gameObject);
         }
     }
 
     public void ChangeMap(GameObject player)
     {
         Debug.Log("¥Ÿ¿Ω ∏  !!");
-        _nextStage.gameObject.SetActive(true);
+
+
         player.transform.position = _nextPosition.position;
-        _currentStage.gameObject.SetActive(false);
+        if (_changeMap == true)
+        {
+            _nextStage.gameObject.SetActive(true);
+            _currentStage.gameObject.SetActive(false);
+            Save.Instance.SetCurrentMap(_nextStage);
+        }
+
     }
 }

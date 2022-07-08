@@ -8,8 +8,11 @@ public class Save : MonoBehaviour
     private Transform _currentSavePoint = null;
     [SerializeField]
     private GameObject _player = null;
+
     [SerializeField]
-    private StageManager _stageManager = null;
+    private Map _saveMap = null;
+    [SerializeField]
+    private Map _currentMap = null;
 
     private static Save _instance = null;
     public static Save Instance
@@ -30,17 +33,28 @@ public class Save : MonoBehaviour
         get => _currentSavePoint.position;
     }
 
-
-    public void SavePointSet()
+    public void SetCurrentMap(Map currentMap)
     {
+        _currentMap = currentMap;
+    }
+
+    public void SavePointSet(Map saveMap)
+    {
+        _saveMap = saveMap;
+
         _currentSavePoint.position = _player.transform.position;
     }
 
     public void Restart()
     {
+        _currentMap.gameObject.SetActive(false);
+        _saveMap.gameObject.SetActive(true);
+
         _player.SetActive(true);
         _rigid.velocity = Vector2.zero;
         _player.transform.position = _currentSavePoint.position;
+
+        _currentMap = _saveMap;
     }
 
 }
