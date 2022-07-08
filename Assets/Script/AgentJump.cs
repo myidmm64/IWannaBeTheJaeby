@@ -127,18 +127,18 @@ public class AgentJump : MonoBehaviour
         if (_currentJumpCnt >= _jumpCount)
             return; 
         _currentJumpCnt++;
-        Debug.Log($"JumpCount : {_currentJumpCnt}");
+        //Debug.Log($"JumpCount : {_currentJumpCnt}");
     }
 
     public void JumpEnable()
     {
         _isJumpable = true;
-        Debug.Log($"栏居");
+        //Debug.Log($"栏居");
     }
 
     public void JumpDisable()
     {
         _isJumpable = false;
-        Debug.Log($"备客厩");
+        //Debug.Log($"备客厩");
     }
 }
