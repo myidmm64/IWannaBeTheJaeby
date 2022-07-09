@@ -7,7 +7,26 @@ public class PlayerDamage : AgentDamage
 {
     [field: SerializeField]
     private UnityEvent OnDie = null;
+    private PlayerJump _playerJump = null;
 
+    private void Awake()
+    {
+        _playerJump = transform.parent.GetComponent<PlayerJump>();
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+
+        if(collision.CompareTag("MoreJump"))
+        {
+            _playerJump.MoreJump();
+        }
+        if (collision.CompareTag("Interaction"))
+        {
+            Debug.Log("Interaction");
+        }
+    }
     protected override void Die()
     {
         Debug.Log("ав╬З╬Н©Д");

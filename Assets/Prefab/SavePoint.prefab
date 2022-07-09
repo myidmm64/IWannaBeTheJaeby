@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2388274318599229237}
   - component: {fileID: 2388274318599229238}
   - component: {fileID: 2388274318599229239}
+  - component: {fileID: 1894651596}
   m_Layer: 0
   m_Name: SavePoint
   m_TagString: Untagged
@@ -49,6 +50,33 @@ MonoBehaviour:
   _player: {fileID: 0}
   _saveMap: {fileID: 0}
   _currentMap: {fileID: 0}
+  OnSave:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerAudio, Assembly-CSharp
+        m_MethodName: PlaySaveSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1894651596}
+        m_TargetAssemblyTypeName: PopupText, Assembly-CSharp
+        m_MethodName: Popup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2388274318599229239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,3 +104,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1894651596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2388274318599229236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37d3b9d313716149bdf70ec48d38bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 0}
+  _targetTrm: {fileID: 0}
+  _movePos: {x: 0, y: 0.5}
+  _duration: 0.5

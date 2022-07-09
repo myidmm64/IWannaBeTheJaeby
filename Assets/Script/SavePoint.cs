@@ -7,8 +7,6 @@ public class SavePoint : MonoBehaviour
 {
     [SerializeField]
     private Map _saveMap = null;
-    [field: SerializeField]
-    private UnityEvent OnSave = null;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,7 +14,6 @@ public class SavePoint : MonoBehaviour
         {
             Debug.Log("ºº¿Ã∫Í");
             Save.Instance.SavePointSet(_saveMap);
-            OnSave?.Invoke();
         }
     }
 }

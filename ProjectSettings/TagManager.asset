@@ -12,6 +12,8 @@ TagManager:
   - OneWay
   - Enemy
   - PlayerAtk
+  - MoreJump
+  - Interaction
   layers:
   - Default
   - TransparentFX

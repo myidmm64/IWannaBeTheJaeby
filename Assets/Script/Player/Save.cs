@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Save : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class Save : MonoBehaviour
     [SerializeField]
     private Map _currentMap = null;
 
+    [field: SerializeField]
+    private UnityEvent OnSave = null;
+
     private static Save _instance = null;
     public static Save Instance
     {
@@ -26,6 +30,11 @@ public class Save : MonoBehaviour
     {
         _instance = this;
         _rigid = _player.GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        Restart();
     }
 
     public Vector3 CurrentSavePoint
@@ -43,12 +52,15 @@ public class Save : MonoBehaviour
         _saveMap = saveMap;
 
         _currentSavePoint.position = _player.transform.position;
+
+        OnSave?.Invoke();
     }
 
     public void Restart()
     {
         _currentMap.gameObject.SetActive(false);
         _saveMap.gameObject.SetActive(true);
+        _saveMap.transform.root.GetComponent<StageBGMAudio>().NormalBGMPlay();
 
         _player.SetActive(true);
         _rigid.velocity = Vector2.zero;

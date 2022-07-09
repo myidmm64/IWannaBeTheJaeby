@@ -142,6 +142,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pitchRandomness: 0.2
+  _jumpSound: {fileID: 8300000, guid: 51193652813f3c042b4464413930150f, type: 3}
+  _attackSound: {fileID: 8300000, guid: 5224bfa94bf88634bb472eb990bcdecb, type: 3}
+  _saveSound: {fileID: 8300000, guid: 50f6d1c2af771b344a666a982b24c00b, type: 3}
+  _dashSound: {fileID: 8300000, guid: 4e525a7213e3b044c8fa3813540e018c, type: 3}
 --- !u!1 &849556562
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +580,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8410896137377134405}
+        m_TargetAssemblyTypeName: PlayerAudio, Assembly-CSharp
+        m_MethodName: PlayDashSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDashEndEvent:
     m_PersistentCalls:
       m_Calls:
@@ -612,7 +628,19 @@ MonoBehaviour:
   _groundRayStartPos: {fileID: 2470429814676269266}
   OnJumpPress:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8410896137377134405}
+        m_TargetAssemblyTypeName: PlayerAudio, Assembly-CSharp
+        m_MethodName: PlayJumpSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnIsGrounded:
     m_PersistentCalls:
       m_Calls:
@@ -654,6 +682,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2470429813274957143}
         m_TargetAssemblyTypeName: AgentAnimator, Assembly-CSharp
         m_MethodName: AttackAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8410896137377134405}
+        m_TargetAssemblyTypeName: PlayerAudio, Assembly-CSharp
+        m_MethodName: PlayAttackSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

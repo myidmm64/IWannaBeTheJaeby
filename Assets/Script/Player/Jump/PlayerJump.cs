@@ -46,7 +46,15 @@ public class PlayerJump : AgentJump
         }
 
 
-        if (Input.GetKeyDown(KeyCode.V))
+        /*if (Input.GetKeyDown(KeyCode.V))
+        {
+            MoreJump();
+        }*/
+    }
+
+    public void MoreJump()
+    {
+        if(_currentJumpCnt == _jumpCount)
         {
             _currentJumpCnt--;
             _isDoubleJump = true;

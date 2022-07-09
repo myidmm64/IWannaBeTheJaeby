@@ -16,7 +16,7 @@ public abstract class AgentDamage : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if(_isEnemy == false)
         {
@@ -28,6 +28,7 @@ public abstract class AgentDamage : MonoBehaviour
             {
                 Damaged();
             }
+
         }
         else
         {
