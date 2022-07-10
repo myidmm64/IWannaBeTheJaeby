@@ -52,6 +52,20 @@ public class PlayerJump : AgentJump
         }*/
     }
 
+    public void JumpReset()
+    {
+        GroundCheck();
+
+        if(_isground == false)
+        {
+            _currentJumpCnt = 1;
+        }
+        else
+        {
+            _currentJumpCnt = 0;
+        }
+    }
+
     public void MoreJump()
     {
         if(_currentJumpCnt == _jumpCount)

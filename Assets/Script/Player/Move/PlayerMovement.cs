@@ -30,4 +30,13 @@ public class PlayerMovement : AgentMovement
             }
         }
     }
+
+    public void DashEnable()
+    {
+        _dashable = true;
+    }
+    public void DashDisable()
+    {
+        _dashable = false;
+    }
 }

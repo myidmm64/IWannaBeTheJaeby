@@ -5,13 +5,21 @@ using UnityEngine;
 public class MapChanger : MonoBehaviour
 {
     [SerializeField]
-    private Map _currentStage = null;
+    private Map _currentMap = null;
     [SerializeField]
-    private Map _nextStage = null;
+    private Map _nextMap = null;
     [SerializeField]
     private Transform _nextPosition = null;
     [SerializeField]
     private bool _changeMap = true;
+
+    [Header("다음 스테이지로 넘어갈 때만")]
+    [SerializeField]
+    private bool _changeStage = false;
+    [SerializeField]
+    private GameObject _CurrentStage = null;
+    [SerializeField]
+    private GameObject _NextStage = null;
 
 
     private void Awake()
@@ -34,14 +42,29 @@ public class MapChanger : MonoBehaviour
 
 
         player.transform.position = _nextPosition.position;
+
+        if (_changeStage == true)
+        {
+            _nextMap.gameObject.SetActive(true);
+            _nextMap.Init();
+            _NextStage.gameObject.SetActive(true);
+            _NextStage.GetComponent<StageBGMAudio>().NormalBGMPlay();
+            Save.Instance.SetCurrentMap(_nextMap);
+            _CurrentStage.gameObject.SetActive(false);
+            _currentMap.gameObject.SetActive(false);
+
+            return;
+        }
+
         if (_changeMap == true)
         {
-            _nextStage.gameObject.SetActive(true);
-            _nextStage.Init();
+            _nextMap.gameObject.SetActive(true);
+            _nextMap.Init();
 
-            _currentStage.gameObject.SetActive(false);
-            Save.Instance.SetCurrentMap(_nextStage);
+            Save.Instance.SetCurrentMap(_nextMap);
+            _currentMap.gameObject.SetActive(false);
         }
+
 
     }
 }

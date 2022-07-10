@@ -32,7 +32,7 @@ public class AgentMovement : MonoBehaviour
     private UnityEvent OnDashEndEvent;
 
     [SerializeField]
-    private bool _dashable = true;
+    protected bool _dashable = true;
     private Coroutine _dashCoroutine = null;
 
     private void Awake()

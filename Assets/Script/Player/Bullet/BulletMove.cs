@@ -12,4 +12,14 @@ public class BulletMove : MonoBehaviour
     {
         transform.Translate(Vector2.right * _speed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.name);
+        if(collision.CompareTag("Player") == false)
+        {
+
+            Destroy(gameObject);
+        }
+    }
 }

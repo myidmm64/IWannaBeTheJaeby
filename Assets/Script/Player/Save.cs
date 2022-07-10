@@ -59,8 +59,12 @@ public class Save : MonoBehaviour
     public void Restart()
     {
         _currentMap.gameObject.SetActive(false);
+        _currentMap.transform.root.gameObject.SetActive(false);
+
         _saveMap.gameObject.SetActive(true);
+        _saveMap.transform.root.gameObject.SetActive(true);
         _saveMap.transform.root.GetComponent<StageBGMAudio>().NormalBGMPlay();
+        _saveMap.Init();
 
         _player.SetActive(true);
         _rigid.velocity = Vector2.zero;
