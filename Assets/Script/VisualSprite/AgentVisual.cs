@@ -41,7 +41,6 @@ public class AgentVisual : MonoBehaviour
         if (amount < 0 && _filp == false)
         {
             _filp = true;
-            Debug.Log("FLip");
             _localScale.y *= -1f;
             transform.localScale = -_localScale;
             _localScale.y *= -1f;
@@ -51,7 +50,6 @@ public class AgentVisual : MonoBehaviour
         else if (amount > 0 && _filp == true)
         {
             _filp = false;
-            Debug.Log("FLip");
             transform.localScale = _localScale;
             //transform.position += Vector3.right * 0.33f;
             OnFaceDirectionChange?.Invoke(false);

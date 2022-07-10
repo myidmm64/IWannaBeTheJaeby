@@ -486,6 +486,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 841886594, guid: 27fbfa3cf802f1c4db06ac3f00a8d6b3, type: 3}
+      propertyPath: OnMapStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 534826793}
     - target: {fileID: 1539547542419640377, guid: 27fbfa3cf802f1c4db06ac3f00a8d6b3, type: 3}
       propertyPath: OnMapStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -693,22 +697,6 @@ PrefabInstance:
       propertyPath: OnMapStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 534826793}
-    - target: {fileID: 999015541, guid: a019f280f599879438dbe939f58efaf0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1027113803, guid: a019f280f599879438dbe939f58efaf0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1264542315, guid: a019f280f599879438dbe939f58efaf0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1722985763, guid: a019f280f599879438dbe939f58efaf0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1858808519, guid: a019f280f599879438dbe939f58efaf0, type: 3}
       propertyPath: OnMapStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

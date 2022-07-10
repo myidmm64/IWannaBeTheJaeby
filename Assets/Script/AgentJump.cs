@@ -82,7 +82,6 @@ public class AgentJump : MonoBehaviour
 
         if(_isFirstJump)
         {
-            Debug.Log("내려오셨네요");
             _currentJumpCnt = 1;
         }
     }
