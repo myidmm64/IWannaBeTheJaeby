@@ -68,6 +68,7 @@ public class PlayerJump : AgentJump
 
     public void MoreJump()
     {
+        Debug.Log("asdsda");
         if(_currentJumpCnt == _jumpCount)
         {
             _currentJumpCnt--;
