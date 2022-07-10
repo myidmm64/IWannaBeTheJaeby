@@ -769,6 +769,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage1
       objectReference: {fileID: 0}
+    - target: {fileID: 8611064009922039166, guid: a019f280f599879438dbe939f58efaf0, type: 3}
+      propertyPath: _normalBGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 9b7d19672ec7ad14680805acc52cad36, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a019f280f599879438dbe939f58efaf0, type: 3}
 --- !u!1 &4845707786782314145 stripped
