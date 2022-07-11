@@ -506,7 +506,33 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 155225513}
+    m_ColliderPaths:
+    - - X: -72500000
+        Y: 27500000
+      - X: -90000000
+        Y: 27500000
+      - X: -90000000
+        Y: 25000000
+      - X: -72500000
+        Y: 25000000
+    - - X: 15000000
+        Y: 27500000
+      - X: -5000000
+        Y: 27500000
+      - X: -5000000
+        Y: 25000000
+      - X: 15000000
+        Y: 25000000
+    - - X: 90000000
+        Y: 27500000
+      - X: 70000000
+        Y: 27500000
+      - X: 70000000
+        Y: 25000000
+      - X: 90000000
+        Y: 25000000
   m_CompositePaths:
     m_Paths:
     - - {x: 8.99997, y: 2.5}
@@ -535,7 +561,7 @@ GameObject:
   - component: {fileID: 309927277}
   - component: {fileID: 309927278}
   - component: {fileID: 309927279}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MoreJumpObject0
   m_TagString: MoreJump
   m_Icon: {fileID: 0}
@@ -754,7 +780,7 @@ GameObject:
   - component: {fileID: 521750157}
   - component: {fileID: 521750156}
   - component: {fileID: 521750155}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MoreJumpObject0 (3)
   m_TagString: MoreJump
   m_Icon: {fileID: 0}
@@ -1122,7 +1148,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 633537628}
+    m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
   m_VertexDistance: 0.0005
@@ -1435,7 +1463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1169608446
 Transform:
   m_ObjectHideFlags: 0
@@ -1547,7 +1575,7 @@ GameObject:
   - component: {fileID: 1294240958}
   - component: {fileID: 1294240957}
   - component: {fileID: 1294240956}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MoreJumpObject0 (2)
   m_TagString: MoreJump
   m_Icon: {fileID: 0}
@@ -3566,7 +3594,33 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1316279422}
+    m_ColliderPaths:
+    - - X: -90000000
+        Y: 52500000
+      - X: -92500000
+        Y: 52500000
+      - X: -92500000
+        Y: -50000000
+      - X: -90000000
+        Y: -50000000
+    - - X: 92500000
+        Y: 50000000
+      - X: 90000000
+        Y: 50000000
+      - X: 90000000
+        Y: -50000000
+      - X: 92500000
+        Y: -50000000
+    - - X: 90000000
+        Y: -50000000
+      - X: -90000000
+        Y: -50000000
+      - X: -90000000
+        Y: -52500000
+      - X: 90000000
+        Y: -52500000
   m_CompositePaths:
     m_Paths:
     - - {x: -9.00003, y: -5}
@@ -3696,7 +3750,7 @@ GameObject:
   - component: {fileID: 1449133920}
   - component: {fileID: 1449133919}
   - component: {fileID: 1449133918}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MoreJumpObject0 (1)
   m_TagString: MoreJump
   m_Icon: {fileID: 0}
@@ -33753,7 +33807,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1588925086}
+    m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
   m_VertexDistance: 0.0005
@@ -34206,7 +34262,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1932038243}
+    m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
   m_VertexDistance: 0.0005
@@ -34558,7 +34616,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 2132244744}
+    m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
   m_VertexDistance: 0.0005
