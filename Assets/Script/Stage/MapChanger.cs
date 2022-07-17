@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MapChanger : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class MapChanger : MonoBehaviour
     [SerializeField]
     private bool _changeMap = true;
 
+    [field: SerializeField]
+    private UnityEvent OnMapChange = null;
+
     [Header("다음 스테이지로 넘어갈 때만")]
     [SerializeField]
     private bool _changeStage = false;
@@ -20,6 +24,7 @@ public class MapChanger : MonoBehaviour
     private GameObject _CurrentStage = null;
     [SerializeField]
     private GameObject _NextStage = null;
+    
 
 
     private void Awake()
@@ -39,7 +44,7 @@ public class MapChanger : MonoBehaviour
     public void ChangeMap(GameObject player)
     {
         Debug.Log("다음 맵 !!");
-
+        OnMapChange?.Invoke();
 
         player.transform.position = _nextPosition.position;
 
