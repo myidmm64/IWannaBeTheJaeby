@@ -12,6 +12,8 @@ public class NPCInteraction : Interaction
     [SerializeField]
     private string[] _texts = null;
 
+    private float _voiceSpeed = 1.5f;
+
     private bool _startingVoice = false;
     private bool _voiceable = false;
 
@@ -70,7 +72,7 @@ public class NPCInteraction : Interaction
         for (int i = 0; i<_texts.Length; i++)
         {
             _text.SetText(_texts[i]);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(_voiceSpeed);
         }
         ResetVoice();
     }
