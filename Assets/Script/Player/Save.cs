@@ -26,9 +26,8 @@ public class Save : MonoBehaviour
 
     private Rigidbody2D _rigid = null;
 
-    private bool _isFirstStart = true;
-    [SerializeField]
-    private GameObject[] StartCutSceneObjects = null;
+    [field: SerializeField]
+    private UnityEvent OnFirstSave = null;
 
     private void Awake()
     {
@@ -39,8 +38,7 @@ public class Save : MonoBehaviour
     private void Start()
     {
         Restart();
-        if(_isFirstStart)
-            FirstStart();
+        OnFirstSave?.Invoke();
     }
 
     public Vector3 CurrentSavePoint
@@ -67,31 +65,16 @@ public class Save : MonoBehaviour
         _currentMap.gameObject.SetActive(false);
         _currentMap.transform.root.gameObject.SetActive(false);
 
+        _player.SetActive(true);
+        _rigid.velocity = Vector2.zero;
+        _player.transform.position = _currentSavePoint.position;
+
         _saveMap.gameObject.SetActive(true);
         _saveMap.transform.root.gameObject.SetActive(true);
         _saveMap.transform.root.GetComponent<StageBGMAudio>().NormalBGMPlay();
         _saveMap.Init();
 
-        _player.SetActive(true);
-        _rigid.velocity = Vector2.zero;
-        _player.transform.position = _currentSavePoint.position;
-
         _currentMap = _saveMap;
-    }
-
-    public void FirstStart()
-    {
-        StartCoroutine(StartCutScene());
-    }
-    private IEnumerator StartCutScene()
-    {
-        _player.SetActive(false);
-        yield return new WaitForSeconds(12.5f);
-        for(int i = 0; i<StartCutSceneObjects.Length; i++)
-        {
-            StartCutSceneObjects[i].SetActive(false);
-        }
-        _player.SetActive(true);
     }
 
 }
