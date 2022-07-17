@@ -32,6 +32,7 @@ public class AgentJump : MonoBehaviour
     [SerializeField]
     private LayerMask _groundMask = 0;
 
+
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
@@ -114,6 +115,7 @@ public class AgentJump : MonoBehaviour
         }
 
         OnJumpPress?.Invoke();
+
         _rigid.velocity = new Vector2(_rigid.velocity.x, 0f);
         _rigid.AddForce(Vector3.up * jumpPow, ForceMode2D.Impulse);
 

@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerAttack : AgentMeleeAttack
 {
     [SerializeField]
-    private AudioClip _attackClip = null;
-    [SerializeField]
     private GameObject _bullet = null;
     [SerializeField]
     private bool _isAutoShoot = true;
@@ -67,8 +65,6 @@ public class PlayerAttack : AgentMeleeAttack
 
     private void SpawnBullet()
     {
-        AudioPoolable audioPool = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
-        audioPool.PlayRandomness(_attackClip);
 
         BulletMove bullet = null;
         if (_filp)

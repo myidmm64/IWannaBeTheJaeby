@@ -22,18 +22,22 @@ public class PlayerAudio : AudioPlayer
 
     public void PlayJumpSound()
     {
-        PlayClipWithVariablePitch(_jumpSound);
+        AudioPoolable audio = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
+        audio.PlayRandomness(_jumpSound);
     }
     public void PlayAttackSound()
     {
-        PlayClipWithVariablePitch(_attackSound);
+        AudioPoolable audio = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
+        audio.PlayRandomness(_attackSound);
     }
     public void PlaySaveSound()
     {
-        PlayClipWithVariablePitch(_saveSound);
+        AudioPoolable audio = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
+        audio.PlayRandomness(_saveSound);
     }
     public void PlayDashSound()
     {
-        PlayClipWithVariablePitch(_dashSound);
+        AudioPoolable audio = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
+        audio.PlayRandomness(_dashSound);
     }
 }
