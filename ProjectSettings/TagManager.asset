@@ -26,10 +26,10 @@ TagManager:
   - Player
   - PlayerAttack
   - Item
-  - 
-  - 
-  - 
-  - 
+  - Wall
+  - Enemy
+  - Bound
+  - NextMap
   - 
   - 
   - 
@@ -51,9 +51,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 49710891
+    locked: 0
   - name: Agent
     uniqueID: 2007071881
     locked: 0
   - name: Ground
     uniqueID: 2093570843
+    locked: 0
+  - name: UI
+    uniqueID: 4229635337
     locked: 0

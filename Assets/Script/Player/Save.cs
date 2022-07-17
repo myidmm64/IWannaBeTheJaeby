@@ -26,6 +26,10 @@ public class Save : MonoBehaviour
 
     private Rigidbody2D _rigid = null;
 
+    private bool _isFirstStart = true;
+    [SerializeField]
+    private GameObject[] StartCutSceneObjects = null;
+
     private void Awake()
     {
         _instance = this;
@@ -35,6 +39,8 @@ public class Save : MonoBehaviour
     private void Start()
     {
         Restart();
+        if(_isFirstStart)
+            FirstStart();
     }
 
     public Vector3 CurrentSavePoint
@@ -71,6 +77,21 @@ public class Save : MonoBehaviour
         _player.transform.position = _currentSavePoint.position;
 
         _currentMap = _saveMap;
+    }
+
+    public void FirstStart()
+    {
+        StartCoroutine(StartCutScene());
+    }
+    private IEnumerator StartCutScene()
+    {
+        _player.SetActive(false);
+        yield return new WaitForSeconds(12.5f);
+        for(int i = 0; i<StartCutSceneObjects.Length; i++)
+        {
+            StartCutSceneObjects[i].SetActive(false);
+        }
+        _player.SetActive(true);
     }
 
 }

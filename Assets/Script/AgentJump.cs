@@ -21,7 +21,7 @@ public class AgentJump : MonoBehaviour
     private bool _isFirstJump = true;
 
     [SerializeField]
-    private Transform _groundRayStartPos = null;
+    private Transform[] _groundRayStartPos = null;
     protected bool _isground = false;
 
     [field: SerializeField]
@@ -44,22 +44,34 @@ public class AgentJump : MonoBehaviour
 
     public void GroundCheck()
     {
-        Debug.DrawRay(_groundRayStartPos.position, _groundRayStartPos.up * -1f * _rayLength , Color.blue);
+        Collider2D col = null;
 
-        RaycastHit2D hit = Physics2D.Raycast(_groundRayStartPos.position, _groundRayStartPos.up * -1f, _rayLength, _groundMask);
-        if(hit.collider != null)
+        for(int i = 0; i< _groundRayStartPos.Length; i++)
+        {
+            Debug.DrawRay(_groundRayStartPos[i].position, _groundRayStartPos[i].up * -1f * _rayLength, Color.blue);
+
+            RaycastHit2D hit = Physics2D.Raycast(_groundRayStartPos[i].position, _groundRayStartPos[i].up * -1f, _rayLength, _groundMask);
+
+            if (hit.collider != null && hit.point.y < _groundRayStartPos[0].transform.position.y)
+            {
+                col = hit.collider;
+            }
+        }
+
+        if (col != null)
         {
             _isground = true;
             OnIsGrounded?.Invoke(true);
-            _currentJumpCnt = 0;
             _isFirstJump = true;
+            _currentJumpCnt = 0;
         }
-        else if (hit.collider == null)
+        else if (col == null)
         {
             _isground = false;
             OnIsGrounded?.Invoke(false);
         }
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -123,8 +135,11 @@ public class AgentJump : MonoBehaviour
 
     public void JumpRenewal()
     {
-        if (_currentJumpCnt >= _jumpCount)
-            return; 
+        if (_isJumpable == false)
+            return;
+        if (_isground == false && _currentJumpCnt >= _jumpCount)
+            return;
+
         _currentJumpCnt++;
         //Debug.Log($"JumpCount : {_currentJumpCnt}");
     }

@@ -768,7 +768,7 @@ MonoBehaviour:
   _speed: 5
   _dashPower: 35
   _rigidDrag: 20
-  _dashInterval: 0.3
+  _dashInterval: 0.6
   OnvelocityChange:
     m_PersistentCalls:
       m_Calls:
