@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class AgentMovement : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = 5f;
+    protected float _speed = 5f;
     [SerializeField]
     private float _dashPower = 10f;
     [SerializeField]
@@ -15,7 +15,7 @@ public class AgentMovement : MonoBehaviour
     [Range(0.2f, 2f)]
     private float _dashInterval = 0.3f;
 
-    private bool _isStop = false;
+    protected bool _isStop = false;
 
     protected Rigidbody2D _rigid = null;
 
@@ -86,8 +86,13 @@ public class AgentMovement : MonoBehaviour
     {
         if (_dashCoroutine != null)
             StopCoroutine(_dashCoroutine);
+        StopCoroutine("DashCoroutine");
 
-        _dashable = true;
+        _isStop = false;
+        _rigid.gravityScale = 4.8f;
+        _rigid.drag = 0.5f;
+        OnDashEndEvent?.Invoke();
+        //_dashable = true;
     }
 
     private IEnumerator DashCoroutine()

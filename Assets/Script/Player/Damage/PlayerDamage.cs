@@ -9,6 +9,9 @@ public class PlayerDamage : AgentDamage
     private UnityEvent OnDie = null;
     private PlayerJump _playerJump = null;
 
+    [SerializeField]
+    private ParticleSystem _dieParticle = null;
+
     private void Awake()
     {
         _playerJump = transform.parent.GetComponent<PlayerJump>();
@@ -33,5 +36,17 @@ public class PlayerDamage : AgentDamage
         
         OnDie?.Invoke();
         transform.root.gameObject.SetActive(false);
+    }
+
+    public void DieEffectEnable()
+    {
+        _dieParticle.gameObject.SetActive(true);
+        _dieParticle.transform.position = transform.position;
+        _dieParticle.Play();
+    }
+    public void DieEffectDisable()
+    {
+        _dieParticle.Stop();
+        _dieParticle.gameObject.SetActive(false) ;
     }
 }
