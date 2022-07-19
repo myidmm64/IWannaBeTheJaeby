@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class PlayerDamage : AgentDamage
 {
-    [field: SerializeField]
+    [field:SerializeField]
     private UnityEvent OnDie = null;
     private PlayerJump _playerJump = null;
 
@@ -30,7 +30,7 @@ public class PlayerDamage : AgentDamage
             Debug.Log("Interaction");
         }
     }
-    protected override void Die()
+    public override void Die()
     {
         Debug.Log("ав╬З╬Н©Д");
         

@@ -33,7 +33,10 @@ public class BulletMove : PoolableMono
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player") == false)
+        if(collision.CompareTag("Player") == true || collision.CompareTag("Swallow") == true)
+        {
+        }
+        else
         {
             Debug.Log(collision.name);
             PoolManager.Instance.Push(this);

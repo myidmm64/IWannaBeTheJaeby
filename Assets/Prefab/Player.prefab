@@ -404,7 +404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340054019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalPosition: {x: -0.2, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -423,6 +423,8 @@ GameObject:
   - component: {fileID: 1698760145}
   - component: {fileID: 1698760147}
   - component: {fileID: 1698760148}
+  - component: {fileID: 1698760155}
+  - component: {fileID: 1698760151}
   m_Layer: 8
   m_Name: swallow
   m_TagString: Swallow
@@ -486,7 +488,7 @@ SpriteRenderer:
   m_SortingLayerID: 2007071881
   m_SortingLayer: 2
   m_SortingOrder: 10
-  m_Sprite: {fileID: 901198988, guid: 26235d83462d5cb49994a65e61bda084, type: 3}
+  m_Sprite: {fileID: 1432082796, guid: 26235d83462d5cb49994a65e61bda084, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -515,7 +517,19 @@ MonoBehaviour:
   _dashInterval: 0.2
   OnvelocityChange:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1698760147}
+        m_TargetAssemblyTypeName: SwallowMove, Assembly-CSharp
+        m_MethodName: FaceDiractionChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnJumpVelocityChange:
     m_PersistentCalls:
       m_Calls: []
@@ -527,7 +541,23 @@ MonoBehaviour:
       m_Calls: []
   _dashable: 0
   _swallowTrm: {fileID: 1340054020}
-  _followSpeed: 3
+  _followSpeed: 4
+  _player: {fileID: 2470429815126438421}
+  OnSwallowMode:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2470429813274957143}
+        m_TargetAssemblyTypeName: AgentAnimator, Assembly-CSharp
+        m_MethodName: AnimationReset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!50 &1698760148
 Rigidbody2D:
   serializedVersion: 4
@@ -549,6 +579,52 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &1698760155
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698760144}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.04543916}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.25, y: 0.25}
+    newSize: {x: 0.25, y: 0.25}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.0896658}
+  m_EdgeRadius: 0
+--- !u!95 &1698760151
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698760144}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0efbbc9988ff5f4d8cbcd3a163a9c4f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1825970267
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825970267}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.373, y: -0.487, z: 0}
+  m_LocalPosition: {x: -0.459, y: -0.487, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -701,7 +777,6 @@ GameObject:
   - component: {fileID: 2470429813274957167}
   - component: {fileID: 2470429813274957164}
   - component: {fileID: 2470429813274957165}
-  - component: {fileID: 2470429813274957137}
   - component: {fileID: 2470429813274957140}
   - component: {fileID: 2470429813274957142}
   - component: {fileID: 2470429813274957143}
@@ -815,32 +890,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!61 &2470429813274957137
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2470429813274957166}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.002930373, y: -0.00059872866}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.9375, y: 1.125}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.93455, y: 1.1211976}
-  m_EdgeRadius: 0
 --- !u!251 &2470429813274957140
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -973,7 +1022,7 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 0, y: 0.5625}
       - {x: 0.45, y: -0.56}
-      - {x: -0.45, y: -0.56}
+      - {x: -0.47, y: -0.56}
 --- !u!1 &2470429814676269293
 GameObject:
   m_ObjectHideFlags: 0

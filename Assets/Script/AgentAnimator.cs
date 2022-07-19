@@ -41,4 +41,11 @@ public class AgentAnimator : MonoBehaviour
     {
         _animator.SetTrigger("Dash");
     }
+
+    public void AnimationReset()
+    {
+        _animator.SetBool("Dash", false);
+        _animator.SetBool("Move", false);
+        _animator.SetBool("IsGround", true);
+    }
 }

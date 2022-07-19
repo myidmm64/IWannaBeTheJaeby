@@ -45,7 +45,7 @@ public abstract class AgentDamage : MonoBehaviour
 
     }
 
-    protected abstract void Die();
+    public abstract void Die();
 
     private void Damaged()
     {

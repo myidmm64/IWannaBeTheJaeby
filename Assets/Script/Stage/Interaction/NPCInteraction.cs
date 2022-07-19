@@ -44,10 +44,11 @@ public class NPCInteraction : Interaction
         {
             _voiceable = true;
             _keyManual.SetActive(true);
+
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    protected override void OnTriggerExit2D(Collider2D collision)
     {
         if (_startingVoice) return;
 
@@ -83,5 +84,9 @@ public class NPCInteraction : Interaction
         _text.SetText("");
         _startingVoice = false;
         _voiceable = false;
+    }
+
+    public override void DoExitInteraction()
+    {
     }
 }
