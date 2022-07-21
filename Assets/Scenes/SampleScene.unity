@@ -1849,6 +1849,18 @@ PrefabInstance:
       propertyPath: _dieParticle
       value: 
       objectReference: {fileID: 1974677611}
+    - target: {fileID: 2470429813274957164, guid: 775156af5a67ced4097ed267f99f47fd, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470429813274957164, guid: 775156af5a67ced4097ed267f99f47fd, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470429813274957164, guid: 775156af5a67ced4097ed267f99f47fd, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2470429815126438421, guid: 775156af5a67ced4097ed267f99f47fd, type: 3}
       propertyPath: m_Name
       value: Player
