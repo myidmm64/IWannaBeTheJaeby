@@ -9,6 +9,19 @@ public class Save : MonoBehaviour
     private Transform _currentSavePoint = null;
     [SerializeField]
     private GameObject _player = null;
+    private PlayerMovement _playerMovement;
+
+    public PlayerMovement playerMovemant
+    {
+        get
+        {
+            if(_playerMovement == null)
+            {
+                _playerMovement = _player.GetComponent<PlayerMovement>();
+            }
+            return _playerMovement;
+        }
+    }
 
     [SerializeField]
     private Map _saveMap = null;

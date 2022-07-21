@@ -106,10 +106,12 @@ public class SwallowMove : AgentMovement
         if(val)
         {
             _trail.enabled = true;
+            _playerRigid.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
         }
         else
         {
             _trail.enabled = false;
+            _playerRigid.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.None;
         }
 
         _playerRigid.velocity = Vector2.zero;

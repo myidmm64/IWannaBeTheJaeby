@@ -5,10 +5,14 @@ using UnityEngine.Events;
 
 public class Map : MonoBehaviour
 {
+    [SerializeField]
+    private bool _isDashable = false;
+
     [field: SerializeField]
-    private UnityEvent OnMapReset = null;
+    public UnityEvent OnMapReset = null;
     [field: SerializeField]
     private UnityEvent OnMapStarted = null;
+
 
     private GameObject _easyTile = null;
 
@@ -19,6 +23,16 @@ public class Map : MonoBehaviour
            
         OnMapStarted?.Invoke();
 
+        if(_isDashable)
+        {
+            Save.Instance.playerMovemant.DashEnable();
+        }
+        else
+        {
+            Save.Instance.playerMovemant.DashDisable();
+        }
+
+
         if(Player._isEasyMode)
         {
             _easyTile = transform.Find("ColliderTile/EasyModeTile").gameObject;
@@ -28,5 +42,13 @@ public class Map : MonoBehaviour
             }
         }
 
+    }
+
+    public virtual void MapExit()
+    {
+        if(_isDashable)
+        {
+            Save.Instance.playerMovemant.MovementDieReset();
+        }
     }
 }

@@ -93,5 +93,8 @@ public class AgentVisual : MonoBehaviour
         {
             DamageColorChange(true);
         }
+        //Color newColor = new Color(Mathf.Cos((Time.time * 20f) * Mathf.Deg2Rad), 0f, 0f);
+
+        _spriteRenderer.color = Color.HSVToRGB(0.5f * Mathf.Cos((Time.time * 20f) * Mathf.Deg2Rad) + 0.5f, 1f,1f);
     }
 }

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &423936
 Transform:
   m_ObjectHideFlags: 0
@@ -4621,7 +4621,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 03c4b968ffb030646b5abe98dff68dcc, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4735,7 +4734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &427478
 Transform:
   m_ObjectHideFlags: 0
@@ -4773,7 +4772,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c8c162af3fac7f145b8d1295eff18b1c, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4791,9 +4789,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingLayerID: 2093570843
+  m_SortingLayer: 3
+  m_SortingOrder: 30
   m_RenderMode: 1
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -4841,7 +4839,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -9508,7 +9506,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 519ffdde64b6aa54180d54372779f0b0, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9526,8 +9523,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -65331959
+  m_SortingLayer: 4
   m_SortingOrder: 30
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -9576,7 +9573,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -14251,11 +14248,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 0}
   FollowCamera: 1
-  RainSoundLight: {fileID: 8300000, guid: c980eda1ec9b9ff4b930005976b00f41, type: 3}
+  RainSoundLight: {fileID: 8300000, guid: 3359e9d10af08ca46ae396298dbd1ed9, type: 3}
   RainSoundMedium: {fileID: 8300000, guid: 3359e9d10af08ca46ae396298dbd1ed9, type: 3}
   RainSoundHeavy: {fileID: 8300000, guid: db1471092e49b7445bfbd374a17ea61a, type: 3}
-  RainSoundAudioMixer: {fileID: 0}
-  RainIntensity: 0
+  RainSoundAudioMixer: {fileID: 7493724064365011369, guid: 051aa9b15574d864a833aed81d4b82a0, type: 2}
+  RainIntensity: 0.15
   RainFallParticleSystem: {fileID: 19804216}
   RainExplosionParticleSystem: {fileID: 19837776}
   RainMistParticleSystem: {fileID: 19862954}
@@ -14271,5 +14268,5 @@ MonoBehaviour:
   CollisionMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  CollisionLifeTimeRain: 0.02
+  CollisionLifeTimeRain: 0.005
   RainMistCollisionMultiplier: 0.75

@@ -45,6 +45,7 @@ public class MapChanger : MonoBehaviour
     {
         Debug.Log("¥Ÿ¿Ω ∏  !!");
         OnMapChange?.Invoke();
+        _currentMap.MapExit();
 
         player.transform.position = _nextPosition.position;
 

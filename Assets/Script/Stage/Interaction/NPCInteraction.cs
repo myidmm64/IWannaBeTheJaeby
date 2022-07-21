@@ -11,6 +11,8 @@ public class NPCInteraction : Interaction
     private TextMeshPro _text = null;
     [SerializeField]
     private string[] _texts = null;
+    [SerializeField]
+    private Map _currentMap = null;
 
     private float _voiceSpeed = 1.5f;
 
@@ -23,6 +25,11 @@ public class NPCInteraction : Interaction
 
     public override void DoStayInteraction()
     {
+    }
+
+    private void Awake()
+    {
+        _currentMap.OnMapReset.AddListener(ResetVoice);
     }
 
     private void Update()
