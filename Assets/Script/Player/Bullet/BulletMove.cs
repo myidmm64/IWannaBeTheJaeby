@@ -18,7 +18,6 @@ public class BulletMove : PoolableMono
     {
         Vector3 worldToScreen = _cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height,0f));
         _bound = new Vector2(worldToScreen.x ,  worldToScreen.x * -1f);
-        Debug.Log(_bound);
     }
 
     private void Update()
@@ -38,7 +37,6 @@ public class BulletMove : PoolableMono
         }
         else
         {
-            Debug.Log(collision.name);
             PoolManager.Instance.Push(this);
         }
     }
