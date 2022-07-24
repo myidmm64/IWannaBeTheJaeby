@@ -656,6 +656,7 @@ MonoBehaviour:
   _dashPower: 0
   _rigidDrag: 20
   _dashInterval: 0.2
+  _minYVelocity: -6
   OnvelocityChange:
     m_PersistentCalls:
       m_Calls:
@@ -1298,10 +1299,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e8a5fdf75694840a612904a99ee21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 4
   _dashPower: 35
   _rigidDrag: 20
   _dashInterval: 0.6
+  _minYVelocity: -9
   OnvelocityChange:
     m_PersistentCalls:
       m_Calls:
@@ -1412,7 +1414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4347700c25703cc41b598fa3de8db6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpPower: 15
+  _jumpPower: 13.8
   _secondJumpPower: 0.9
   _rayLength: 0.07
   _jumpCount: 2

@@ -16,13 +16,6 @@ public class PlayerMovement : AgentMovement
         _moveDir.x = Input.GetAxisRaw("Horizontal");
         _moveDir.y = _rigid.velocity.y;
 
-        if(_rigid.velocity.y <= -5f)
-        {
-            _moveDir = new Vector2(_moveDir.x, -5f);
-        }
-
-        Debug.Log(_moveDir.y);
-
 
         if(Input.GetKeyDown(KeyCode.Z))
         {

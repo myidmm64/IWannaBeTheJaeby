@@ -14,6 +14,8 @@ public class AgentMovement : MonoBehaviour
     [SerializeField]
     [Range(0.2f, 2f)]
     private float _dashInterval = 0.3f;
+    [SerializeField]
+    private float _minYVelocity = -6f;
 
     protected bool _isStop = false;
 
@@ -35,6 +37,7 @@ public class AgentMovement : MonoBehaviour
     protected bool _dashable = true;
     private Coroutine _dashCoroutine = null;
 
+
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
@@ -44,7 +47,15 @@ public class AgentMovement : MonoBehaviour
     {
         if (_isStop) return;
 
-        _rigid.velocity = new Vector2(_moveDir.x * _speed, _rigid.velocity.y);
+        if (_rigid.velocity.y < _minYVelocity)
+        {
+            _rigid.velocity = new Vector2(_moveDir.x * _speed, _minYVelocity);
+        }
+        else
+        {
+            _rigid.velocity = new Vector2(_moveDir.x * _speed, _rigid.velocity.y);
+        }
+
     }
 
     protected virtual void Update()
