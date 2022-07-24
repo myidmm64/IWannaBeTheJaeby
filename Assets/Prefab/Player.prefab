@@ -1164,6 +1164,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _playerVoice: {fileID: 0}
   _dieParticle: {fileID: 0}
 --- !u!60 &2056445965
 PolygonCollider2D:
@@ -1303,7 +1304,7 @@ MonoBehaviour:
   _dashPower: 35
   _rigidDrag: 20
   _dashInterval: 0.6
-  _minYVelocity: -9
+  _minYVelocity: -10
   OnvelocityChange:
     m_PersistentCalls:
       m_Calls:
