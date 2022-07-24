@@ -22,20 +22,16 @@ public class PlayerAttack : AgentMeleeAttack
 
     void Update()
     {
-        _bulletTimer += Time.deltaTime;
-        if (_bulletTimer >= 1f)
-        {
-            _bulletCnt = 0;
-            _bulletTimer = 0f;
-        }
 
 
         if (_isAutoShoot)
         {
-            if(Input.GetKey(KeyCode.X))
+            if (Input.GetKey(KeyCode.X))
             {
+                _bulletTimer += Time.deltaTime;
                 _timer += Time.deltaTime;
-                if(_timer >= _reloadTime && _bulletCnt < _bulletPerSec)
+
+                if (_timer >= _reloadTime && _bulletCnt < _bulletPerSec)
                 {
                     Attack();
 
@@ -44,6 +40,18 @@ public class PlayerAttack : AgentMeleeAttack
                     _bulletCnt++;
                     _timer = 0f;
                 }
+
+                if (_bulletTimer >= 1f)
+                {
+                    _bulletCnt = 0;
+                    _bulletTimer = 0f;
+                }
+            }
+
+            if (Input.GetKeyUp(KeyCode.X))
+            {
+                _bulletCnt = 0;
+                _bulletTimer = 0f;
             }
         }
         else

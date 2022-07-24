@@ -18,16 +18,16 @@ public class AgentJump : MonoBehaviour
 
     private bool _isJumpable = true;
     protected bool _isDoubleJump = false;
-    private bool _isFirstJump = true;
+    protected bool _isFirstJump = true;
 
     [SerializeField]
     private Transform[] _groundRayStartPos = null;
     protected bool _isground = false;
 
     [field: SerializeField]
-    private UnityEvent OnJumpPress = null;
+    protected UnityEvent OnJumpPress = null;
     [field: SerializeField]
-    private UnityEvent<bool> OnIsGrounded = null;
+    protected UnityEvent<bool> OnIsGrounded = null;
 
     [SerializeField]
     private LayerMask _groundMask = 0;

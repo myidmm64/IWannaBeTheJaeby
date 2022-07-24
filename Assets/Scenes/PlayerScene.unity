@@ -1138,17 +1138,6 @@ MeshRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 100
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1039013879 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 419138959, guid: 775156af5a67ced4097ed267f99f47fd, type: 3}
-  m_PrefabInstance: {fileID: 2470429814952426802}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1078958843 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1078958843, guid: a019f280f599879438dbe939f58efaf0, type: 3}
@@ -2558,10 +2547,6 @@ PrefabInstance:
       propertyPath: _dieParticle
       value: 
       objectReference: {fileID: 1974677611}
-    - target: {fileID: 2470429813274957141, guid: 775156af5a67ced4097ed267f99f47fd, type: 3}
-      propertyPath: _playerVoice
-      value: 
-      objectReference: {fileID: 1039013879}
     - target: {fileID: 2470429813274957141, guid: 775156af5a67ced4097ed267f99f47fd, type: 3}
       propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -1164,7 +1164,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _playerVoice: {fileID: 0}
+  _playerVoice: {fileID: 419138959}
   _dieParticle: {fileID: 0}
 --- !u!60 &2056445965
 PolygonCollider2D:

@@ -59,10 +59,16 @@ public class PlayerJump : AgentJump
         if(_isground == false)
         {
             _currentJumpCnt = 1;
+            _isDoubleJump = true;
+            _isFirstJump = false;
+            OnIsGrounded?.Invoke(false);
         }
         else
         {
             _currentJumpCnt = 0;
+            _isDoubleJump = false;
+            _isFirstJump = true;
+            OnIsGrounded?.Invoke(true);
         }
     }
 
