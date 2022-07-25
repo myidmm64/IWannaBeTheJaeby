@@ -11,6 +11,9 @@ public class SwallowMove : AgentMovement
     private Transform _swallowTrm = null;
     [SerializeField]
     private float _followSpeed = 3f;
+    [SerializeField]
+    private float _swallowTime = 0f;
+    private bool _swallowable = true;
 
     private Vector2 _followDir = Vector2.zero;
     private SpriteRenderer _spriteRenderer = null;
@@ -71,14 +74,18 @@ public class SwallowMove : AgentMovement
 
         if(Input.GetKeyDown(KeyCode.S))
         {
+            if (_swallowable == false) return;
+
             OnSwallowMode?.Invoke();
 
-            SwallowModeSet(!_isSwallowMove);
+            SwallowModeSet(true);
         }
     }
 
     public void SwallowPositionReset()
     {
+        if (gameObject.activeSelf == false) return;
+
         transform.localPosition = _swallowTrm.localPosition;
     }
 
@@ -103,10 +110,14 @@ public class SwallowMove : AgentMovement
 
     public void SwallowModeSet(bool val)
     {
-        if(val)
+        if (gameObject.activeSelf == false) return;
+        if (_swallowable == false) return;
+
+        if (val)
         {
             _trail.enabled = true;
             _playerRigid.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+            StartCoroutine(SwallowCoroutine());
         }
         else
         {
@@ -122,10 +133,18 @@ public class SwallowMove : AgentMovement
         _isSwallowMove = val;
     }
 
+    private IEnumerator SwallowCoroutine()
+    {
+        yield return new WaitForSeconds(_swallowTime);
+        SwallowModeSet(false);
+        _swallowable = true;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Die"))
         {
+            _swallowable = true;
             OnSwallowDie?.Invoke();
             _playerDamage.Die();
         }

@@ -684,6 +684,7 @@ MonoBehaviour:
   _dashable: 0
   _swallowTrm: {fileID: 1340054020}
   _followSpeed: 4
+  _swallowTime: 2
   _player: {fileID: 2470429815126438421}
   OnSwallowMode:
     m_PersistentCalls:
@@ -702,7 +703,19 @@ MonoBehaviour:
         m_CallState: 2
   OnSwallowDie:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1698760147}
+        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+        m_MethodName: StopAllCoroutines
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _playerDamage: {fileID: 2470429813274957141}
 --- !u!50 &1698760148
 Rigidbody2D:
