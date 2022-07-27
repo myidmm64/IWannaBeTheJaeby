@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class AgentJump : MonoBehaviour
 {
-    private Rigidbody2D _rigid;
+    protected Rigidbody2D _rigid;
     [SerializeField]
     protected float _jumpPower = 10f;
     [SerializeField]

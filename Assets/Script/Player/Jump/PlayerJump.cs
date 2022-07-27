@@ -56,8 +56,10 @@ public class PlayerJump : AgentJump
     {
         GroundCheck();
 
+        _rigid.velocity = Vector2.zero;
         if(_isground == false)
         {
+
             _currentJumpCnt = 1;
             _isDoubleJump = true;
             _isFirstJump = false;
