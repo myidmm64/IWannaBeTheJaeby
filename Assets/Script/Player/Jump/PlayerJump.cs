@@ -54,7 +54,7 @@ public class PlayerJump : AgentJump
 
     public void JumpReset()
     {
-        GroundCheck();
+        /*GroundCheck();
 
         _rigid.velocity = Vector2.zero;
         if(_isground == false)
@@ -71,6 +71,15 @@ public class PlayerJump : AgentJump
             _isDoubleJump = false;
             _isFirstJump = true;
             OnIsGrounded?.Invoke(true);
+        }*/
+        GroundCheck();
+        if (_isground == false)
+        {
+
+            _currentJumpCnt = 1;
+            //_isDoubleJump = true;
+            //_isFirstJump = false;
+            //OnIsGrounded?.Invoke(false);
         }
     }
 
