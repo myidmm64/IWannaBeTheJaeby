@@ -51,7 +51,14 @@ public class MoveObject : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigid.velocity = _moveDir * _speed;
+        if(_targeting)
+        {
+            _rigid.velocity = _moveDir * _targetingSpeed;
+        }
+        else
+        {
+            _rigid.velocity = _moveDir * _speed;
+        }
     }
 
     private void Update()
