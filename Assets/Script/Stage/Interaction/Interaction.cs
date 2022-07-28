@@ -12,7 +12,6 @@ public abstract class Interaction : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("상호작용");
             OnInteraction?.Invoke();
             DoEnterInteraction();
         }

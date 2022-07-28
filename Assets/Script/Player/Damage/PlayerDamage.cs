@@ -30,7 +30,6 @@ public class PlayerDamage : AgentDamage
         }
         if (collision.CompareTag("Interaction"))
         {
-            Debug.Log("Interaction");
         }
     }
     public override void Die()

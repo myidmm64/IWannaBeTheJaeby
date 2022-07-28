@@ -11,6 +11,11 @@ public class MoveInteraction : Interaction
 
     private bool _isFirst = true;
 
+    private void OnEnable()
+    {
+        TargetsReset();
+    }
+
     public override void DoEnterInteraction()
     {
         for (int i = 0; i<_moveTargets.Length; i++)
@@ -47,6 +52,10 @@ public class MoveInteraction : Interaction
                     break;
             }
 
+            _moveTargets[i].target.gameObject.SetActive(true);
+            _moveTargets[i].target.GetComponent<SpriteRenderer>().enabled = true;
+            _moveTargets[i].target.GetComponent<Collider2D>().enabled = true;
+
             _moveTargets[i].target.velocity = dir * _moveTargets[i].speed;
         }
     }
@@ -67,14 +76,21 @@ public class MoveInteraction : Interaction
             for (int i = 0; i < _moveTargets.Length; i++)
             {
                 _moveTargets[i].originPos = _moveTargets[i].target.position;
+                Debug.Log(_moveTargets[i].originPos);
             }
         }
 
         for (int i = 0; i<_moveTargets.Length; i++)
         {
-
             _moveTargets[i].target.position = (Vector3)_moveTargets[i].originPos;
             _moveTargets[i].target.velocity = Vector2.zero;
+
+            if (_moveTargets[i].disable)
+            {
+                //_moveTargets[i].target.gameObject.SetActive(false);
+                _moveTargets[i].target.GetComponent<SpriteRenderer>().enabled = false;
+                _moveTargets[i].target.GetComponent<Collider2D>().enabled = false;
+            }
         }
     }
 }
@@ -86,6 +102,7 @@ public struct MoveTarget
     public Vector2 originPos;
     public float speed;
     public Direction dir;
+    public bool disable;
 }
 
 [Serializable]
