@@ -5,7 +5,9 @@ using UnityEngine;
 public abstract class AgentDamage : MonoBehaviour
 {
     [SerializeField]
-    private int _hp = 1;
+    protected int _maxHP = 1;
+
+    protected int _hp = 1;
     [SerializeField]
     private bool _isEnemy = false;
 
@@ -14,6 +16,7 @@ public abstract class AgentDamage : MonoBehaviour
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _hp = _maxHP;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -47,7 +50,7 @@ public abstract class AgentDamage : MonoBehaviour
 
     public abstract void Die();
 
-    private void Damaged()
+    protected virtual void Damaged()
     {
         _hp--;
 

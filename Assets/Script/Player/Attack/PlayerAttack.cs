@@ -72,11 +72,13 @@ public class PlayerAttack : AgentMeleeAttack
         if (_filp)
         {
             bullet = PoolManager.Instance.Pop("Bullet") as BulletMove;
+            bullet.gameObject.SetActive(true);
             bullet.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 180f, 0f));
         }
         else
         {
             bullet = PoolManager.Instance.Pop("Bullet") as BulletMove;
+            bullet.gameObject.SetActive(true);
             bullet.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 0f, 0f));
         }
     }
