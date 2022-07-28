@@ -15,7 +15,7 @@ public class PlayerDamage : AgentDamage
     [SerializeField]
     private ParticleSystem _dieParticle = null;
 
-    private void Awake()
+    protected override void Awake()
     {
         _playerJump = transform.parent.GetComponent<PlayerJump>();
     }
