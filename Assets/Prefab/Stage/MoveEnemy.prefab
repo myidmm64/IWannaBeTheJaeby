@@ -261,5 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fb1e42379c7284ca3fee7167d32853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHP: 10
+  _maxHP: 5
   _isEnemy: 1
+  _damageClip: {fileID: 8300000, guid: 332cd74f7de4f944d9e2cfb5b9a021d8, type: 3}

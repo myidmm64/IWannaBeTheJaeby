@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 5413395962423027465}
   - component: {fileID: 5413395962423027464}
   - component: {fileID: 5413395962423027462}
+  - component: {fileID: 2511989109242501733}
   m_Layer: 0
   m_Name: AgentSprite
   m_TagString: Die
@@ -239,6 +240,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2511989109242501733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413395962423027466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb1e42379c7284ca3fee7167d32853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHP: 5
+  _isEnemy: 1
+  _damageClip: {fileID: 8300000, guid: 332cd74f7de4f944d9e2cfb5b9a021d8, type: 3}
 --- !u!1 &5413395962514825574
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,9 +11,9 @@ public abstract class AgentDamage : MonoBehaviour
     [SerializeField]
     private bool _isEnemy = false;
 
-    private SpriteRenderer _spriteRenderer = null;
+    protected SpriteRenderer _spriteRenderer = null;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hp = _maxHP;
@@ -35,11 +35,6 @@ public abstract class AgentDamage : MonoBehaviour
         }
         else
         {
-            if (collision.CompareTag("Player"))
-            {
-                Damaged();
-            }
-
             if (collision.CompareTag("PlayerAtk"))
             {
                 Damaged();
@@ -63,7 +58,7 @@ public abstract class AgentDamage : MonoBehaviour
         StartCoroutine(DamageCoroutine());
     }
 
-    private IEnumerator DamageCoroutine()
+    protected IEnumerator DamageCoroutine()
     {
         _spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.1f);
