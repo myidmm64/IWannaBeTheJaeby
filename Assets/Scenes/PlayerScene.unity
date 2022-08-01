@@ -2894,7 +2894,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e1b6951535ddc284b938ba74ba1d06d7, type: 3}
-  m_Color: {r: 0, g: 0.7445178, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -37927,7 +37927,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e1b6951535ddc284b938ba74ba1d06d7, type: 3}
-  m_Color: {r: 0, g: 0.7445178, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -41515,7 +41515,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e1b6951535ddc284b938ba74ba1d06d7, type: 3}
-  m_Color: {r: 0, g: 0.7445178, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -46260,7 +46260,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e1b6951535ddc284b938ba74ba1d06d7, type: 3}
-  m_Color: {r: 0, g: 0.7445178, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -51920,7 +51920,125 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 6275530693141646389}
+    m_ColliderPaths:
+    - - X: 22500000
+        Y: 12500000
+      - X: 90000000
+        Y: 12500000
+      - X: 90000000
+        Y: 15000000
+      - X: 20000000
+        Y: 15000000
+      - X: 20000000
+        Y: 5000000
+      - X: 22500000
+        Y: 5000000
+    - - X: 90000000
+        Y: 7500000
+      - X: 27500000
+        Y: 7500000
+      - X: 27500000
+        Y: 5000000
+      - X: 90000000
+        Y: 5000000
+    - - X: 90000000
+        Y: -2500000
+      - X: 30000000
+        Y: -2500000
+      - X: 30000000
+        Y: -5000000
+      - X: 90000000
+        Y: -5000000
+    - - X: 77500000
+        Y: -12500000
+      - X: 20000000
+        Y: -12500000
+      - X: 20000000
+        Y: -15000000
+      - X: 77500000
+        Y: -15000000
+    - - X: 15000000
+        Y: -32500000
+      - X: -60000000
+        Y: -32500000
+      - X: -60000000
+        Y: -27500000
+      - X: -90000000
+        Y: -27500000
+      - X: -90000000
+        Y: -30000000
+      - X: -62500000
+        Y: -30000000
+      - X: -62500000
+        Y: -35000000
+      - X: 15000000
+        Y: -35000000
+    - - X: 72500000
+        Y: -30000000
+      - X: 75000000
+        Y: -30000000
+      - X: 75000000
+        Y: -27500000
+      - X: 70000000
+        Y: -27500000
+      - X: 70000000
+        Y: -32500000
+      - X: 17500000
+        Y: -32500000
+      - X: 17500000
+        Y: -35000000
+      - X: 72500000
+        Y: -35000000
+    - - X: 90000000
+        Y: -45000000
+      - X: 80000000
+        Y: -45000000
+      - X: 80000000
+        Y: -40000000
+      - X: 77500000
+        Y: -40000000
+      - X: 77500000
+        Y: -45000000
+      - X: 2500000
+        Y: -45000000
+      - X: 2500000
+        Y: -47500000
+      - X: 90000000
+        Y: -47500000
+    - - X: 20000000
+        Y: -40000000
+      - X: 17500000
+        Y: -40000000
+      - X: 17500000
+        Y: -42500000
+      - X: 20000000
+        Y: -42500000
+    - - X: -35000000
+        Y: -45000000
+      - X: -90000000
+        Y: -45000000
+      - X: -90000000
+        Y: -47500000
+      - X: -35000000
+        Y: -47500000
+    - - X: -5000000
+        Y: -45000000
+      - X: -10000000
+        Y: -45000000
+      - X: -10000000
+        Y: -47500000
+      - X: -5000000
+        Y: -47500000
+    - - X: -17500000
+        Y: -45000000
+      - X: -25000000
+        Y: -45000000
+      - X: -25000000
+        Y: -47500000
+      - X: -17500000
+        Y: -47500000
   m_CompositePaths:
     m_Paths:
     - - {x: 2.249971, y: 0.5}
@@ -84604,7 +84722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &6275530693717845766
 Grid:
   m_ObjectHideFlags: 0
@@ -84787,7 +84905,25 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 6275530693900122600}
+    m_ColliderPaths:
+    - - X: 37500000
+        Y: -5000000
+      - X: 35000000
+        Y: -5000000
+      - X: 35000000
+        Y: -12500000
+      - X: 37500000
+        Y: -12500000
+    - - X: 2500000
+        Y: -40000000
+      - X: 0
+        Y: -40000000
+      - X: 0
+        Y: -45000000
+      - X: 2500000
+        Y: -45000000
   m_CompositePaths:
     m_Paths:
     - - {x: 3.749971, y: -1.25}
@@ -85443,7 +85579,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 6275530694127734477}
+    m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
   m_VertexDistance: 0.0005
@@ -85788,7 +85926,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 6275530694512137961}
+    m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
   m_VertexDistance: 0.0005
@@ -86072,7 +86212,33 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 6275530694528291400}
+    m_ColliderPaths:
+    - - X: -90000000
+        Y: 52500000
+      - X: -92500000
+        Y: 52500000
+      - X: -92500000
+        Y: -50000000
+      - X: -90000000
+        Y: -50000000
+    - - X: 92500000
+        Y: 50000000
+      - X: 90000000
+        Y: 50000000
+      - X: 90000000
+        Y: -50000000
+      - X: 92500000
+        Y: -50000000
+    - - X: 90000000
+        Y: -50000000
+      - X: -90000000
+        Y: -50000000
+      - X: -90000000
+        Y: -52500000
+      - X: 90000000
+        Y: -52500000
   m_CompositePaths:
     m_Paths:
     - - {x: -9.00003, y: -5}
@@ -88038,7 +88204,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 6275530694684939507}
+    m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
   m_VertexDistance: 0.0005
@@ -88372,7 +88540,97 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 6275530694770293663}
+    m_ColliderPaths:
+    - - X: 30000000
+        Y: 5000000
+      - X: 27500000
+        Y: 5000000
+      - X: 27500000
+        Y: -5000000
+      - X: 30000000
+        Y: -5000000
+    - - X: 22500000
+        Y: 5000000
+      - X: 20000000
+        Y: 5000000
+      - X: 20000000
+        Y: -12500000
+      - X: 22500000
+        Y: -12500000
+    - - X: 90000000
+        Y: -5000000
+      - X: 87500000
+        Y: -5000000
+      - X: 87500000
+        Y: -45000000
+      - X: 90000000
+        Y: -45000000
+    - - X: 77500000
+        Y: -15000000
+      - X: 75000000
+        Y: -15000000
+      - X: 75000000
+        Y: -30000000
+      - X: 77500000
+        Y: -30000000
+    - - X: 17500000
+        Y: -32500000
+      - X: 15000000
+        Y: -32500000
+      - X: 15000000
+        Y: -35000000
+      - X: 17500000
+        Y: -35000000
+    - - X: 20000000
+        Y: -42500000
+      - X: 17500000
+        Y: -42500000
+      - X: 17500000
+        Y: -45000000
+      - X: 20000000
+        Y: -45000000
+    - - X: -22500000
+        Y: -47500000
+      - X: -25000000
+        Y: -47500000
+      - X: -25000000
+        Y: -50000000
+      - X: -22500000
+        Y: -50000000
+    - - X: 5000000
+        Y: -47500000
+      - X: 2500000
+        Y: -47500000
+      - X: 2500000
+        Y: -50000000
+      - X: 5000000
+        Y: -50000000
+    - - X: -5000000
+        Y: -47500000
+      - X: -10000000
+        Y: -47500000
+      - X: -10000000
+        Y: -50000000
+      - X: -5000000
+        Y: -50000000
+    - - X: -17500000
+        Y: -47500000
+      - X: -20000000
+        Y: -47500000
+      - X: -20000000
+        Y: -50000000
+      - X: -17500000
+        Y: -50000000
+    - - X: -35000000
+        Y: -47500000
+      - X: -37500000
+        Y: -47500000
+      - X: -37500000
+        Y: -50000000
+      - X: -35000000
+        Y: -50000000
   m_CompositePaths:
     m_Paths:
     - - {x: 2.999971, y: -0.5}
