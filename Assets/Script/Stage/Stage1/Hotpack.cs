@@ -42,7 +42,7 @@ public class Hotpack : MonoBehaviour
         {
             AudioPoolable a = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
             a.Play(_boomClip);
-            _agentJump.ForceJump(_jumpPower);
+            _agentJump.ForceJump(_jumpPower, Vector3.up);
         });
     }
 

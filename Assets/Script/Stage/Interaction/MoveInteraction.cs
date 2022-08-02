@@ -20,43 +20,53 @@ public class MoveInteraction : Interaction
     {
         for (int i = 0; i<_moveTargets.Length; i++)
         {
-            Vector2 dir = Vector2.zero;
-
-            switch(_moveTargets[i].dir)
+            if(_moveTargets[i].targetPos != null)
             {
-                case Direction.LEFT_TOP:
-                    dir = new Vector2(-1f,1f);
-                    break;
-                case Direction.LEFT_SIDE:
-                    dir = new Vector2(-1f, 0f);
-                    break;
-                case Direction.LEFT_BOTTOM:
-                    dir = new Vector2(-1f, -1f);
-                    break;
-                case Direction.RIGHT_TOP:
-                    dir = new Vector2(1f, 1f);
-                    break;
-                case Direction.RIGHT_SIDE:
-                    dir = new Vector2(1f, 0f);
-                    break;
-                case Direction.RIGHT_BOTTOM:
-                    dir = new Vector2(1f, -1f);
-                    break;
-                case Direction.MIDDLE_TOP:
-                    dir = new Vector2(0f, 1f);
-                    break;
-                case Direction.MIDDLE_BOTTOM:
-                    dir = new Vector2(0f, -1f);
-                    break;
-                default:
-                    break;
+                _moveTargets[i].target.DOMove(_moveTargets[i].targetPos.position, _moveTargets[i].duration).SetEase(Ease.Linear);
+                _moveTargets[i].target.gameObject.SetActive(true);
+                _moveTargets[i].target.GetComponent<SpriteRenderer>().enabled = true;
+                _moveTargets[i].target.GetComponent<Collider2D>().enabled = true;
             }
+            else
+            {
+                Vector2 dir = Vector2.zero;
 
-            _moveTargets[i].target.gameObject.SetActive(true);
-            _moveTargets[i].target.GetComponent<SpriteRenderer>().enabled = true;
-            _moveTargets[i].target.GetComponent<Collider2D>().enabled = true;
+                switch (_moveTargets[i].dir)
+                {
+                    case Direction.LEFT_TOP:
+                        dir = new Vector2(-1f, 1f);
+                        break;
+                    case Direction.LEFT_SIDE:
+                        dir = new Vector2(-1f, 0f);
+                        break;
+                    case Direction.LEFT_BOTTOM:
+                        dir = new Vector2(-1f, -1f);
+                        break;
+                    case Direction.RIGHT_TOP:
+                        dir = new Vector2(1f, 1f);
+                        break;
+                    case Direction.RIGHT_SIDE:
+                        dir = new Vector2(1f, 0f);
+                        break;
+                    case Direction.RIGHT_BOTTOM:
+                        dir = new Vector2(1f, -1f);
+                        break;
+                    case Direction.MIDDLE_TOP:
+                        dir = new Vector2(0f, 1f);
+                        break;
+                    case Direction.MIDDLE_BOTTOM:
+                        dir = new Vector2(0f, -1f);
+                        break;
+                    default:
+                        break;
+                }
 
-            _moveTargets[i].target.velocity = dir * _moveTargets[i].speed;
+                _moveTargets[i].target.gameObject.SetActive(true);
+                _moveTargets[i].target.GetComponent<SpriteRenderer>().enabled = true;
+                _moveTargets[i].target.GetComponent<Collider2D>().enabled = true;
+
+                _moveTargets[i].target.velocity = dir * _moveTargets[i].speed;
+            }
         }
     }
 
@@ -82,8 +92,9 @@ public class MoveInteraction : Interaction
 
         for (int i = 0; i<_moveTargets.Length; i++)
         {
-            _moveTargets[i].target.position = (Vector3)_moveTargets[i].originPos;
             _moveTargets[i].target.velocity = Vector2.zero;
+            _moveTargets[i].target.DOKill();
+            _moveTargets[i].target.position = (Vector3)_moveTargets[i].originPos;
 
             if (_moveTargets[i].disable)
             {
@@ -103,6 +114,8 @@ public struct MoveTarget
     public float speed;
     public Direction dir;
     public bool disable;
+    public Transform targetPos;
+    public float duration;
 }
 
 [Serializable]

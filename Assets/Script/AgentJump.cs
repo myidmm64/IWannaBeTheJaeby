@@ -158,7 +158,7 @@ public class AgentJump : MonoBehaviour
         //Debug.Log($"±¸¿Í¾Ç");
     }
 
-    public void ForceJump(float amount)
+    public void ForceJump(float amount, Vector3 dir)
     {
         _currentJumpCnt = 1;
         _isFirstJump = false;
@@ -173,7 +173,7 @@ public class AgentJump : MonoBehaviour
         OnJumpPress?.Invoke();
 
         _rigid.velocity = new Vector2(_rigid.velocity.x, 0f);
-        _rigid.AddForce(Vector3.up * jumpPow, ForceMode2D.Impulse);
+        _rigid.AddForce(dir == Vector3.zero ? Vector3.up : dir * jumpPow, ForceMode2D.Impulse);
 
         _isDoubleJump = false;
     }
