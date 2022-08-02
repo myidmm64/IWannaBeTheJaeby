@@ -1206,7 +1206,7 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 0, y: 0.5625}
       - {x: 0.45, y: -0.56}
-      - {x: -0.47, y: -0.56}
+      - {x: -0.35, y: -0.56}
 --- !u!1 &2470429814676269293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,7 +1468,7 @@ MonoBehaviour:
         m_CallState: 2
   _groundMask:
     serializedVersion: 2
-    m_Bits: 32832
+    m_Bits: 64
   _maxAcceleration: 0.1
   _accelerationPower: 300
   _timer: 0.1
