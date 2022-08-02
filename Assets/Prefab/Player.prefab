@@ -1313,7 +1313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e8a5fdf75694840a612904a99ee21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
+  _speed: 3.5
   _dashPower: 35
   _rigidDrag: 20
   _dashInterval: 0.6
@@ -1468,7 +1468,7 @@ MonoBehaviour:
         m_CallState: 2
   _groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 32832
   _maxAcceleration: 0.1
   _accelerationPower: 300
   _timer: 0.1
