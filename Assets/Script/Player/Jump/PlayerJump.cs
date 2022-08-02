@@ -45,7 +45,6 @@ public class PlayerJump : AgentJump
             _curTime = 0f;
         }
 
-
         /*if (Input.GetKeyDown(KeyCode.V))
         {
             MoreJump();
