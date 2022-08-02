@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -42,6 +43,7 @@ public class Save : MonoBehaviour
     [field: SerializeField]
     private UnityEvent OnFirstSave = null;
 
+
     private void Awake()
     {
         _instance = this;
@@ -71,6 +73,26 @@ public class Save : MonoBehaviour
         _currentSavePoint.position = _player.transform.position;
 
         OnSave?.Invoke();
+    }
+
+    private void JsonSave()
+    {
+        string json = JsonUtility.ToJson(_saveMap);
+        Debug.Log(json);
+
+        string fileName = "SaveFile";
+        string path = Application.dataPath + "/" + fileName + ".json";
+        File.WriteAllText(path, json);
+    }
+
+    private void JsonLoad()
+    {
+        string fileName = "SaveFile";
+        string path = Application.dataPath + "/" + fileName + ".json";
+        string json = File.ReadAllText(path);
+
+        Map saveMap = JsonUtility.FromJson<Map>(json);
+        _saveMap = saveMap;
     }
 
     public void Restart()

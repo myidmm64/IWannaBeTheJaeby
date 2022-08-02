@@ -17,4 +17,8 @@ public class StageBGMAudio : AudioPlayer
     {
         PlayClip(_BossBGM);
     }
+    public void BGMPlay(AudioClip clip)
+    {
+        PlayClip(clip);
+    }
 }

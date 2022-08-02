@@ -38,7 +38,6 @@ public class BulletMove : PoolableMono
         }
         else
         {
-            Debug.Log(collision.name);
             PoolManager.Instance.Push(this);
         }
     }

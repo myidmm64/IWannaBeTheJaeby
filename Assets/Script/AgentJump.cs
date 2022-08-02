@@ -47,7 +47,7 @@ public class AgentJump : MonoBehaviour
     {
         Collider2D col = null;
 
-        for(int i = 0; i< _groundRayStartPos.Length; i++)
+        for (int i = 0; i < _groundRayStartPos.Length; i++)
         {
             Debug.DrawRay(_groundRayStartPos[i].position, _groundRayStartPos[i].up * -1f * _rayLength, Color.blue);
 
@@ -93,7 +93,7 @@ public class AgentJump : MonoBehaviour
             _currentJumpCnt = 1;
         }*/
 
-        if(_isFirstJump)
+        if (_isFirstJump)
         {
             _currentJumpCnt = 1;
         }
@@ -157,4 +157,27 @@ public class AgentJump : MonoBehaviour
         _isJumpable = false;
         //Debug.Log($"±¸¿Í¾Ç");
     }
+
+    public void ForceJump(float amount)
+    {
+        _currentJumpCnt = 1;
+        _isFirstJump = false;
+
+        float jumpPow = _currentJumpCnt > 0 ? amount * _secondJumpPower : amount;
+        if (_isDoubleJump)
+        {
+            jumpPow = amount * _secondJumpPower;
+            Debug.Log("´õºí!!");
+        }
+
+        OnJumpPress?.Invoke();
+
+        _rigid.velocity = new Vector2(_rigid.velocity.x, 0f);
+        _rigid.AddForce(Vector3.up * jumpPow, ForceMode2D.Impulse);
+
+        _isDoubleJump = false;
+    }
+
+
+
 }

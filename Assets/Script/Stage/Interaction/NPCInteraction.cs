@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NPCInteraction : Interaction
 {
@@ -12,9 +13,9 @@ public class NPCInteraction : Interaction
     [SerializeField]
     private string[] _texts = null;
     [SerializeField]
-    private Map _currentMap = null;
-
     private float _voiceSpeed = 1.5f;
+    [field: SerializeField]
+    private UnityEvent OnEndTextCallback = null;
 
     private bool _startingVoice = false;
     private bool _voiceable = false;
@@ -27,9 +28,9 @@ public class NPCInteraction : Interaction
     {
     }
 
-    private void Awake()
+    private void OnEnable()
     {
-        _currentMap.OnMapReset.AddListener(ResetVoice);
+        ResetVoice();
     }
 
     private void Update()
@@ -82,6 +83,7 @@ public class NPCInteraction : Interaction
             _text.SetText(_texts[i]);
             yield return new WaitForSeconds(_voiceSpeed);
         }
+        OnEndTextCallback?.Invoke();
         ResetVoice();
     }
 
