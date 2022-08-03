@@ -6,6 +6,12 @@ public class StageBGMAudio : AudioPlayer
 {
     [SerializeField]
     private AudioClip _normalBGM = null;
+    public AudioClip NormalBGM
+    {
+        get => _normalBGM;
+        set => _normalBGM = value;
+    }
+
     [SerializeField]
     private AudioClip _BossBGM = null;
 

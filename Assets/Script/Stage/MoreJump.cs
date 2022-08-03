@@ -28,7 +28,13 @@ public class MoreJump : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             StartCoroutine(MoreJumpCoroutine());
+            DoSome(collision);
         }
+    }
+
+    protected virtual void DoSome(Collider2D col)
+    {
+
     }
 
     private void OnDisable()

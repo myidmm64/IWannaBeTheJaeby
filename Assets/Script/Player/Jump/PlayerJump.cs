@@ -22,7 +22,7 @@ public class PlayerJump : AgentJump
     {
         base.Update();
 
-        if(Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             Jump(1f + _acceleration);
             JumpRenewal();
@@ -39,7 +39,7 @@ public class PlayerJump : AgentJump
             if (_acceleration < _maxAcceleration)
                 JumpProportion(_accelerationPower);
         }
-        if(Input.GetKeyUp(KeyCode.C))
+        if (Input.GetKeyUp(KeyCode.C))
         {
             _acceleration = 0f;
             _curTime = 0f;
@@ -49,6 +49,11 @@ public class PlayerJump : AgentJump
         {
             MoreJump();
         }*/
+    }
+
+    private void OnEnable()
+    {
+        JumpReset();
     }
 
     public void JumpReset()
@@ -71,21 +76,18 @@ public class PlayerJump : AgentJump
             _isFirstJump = true;
             OnIsGrounded?.Invoke(true);
         }*/
-        GroundCheck();
-        if (_isground == false)
-        {
-
-            _currentJumpCnt = 1;
-            //_isDoubleJump = true;
-            //_isFirstJump = false;
-            //OnIsGrounded?.Invoke(false);
-        }
+        _currentJumpCnt = 0;
+        _isDoubleJump = false;
+        _isFirstJump = true;
+        _curTime = 0f;
+        _acceleration = 0f;
+        //OnIsGrounded?.Invoke(false);
     }
 
     public void MoreJump()
     {
         Debug.Log("asdsda");
-        if(_currentJumpCnt == _jumpCount)
+        if (_currentJumpCnt == _jumpCount)
         {
             _currentJumpCnt--;
             _isDoubleJump = true;

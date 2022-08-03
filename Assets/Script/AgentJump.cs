@@ -158,9 +158,9 @@ public class AgentJump : MonoBehaviour
         //Debug.Log($"±¸¿Í¾Ç");
     }
 
-    public void ForceJump(float amount, Vector3 dir)
+    public void ForceJump(float amount, Vector3 dir, int jumpCnt = 1)
     {
-        _currentJumpCnt = 1;
+        _currentJumpCnt = jumpCnt;
         _isFirstJump = false;
 
         float jumpPow = _currentJumpCnt > 0 ? amount * _secondJumpPower : amount;
