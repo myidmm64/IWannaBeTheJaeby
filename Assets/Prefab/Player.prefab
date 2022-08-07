@@ -217,7 +217,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -65331959
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 20
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &419138959
@@ -863,11 +863,11 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.83
-  m_Color: {r: 1, g: 0.49334392, b: 0.37254906, a: 1}
-  m_Intensity: 0.81
+  m_Color: {r: 1, g: 0.9858491, b: 0.9858491, a: 1}
+  m_Intensity: 1.1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000897ca1771b5bc97c091d1bfc
+  m_ApplyToSortingLayers: 00000000897ca1771b5bc97ce574b1ab
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -914,7 +914,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.25
-  m_PointLightOuterRadius: 0.5
+  m_PointLightOuterRadius: 2.5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -1317,7 +1317,7 @@ MonoBehaviour:
   _dashPower: 35
   _rigidDrag: 20
   _dashInterval: 0.6
-  _minYVelocity: -10
+  _minYVelocity: -8
   OnvelocityChange:
     m_PersistentCalls:
       m_Calls:
