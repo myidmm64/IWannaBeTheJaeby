@@ -72,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   _rayLength: 0.2
-  _targetingSpeed: 4
+  _targetingSpeed: 3
   _isLeft: 1
   _startRay: {fileID: 5413395962791998542}
   _mapMask:
