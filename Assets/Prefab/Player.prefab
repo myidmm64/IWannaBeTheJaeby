@@ -1468,7 +1468,7 @@ MonoBehaviour:
         m_CallState: 2
   _groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 32832
   _maxAcceleration: 0.1
   _accelerationPower: 300
   _timer: 0.1
