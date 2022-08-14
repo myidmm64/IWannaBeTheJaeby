@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4522345653723479676}
   - component: {fileID: 4522345653723479666}
   - component: {fileID: 3510512490008038678}
-  m_Layer: 15
+  m_Layer: 4
   m_Name: Leap
   m_TagString: Ground
   m_Icon: {fileID: 0}
