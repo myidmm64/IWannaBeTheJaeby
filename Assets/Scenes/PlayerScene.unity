@@ -4370,6 +4370,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8410896137377134405, guid: 775156af5a67ced4097ed267f99f47fd, type: 3}
+      propertyPath: _dashSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 81336e967c5659944b2d351707ae3ea9, type: 3}
+    - target: {fileID: 8410896137377134405, guid: 775156af5a67ced4097ed267f99f47fd, type: 3}
+      propertyPath: _attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5224bfa94bf88634bb472eb990bcdecb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 775156af5a67ced4097ed267f99f47fd, type: 3}
 --- !u!1001 &3042638984741672222
@@ -4594,7 +4602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2036701356, guid: a019f280f599879438dbe939f58efaf0, type: 3}
       propertyPath: OnMapStarted.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2036701356, guid: a019f280f599879438dbe939f58efaf0, type: 3}
       propertyPath: OnMapReset.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
