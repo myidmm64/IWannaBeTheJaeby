@@ -32,7 +32,7 @@ public class BulletMove : PoolableMono
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player") == true || collision.CompareTag("Swallow") == true || collision.CompareTag("Interaction") == true || collision.CompareTag("PlayerAtk") == true || collision.CompareTag("Die") == true)
+        if(collision.CompareTag("Player") == true || collision.CompareTag("Swallow") == true || collision.CompareTag("Interaction") == true || collision.CompareTag("PlayerAtk") == true)
         {
             return;
         }
