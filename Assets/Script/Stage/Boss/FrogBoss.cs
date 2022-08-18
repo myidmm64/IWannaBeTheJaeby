@@ -28,6 +28,8 @@ public class FrogBoss : Boss
     private GameObject _bucketObj = null;
     [SerializeField]
     private GameObject _flyObj = null;
+    [SerializeField]
+    private Transform[] _jumpEffectPos = null;
 
     [Header("애니메이터 관련")]
     [SerializeField]
@@ -64,13 +66,15 @@ public class FrogBoss : Boss
 
     private void BossRoutine()
     {
-        _seq = DOTween.Sequence();
         Pattern0();
-        Pattern1();
     }
 
     private void Pattern0()
     {
+        if (_seq != null)
+            _seq.Kill();
+        _seq = DOTween.Sequence();
+
         _seq.Append(transform.DOMove(_mainPos.position, 1.5f).SetEase(Ease.Linear));
         _seq.AppendCallback(() =>
         {
@@ -87,12 +91,17 @@ public class FrogBoss : Boss
         {
             SpawnFireball();
             _baseAnimator.runtimeAnimatorController = _baseFrogController;
-
+            if (_seq != null)
+                _seq.Kill();
+            Pattern1();
         });
     }
 
     private void Pattern1()
     {
+        if (_seq != null)
+            _seq.Kill();
+        _seq = DOTween.Sequence();
 
         Jump(_jumpPoss[0].position);
         Jump(_jumpPoss[1].position);
@@ -109,38 +118,113 @@ public class FrogBoss : Boss
         _seq.AppendCallback(() =>
         {
             _spriteRenderer.flipX = false;
+
+            if (_seq != null)
+                _seq.Kill();
             Pattern2();
         });
     }
 
     private void Pattern2()
     {
+        if (_seq != null)
+            _seq.Kill();
+        _seq = DOTween.Sequence();
+
+
+        GameObject target = null;
+        NextPattern nextPattern = NextPattern.FIRE;
+
         switch ((NextPattern)Random.Range(0, (int)NextPattern.SIZE))
         {
             case NextPattern.FIRE:
+                nextPattern = NextPattern.FIRE;
+                target = _torchObj;
                 _torchObj.SetActive(true);
-                _baseAnimator.runtimeAnimatorController = _fireFrogController;
-                _seq.AppendInterval(0.5f);
-                _seq.AppendCallback(() => { _torchObj.SetActive(false); });
                 break;
             case NextPattern.WATER:
+                nextPattern = NextPattern.WATER;
+                target = _bucketObj;
                 _bucketObj.SetActive(true);
-                _baseAnimator.runtimeAnimatorController = _baseFrogController;
-                _seq.AppendInterval(0.5f);
-                _seq.AppendCallback(() => { _bucketObj.SetActive(false); });
-                _spriteRenderer.color = Color.blue;
                 break;
             case NextPattern.FLY:
+                nextPattern = NextPattern.FLY;
+                target = _flyObj;
                 _flyObj.SetActive(true);
-                _baseAnimator.runtimeAnimatorController = _flyFrogController;
-                _seq.AppendInterval(0.5f);
-                _seq.AppendCallback(() => { _flyObj.SetActive(false); });
                 break;
             default:
                 break;
         }
-        _baseAnimator.SetTrigger("Tounge");
+        _seq.AppendInterval(1f);
+        _seq.AppendCallback(() => { _baseAnimator.SetTrigger("Tounge"); });
+        _seq.AppendInterval(0.5f);
+        _seq.AppendCallback(() => 
+        { 
+            target.SetActive(false);
+            switch(nextPattern)
+            {
+                case NextPattern.FIRE:
+                    _baseAnimator.runtimeAnimatorController = _fireFrogController;
+                    break;
+                case NextPattern.WATER:
+                    _baseAnimator.runtimeAnimatorController = _baseFrogController;
+                    _spriteRenderer.color = Color.blue;
+                    break;
+                case NextPattern.FLY:
+                    _baseAnimator.runtimeAnimatorController = _flyFrogController;
+                    break;
+            }
 
+            if (_seq != null)
+                _seq.Kill();
+            Pattern3(nextPattern);
+        });
+    }
+
+    private void Pattern3(NextPattern nextPattern)
+    {
+        switch(nextPattern)
+        {
+            case NextPattern.FIRE:
+                FireballSpawnPattern();
+                break;
+            case NextPattern.WATER:
+                FireballSpawnPattern();
+                break;
+            case NextPattern.FLY:
+                FireballSpawnPattern();
+                break;
+        }
+    }
+
+    private void FireballSpawnPattern()
+    {
+        if (_seq != null)
+            _seq.Kill();
+        _seq = DOTween.Sequence();
+
+        int randomCount = Random.Range(1, 4);
+
+        for(int i = 0; i<randomCount; i++)
+        {
+            if(i == 0)
+                _seq.AppendInterval(2f);
+            else
+                _seq.AppendInterval(2.5f);
+
+            _seq.AppendCallback(() =>
+            {
+                SpawnFireball();
+            });
+        }
+        _seq.AppendCallback(() =>
+        {
+            _baseAnimator.runtimeAnimatorController = _baseFrogController;
+            _spriteRenderer.color = Color.white;
+            if (_seq != null)
+                _seq.Kill();
+            Pattern1(); 
+        });
     }
 
     private void Jump(Vector3 pos)
@@ -166,7 +250,12 @@ public class FrogBoss : Boss
 
     private void SpawnJumpPressEffect()
     {
-
+        for(int i = 0; i<_jumpEffectPos.Length; i++)
+        {
+            ShockWave shock = PoolManager.Instance.Pop("ShockWave") as ShockWave;
+            shock.transform.position = _jumpEffectPos[i].position;
+            shock.StartAnimation();
+        }
     }
 
     public override void ResetBoss()

@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ShockWaveController
+  m_Controller: {fileID: 9100000, guid: 33fa9405076bb934aac4ec4ab59f0dbe, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 59bb5872d9eec9c48953a1406f04eff8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b0be06c2f104c294a8361de0cd6beb3d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5b236b023bc770e468538235abf8ab03, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 53a5dd17b51a1254eb00c152a5fb0593, type: 2}
