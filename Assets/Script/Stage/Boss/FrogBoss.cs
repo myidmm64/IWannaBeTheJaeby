@@ -186,13 +186,13 @@ public class FrogBoss : Boss
         switch(nextPattern)
         {
             case NextPattern.FIRE:
-                FireballSpawnPattern();
+                FlySpawnPattern();
                 break;
             case NextPattern.WATER:
-                FireballSpawnPattern();
+                FlySpawnPattern();
                 break;
             case NextPattern.FLY:
-                FireballSpawnPattern();
+                FlySpawnPattern();
                 break;
         }
     }
@@ -227,6 +227,38 @@ public class FrogBoss : Boss
         });
     }
 
+    private void FlySpawnPattern()
+    {
+        if (_seq != null)
+            _seq.Kill();
+        _seq = DOTween.Sequence();
+
+        _seq.AppendInterval(1f);
+        _seq.Append(transform.DOMove(_startPos.position, 1f));
+        _seq.AppendCallback(() => { StartCoroutine(FlySpawn()); });
+        _seq.AppendInterval(6f);
+        _seq.Append(transform.DOMove(_mainPos.position, 1f));
+
+        _seq.AppendCallback(() =>
+        {
+            _baseAnimator.runtimeAnimatorController = _baseFrogController;
+            if (_seq != null)
+                _seq.Kill();
+            Pattern1();
+        });
+    }
+
+    private IEnumerator FlySpawn()
+    {
+        for(int i = 0; i < 30; i++)
+        {
+            FlyPool f = PoolManager.Instance.Pop("FlyObj") as FlyPool;
+            f.transform.SetParent(_bassSpawnTrm);
+            f.transform.position = new Vector2(Random.Range(-8.5f, 8.5f), _startPos.position.y);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
     private void Jump(Vector3 pos)
     {
         _seq.AppendInterval(0.5f);
@@ -235,14 +267,14 @@ public class FrogBoss : Boss
         _seq.Append(transform.DOMoveY(_mainPos.position.y, 0.2f));
         _seq.AppendCallback(() =>
         {
-            CameraManager.instance.CameraShake(4f, 10f, 0.2f);
+            CameraManager.instance.CameraShake(6f, 15f, 0.2f);
             SpawnJumpPressEffect();
         });
     }
 
     private void SpawnFireball()
     {
-        CameraManager.instance.CameraShake(2f, 10f, 0.5f);
+        CameraManager.instance.CameraShake(4f, 20f, 0.5f);
         BulletMove fireball = PoolManager.Instance.Pop("FireBall") as BulletMove;
         fireball.transform.SetParent(_bassSpawnTrm);
         fireball.transform.position = transform.position + Vector3.right * 2f;
