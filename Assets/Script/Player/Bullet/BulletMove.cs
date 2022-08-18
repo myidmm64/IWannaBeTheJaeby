@@ -9,6 +9,9 @@ public class BulletMove : PoolableMono
     private Vector2 _bound = Vector2.zero;
     private Camera _cam = null;
 
+    [SerializeField]
+    private bool _isEnemy = false;
+
     private void Awake()
     {
         _cam = Camera.main;
@@ -32,13 +35,28 @@ public class BulletMove : PoolableMono
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player") == true || collision.CompareTag("Swallow") == true || collision.CompareTag("Interaction") == true || collision.CompareTag("PlayerAtk") == true)
+        if(_isEnemy == false)
         {
-            return;
+            if(collision.CompareTag("Player") == true)
+            {
+                return;
+            }
+            if (collision.CompareTag("Swallow") == true || collision.CompareTag("Interaction") == true || collision.CompareTag("PlayerAtk") == true)
+            {
+                return;
+            }
+
+            else
+            {
+                PoolManager.Instance.Push(this);
+            }
         }
         else
         {
-            PoolManager.Instance.Push(this);
+            /*else
+            {
+                PoolManager.Instance.Push(this);
+            }*/
         }
     }
 
