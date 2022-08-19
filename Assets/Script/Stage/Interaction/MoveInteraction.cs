@@ -89,7 +89,6 @@ public class MoveInteraction : Interaction
             for (int i = 0; i < _moveTargets.Length; i++)
             {
                 _moveTargets[i].originPos = _moveTargets[i].target.position;
-                Debug.Log(_moveTargets[i].originPos);
             }
         }
 

@@ -9,6 +9,8 @@ public class FrogBoss : Boss
     private Transform _startPos = null;
     [SerializeField]
     private Transform _mainPos = null;
+    [SerializeField]
+    private AudioClip _randSmashClip = null;
 
     [SerializeField]
     private Transform[] _jumpPoss = null;
@@ -21,6 +23,9 @@ public class FrogBoss : Boss
     private Animator _baseAnimator = null;
 
     [Header("스폰하는 녀석")]
+    [SerializeField]
+    private GameObject _radarPrefab = null;
+
     [SerializeField]
     private Transform _bassSpawnTrm = null;
     [SerializeField]
@@ -38,11 +43,7 @@ public class FrogBoss : Boss
     [SerializeField]
     private RuntimeAnimatorController _fireFrogController = null;
     [SerializeField]
-    private RuntimeAnimatorController _waterFrogController = null;
-    [SerializeField]
     private RuntimeAnimatorController _flyFrogController = null;
-
-    private bool _isJumping = false;
 
 
     private void Awake()
@@ -51,6 +52,8 @@ public class FrogBoss : Boss
         _spriteRenderer = transform.Find("AgentSprite").GetComponent<SpriteRenderer>();
         _baseAnimator = _spriteRenderer.GetComponent<Animator>();
         _col = _spriteRenderer.GetComponent<Collider2D>();
+
+        target = Save.Instance.playerMovemant.gameObject;
     }
 
     private enum NextPattern
@@ -88,7 +91,7 @@ public class FrogBoss : Boss
             _torchObj.SetActive(false);
             _baseAnimator.runtimeAnimatorController = _fireFrogController;
         });
-        _seq.AppendInterval(1f);
+        _seq.AppendInterval(0.1f);
         _seq.AppendCallback(() =>
         {
             SpawnFireball();
@@ -189,10 +192,11 @@ public class FrogBoss : Boss
         switch (nextPattern)
         {
             case NextPattern.FIRE:
+                //FireballSpawnPattern();
                 FireballSpawnPattern();
                 break;
             case NextPattern.WATER:
-                FlySpawnPattern();
+                WaterBimSpawnPattern();
                 break;
             case NextPattern.FLY:
                 FlySpawnPattern();
@@ -230,6 +234,39 @@ public class FrogBoss : Boss
         });
     }
 
+    private void WaterBimSpawnPattern()
+    {
+        if (_seq != null)
+            _seq.Kill();
+
+        _radarPrefab.SetActive(true);
+        _seq = DOTween.Sequence();
+        _seq.AppendInterval(2f);
+        _seq.AppendCallback(() => { StartCoroutine(SpawnWaterBimCoroutine()); });
+
+        _seq.AppendInterval(3f);
+        _seq.AppendCallback(() =>
+        {
+            _baseAnimator.runtimeAnimatorController = _baseFrogController;
+            _spriteRenderer.color = Color.white;
+            if (_seq != null)
+                _seq.Kill();
+            Pattern1();
+        });
+
+    }
+
+    private IEnumerator SpawnWaterBimCoroutine()
+    {
+        _radarPrefab.SetActive(false);
+
+        for (int i = 0; i < 5; i++)
+        {
+            SpawnWaterBim();
+            yield return new WaitForSeconds(0.7f);
+        }
+    }
+
     private void FlySpawnPattern()
     {
         if (_seq != null)
@@ -265,7 +302,7 @@ public class FrogBoss : Boss
 
     private void Jump(Vector3 pos)
     {
-        _seq.AppendInterval(0.25f);
+        _seq.AppendInterval(0.2f);
         _seq.Append(transform.DOMove(pos, 0.4f));
         _seq.AppendInterval(0.2f);
         _seq.Append(transform.DOMoveY(_mainPos.position.y, 0.2f));
@@ -273,7 +310,24 @@ public class FrogBoss : Boss
         {
             CameraManager.instance.CameraShake(6f, 15f, 0.2f);
             SpawnJumpPressEffect();
+
+            AudioPoolable a = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
+            a.Play(_randSmashClip);
         });
+    }
+
+    private void SpawnWaterBim()
+    {
+        GameObject target = Save.Instance.playerMovemant.gameObject;
+        if (target == null) return;
+
+        Vector3 dis = (target.transform.position - transform.position);
+        float z = Mathf.Atan2(dis.y, dis.x) * Mathf.Rad2Deg;
+        Quaternion rot = Quaternion.Euler(new Vector3(0f, 0f, z));
+        CameraManager.instance.CameraShake(2f, 10f, 0.25f);
+        BulletMove waterbim = PoolManager.Instance.Pop("WaterBim") as BulletMove;
+        waterbim.transform.SetParent(_bassSpawnTrm);
+        waterbim.transform.SetPositionAndRotation(transform.position + Vector3.right * 2f, rot);
     }
 
     private void SpawnFireball()
@@ -303,6 +357,7 @@ public class FrogBoss : Boss
         _torchObj.SetActive(true);
         _bucketObj.SetActive(false);
         _flyObj.SetActive(false);
+        _radarPrefab.SetActive(false);
         _spriteRenderer.color = Color.white;
         if (_spriteRenderer != null)
         {
@@ -314,10 +369,17 @@ public class FrogBoss : Boss
         if (_col != null)
             _col.enabled = true;
 
-        PoolableMono[] bossPoolable = _bassSpawnTrm.GetComponentsInChildren<PoolableMono>();
-        for (int i = 0; i < bossPoolable.Length; i++)
+        for (int i = 0; i < _bassSpawnTrm.childCount; i++)
         {
-            PoolManager.Instance.Push(bossPoolable[i]);
+            PoolableMono mono = _bassSpawnTrm.GetChild(i).GetComponent<PoolableMono>();
+            if (mono != null)
+            {
+                PoolManager.Instance.Push(_bassSpawnTrm.GetChild(i).GetComponent<PoolableMono>());
+            }
+            else
+            {
+                Destroy(_bassSpawnTrm.GetChild(i));
+            }
         }
     }
 
@@ -327,4 +389,13 @@ public class FrogBoss : Boss
         _col.enabled = false;
         transform.position = Vector3.zero;
     }
+
+    GameObject target;
+
+    private void Update()
+    {
+        if (target == null) return;
+        _radarPrefab.transform.position = target.transform.position + Vector3.up * 0.5f;
+    }
+
 }

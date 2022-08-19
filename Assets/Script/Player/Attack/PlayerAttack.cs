@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerAttack : AgentMeleeAttack
 {
     [SerializeField]
-    private GameObject _bullet = null;
-    [SerializeField]
     private Transform _bulletSpawnPos = null;
     [SerializeField]
     private bool _isAutoShoot = true;

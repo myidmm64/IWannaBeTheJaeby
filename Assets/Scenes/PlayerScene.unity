@@ -283,6 +283,72 @@ TilemapCollider2D:
   m_CorrespondingSourceObject: {fileID: 276669354, guid: 27fbfa3cf802f1c4db06ac3f00a8d6b3, type: 3}
   m_PrefabInstance: {fileID: 1539547541535714486}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &171408687
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1869021303}
+    m_Modifications:
+    - target: {fileID: 5875902202806136113, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875902202806136113, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875902202806136113, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875902202806136113, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875902202806136113, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875902202806136113, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875902202806136113, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875902202806136113, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875902202806136113, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875902202806136113, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875902202806136113, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875902202806136115, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+      propertyPath: m_Name
+      value: Radar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875902202806136115, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+--- !u!1 &171408688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5875902202806136115, guid: a243dcfba9b43904386a5ab8574dec85, type: 3}
+  m_PrefabInstance: {fileID: 171408687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!19719996 &208539782 stripped
 TilemapCollider2D:
   m_CorrespondingSourceObject: {fileID: 1466966823, guid: 27fbfa3cf802f1c4db06ac3f00a8d6b3, type: 3}
@@ -3628,6 +3694,11 @@ MonoBehaviour:
 --- !u!19719996 &1864688136 stripped
 TilemapCollider2D:
   m_CorrespondingSourceObject: {fileID: 933322224, guid: 27fbfa3cf802f1c4db06ac3f00a8d6b3, type: 3}
+  m_PrefabInstance: {fileID: 1539547541535714486}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1869021303 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1045999096, guid: 27fbfa3cf802f1c4db06ac3f00a8d6b3, type: 3}
   m_PrefabInstance: {fileID: 1539547541535714486}
   m_PrefabAsset: {fileID: 0}
 --- !u!19719996 &1893797116 stripped
@@ -10921,6 +10992,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1341233952, guid: 27fbfa3cf802f1c4db06ac3f00a8d6b3, type: 3}
+      propertyPath: _waterObj
+      value: 
+      objectReference: {fileID: 6305598602112920470, guid: 975779d5e2dae574b9448cbd264e6e93, type: 3}
+    - target: {fileID: 1341233952, guid: 27fbfa3cf802f1c4db06ac3f00a8d6b3, type: 3}
+      propertyPath: _radarPrefab
+      value: 
+      objectReference: {fileID: 171408688}
+    - target: {fileID: 1341233952, guid: 27fbfa3cf802f1c4db06ac3f00a8d6b3, type: 3}
+      propertyPath: _randSmashClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fdf0f49b55b777c44a096288f37ef7df, type: 3}
+    - target: {fileID: 1341233952, guid: 27fbfa3cf802f1c4db06ac3f00a8d6b3, type: 3}
       propertyPath: _jumpEffectPos.Array.size
       value: 9
       objectReference: {fileID: 0}
@@ -13390,7 +13473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3565285024949968994, guid: 27fbfa3cf802f1c4db06ac3f00a8d6b3, type: 3}
       propertyPath: _maxHp
-      value: 150
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3565285024949968994, guid: 27fbfa3cf802f1c4db06ac3f00a8d6b3, type: 3}
       propertyPath: _bossObjTrm
