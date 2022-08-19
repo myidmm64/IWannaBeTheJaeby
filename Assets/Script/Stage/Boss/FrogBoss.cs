@@ -369,7 +369,7 @@ public class FrogBoss : Boss
         if (_seq != null)
             _seq.Kill();
         StopAllCoroutines();
-        CameraManager.instance.CameraReset();
+        CameraManager.instance.CompletePrevFeedBack();
         transform.position = _startPos.position;
         _torchObj.SetActive(true);
         _bucketObj.SetActive(false);

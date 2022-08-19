@@ -171,7 +171,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 64
-  _brokeClip: {fileID: 8300000, guid: 50f6d1c2af771b344a666a982b24c00b, type: 3}
+  _brokeClip: {fileID: 8300000, guid: 4d7b69fbc086d4f4e9022d2899cc2438, type: 3}
 --- !u!95 &2857668728848381478
 Animator:
   serializedVersion: 4

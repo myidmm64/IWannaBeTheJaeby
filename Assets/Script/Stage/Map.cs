@@ -33,7 +33,7 @@ public class Map : MonoBehaviour
         }
 
 
-        _modeTile = transform.Find($"ColliderTile/{Player.difficulty}ModeTile")?.gameObject;
+        _modeTile = transform.Find($"ColliderTile/{DifficultyManager.Instance.difficulty}ModeTile")?.gameObject;
         if (_modeTile != null)
         {
             _modeTile.SetActive(true);

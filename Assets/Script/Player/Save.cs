@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -43,11 +44,21 @@ public class Save : MonoBehaviour
     [field: SerializeField]
     private UnityEvent OnFirstSave = null;
 
+    private bool _saveable = true;
+    public bool Saveable
+    {
+        get => _saveable;
+        set => _saveable = value;
+    }
+
 
     private void Awake()
     {
         _instance = this;
+        LoadData();
+
         _rigid = _player.GetComponent<Rigidbody2D>();
+        _saveable = true;
     }
 
     private void Start()
@@ -73,30 +84,38 @@ public class Save : MonoBehaviour
         _currentSavePoint.position = _player.transform.position;
 
         OnSave?.Invoke();
+        SaveData();
     }
 
-    private void JsonSave()
+    private void SaveData()
     {
-        string json = JsonUtility.ToJson(_saveMap);
-        Debug.Log(json);
-
-        string fileName = "SaveFile";
-        string path = Application.dataPath + "/" + fileName + ".json";
-        File.WriteAllText(path, json);
+        PlayerPrefs.SetString("SAVE_MAP", $"{_saveMap.name}");
+        PlayerPrefs.SetFloat("SAVE_POINT_X", transform.position.x);
+        PlayerPrefs.SetFloat("SAVE_POINT_Y", transform.position.y);
+        PlayerPrefs.SetString("SAVE_DIFFICULTY", $"{DifficultyManager.Instance.difficulty.ToString()}");
     }
 
-    private void JsonLoad()
+    private void LoadData()
     {
-        string fileName = "SaveFile";
-        string path = Application.dataPath + "/" + fileName + ".json";
-        string json = File.ReadAllText(path);
+        Difficulty difficulty = Enum.Parse<Difficulty>(PlayerPrefs.GetString("SAVE_DIFFICULTY", "Easy"));
+        DifficultyManager.Instance.difficulty = difficulty;
 
-        Map saveMap = JsonUtility.FromJson<Map>(json);
-        _saveMap = saveMap;
+        string[] mapData = null;
+        mapData = PlayerPrefs.GetString("SAVE_MAP", $"1Map_0").Split("Map_");
+        string stage = mapData[0];
+        string parentName = "Stage" + stage;
+
+        _saveMap = GameObject.Find(parentName).transform.Find(PlayerPrefs.GetString("SAVE_MAP", "1Map_0")).GetComponent<Map>();
+        _currentMap = _saveMap;
+        Vector3 pos = new Vector3(PlayerPrefs.GetFloat("SAVE_POINT_X", 0f), PlayerPrefs.GetFloat("SAVE_POINT_Y", 0f), 0f);
+        transform.position = pos;
+
     }
 
     public void Restart()
     {
+        if (_saveable == false) return;
+
         _currentMap.gameObject.SetActive(false);
         _currentMap.transform.root.gameObject.SetActive(false);
 

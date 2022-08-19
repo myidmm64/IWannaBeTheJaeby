@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 1
   _jumpPower: 30
-  _boomClip: {fileID: 8300000, guid: 332cd74f7de4f944d9e2cfb5b9a021d8, type: 3}
+  _boomClip: {fileID: 8300000, guid: 6d98b2bf3ec664245a62968fa314872d, type: 3}
 --- !u!61 &3174611898205141040
 BoxCollider2D:
   m_ObjectHideFlags: 0

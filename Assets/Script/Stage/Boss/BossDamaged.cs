@@ -39,19 +39,18 @@ public class BossDamaged : MonoBehaviour
 
     private void Awake()
     {
-        switch(Player.difficulty)
+        switch(DifficultyManager.Instance.difficulty)
         {
-            case Player.Difficulty.None:
+            case Difficulty.None:
                 break;
-            case Player.Difficulty.Easy:
+            case Difficulty.Easy:
                 _maxHp = Mathf.RoundToInt(_maxHp / 2f);
                 break;
-            case Player.Difficulty.Normal:
+            case Difficulty.Normal:
                 break;
-            case Player.Difficulty.Hard:
-                _maxHp = Mathf.RoundToInt(_maxHp * 1.5f);
+            case Difficulty.Hard:
                 break;
-            case Player.Difficulty.Extreme:
+            case Difficulty.Extreme:
                 _maxHp = Mathf.RoundToInt(_maxHp * 2f);
                 break;
             default:
