@@ -108,6 +108,7 @@ public class BossDamaged : MonoBehaviour
         s.transform.SetParent(_bossObjTrm);
         s.transform.position = transform.position + (Vector3)(Random.insideUnitCircle * _randomCircle);
         s.StartAnimation();
+        CameraManager.instance.CameraShake(24f, 60f, 0.2f);
 
         AudioPoolable a = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
         a.Play(_explosionClip);

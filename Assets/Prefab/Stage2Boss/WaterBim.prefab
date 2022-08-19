@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7556630229052550738}
   - component: {fileID: 7556630229052550737}
   - component: {fileID: 7556630229052550736}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: WaterBim
   m_TagString: Die
   m_Icon: {fileID: 0}

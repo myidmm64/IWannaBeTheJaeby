@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    public static Difficulty difficulty = Difficulty.Extreme;
+    public static Difficulty difficulty = Difficulty.Easy;
 
     public enum Difficulty
     {

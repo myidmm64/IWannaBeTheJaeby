@@ -45,6 +45,8 @@ public class FrogBoss : Boss
     [SerializeField]
     private RuntimeAnimatorController _flyFrogController = null;
 
+    private bool _isFirst = false;
+    private Vector3 _originPos = Vector3.zero;
 
     private void Awake()
     {
@@ -54,6 +56,12 @@ public class FrogBoss : Boss
         _col = _spriteRenderer.GetComponent<Collider2D>();
 
         target = Save.Instance.playerMovemant.gameObject;
+
+        if(_isFirst == false)
+        {
+            _isFirst = true;
+            _originPos = _torchObj.transform.position;
+        }
     }
 
     private enum NextPattern
@@ -85,7 +93,7 @@ public class FrogBoss : Boss
         {
             _baseAnimator.SetTrigger("Tounge");
         });
-        _seq.AppendInterval(0.5f);
+        _seq.Append(_torchObj.transform.DOMove(_mainPos.position + Vector3.right * 0.3f, 0.5f));
         _seq.AppendCallback(() =>
         {
             _torchObj.SetActive(false);
@@ -96,6 +104,7 @@ public class FrogBoss : Boss
         {
             SpawnFireball();
             _baseAnimator.runtimeAnimatorController = _baseFrogController;
+            _torchObj.transform.position = _originPos;
             if (_seq != null)
                 _seq.Kill();
             Pattern1();
@@ -162,8 +171,11 @@ public class FrogBoss : Boss
                 break;
         }
         _seq.AppendInterval(1f);
-        _seq.AppendCallback(() => { _baseAnimator.SetTrigger("Tounge"); });
-        _seq.AppendInterval(0.5f);
+        _seq.AppendCallback(() => 
+        { 
+            _baseAnimator.SetTrigger("Tounge");
+        });
+        _seq.Append(target.transform.DOMove(transform.position + Vector3.right * 0.3f, 0.5f));
         _seq.AppendCallback(() =>
         {
             target.SetActive(false);
@@ -180,6 +192,9 @@ public class FrogBoss : Boss
                     _baseAnimator.runtimeAnimatorController = _flyFrogController;
                     break;
             }
+            _torchObj.transform.position = _originPos;
+            _bucketObj.transform.position = _originPos;
+            _flyObj.transform.position = _originPos;
 
             if (_seq != null)
                 _seq.Kill();
@@ -291,6 +306,7 @@ public class FrogBoss : Boss
 
     private IEnumerator FlySpawn()
     {
+        CameraManager.instance.CameraShake(4f, 20f, 0.2f * 30);
         for (int i = 0; i < 30; i++)
         {
             FlyPool f = PoolManager.Instance.Pop("FlyObj") as FlyPool;
@@ -308,7 +324,7 @@ public class FrogBoss : Boss
         _seq.Append(transform.DOMoveY(_mainPos.position.y, 0.2f));
         _seq.AppendCallback(() =>
         {
-            CameraManager.instance.CameraShake(6f, 15f, 0.2f);
+            CameraManager.instance.CameraShake(12f, 30f, 0.2f);
             SpawnJumpPressEffect();
 
             AudioPoolable a = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
@@ -324,7 +340,7 @@ public class FrogBoss : Boss
         Vector3 dis = (target.transform.position - transform.position);
         float z = Mathf.Atan2(dis.y, dis.x) * Mathf.Rad2Deg;
         Quaternion rot = Quaternion.Euler(new Vector3(0f, 0f, z));
-        CameraManager.instance.CameraShake(2f, 10f, 0.25f);
+        CameraManager.instance.CameraShake(4f, 20f, 0.25f);
         BulletMove waterbim = PoolManager.Instance.Pop("WaterBim") as BulletMove;
         waterbim.transform.SetParent(_bassSpawnTrm);
         waterbim.transform.SetPositionAndRotation(transform.position + Vector3.right * 2f, rot);
@@ -332,7 +348,7 @@ public class FrogBoss : Boss
 
     private void SpawnFireball()
     {
-        CameraManager.instance.CameraShake(4f, 20f, 0.5f);
+        CameraManager.instance.CameraShake(8f, 40f, 0.5f);
         BulletMove fireball = PoolManager.Instance.Pop("FireBall") as BulletMove;
         fireball.transform.SetParent(_bassSpawnTrm);
         fireball.transform.position = transform.position + Vector3.right * 2f;
@@ -353,11 +369,16 @@ public class FrogBoss : Boss
         if (_seq != null)
             _seq.Kill();
         StopAllCoroutines();
+        CameraManager.instance.CameraReset();
         transform.position = _startPos.position;
         _torchObj.SetActive(true);
         _bucketObj.SetActive(false);
         _flyObj.SetActive(false);
         _radarPrefab.SetActive(false);
+        _torchObj.transform.position = _originPos;
+        _bucketObj.transform.position = _originPos;
+        _flyObj.transform.position = _originPos;
+
         _spriteRenderer.color = Color.white;
         if (_spriteRenderer != null)
         {
