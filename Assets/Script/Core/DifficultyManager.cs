@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class DifficultyManager : MonoBehaviour
@@ -15,6 +16,9 @@ public class DifficultyManager : MonoBehaviour
 
     private static DifficultyManager _instance = null;
     public static DifficultyManager Instance => _instance;
+
+    [field: SerializeField]
+    private UnityEvent OnError = null;
 
     private void Awake()
     {
@@ -33,6 +37,7 @@ public class DifficultyManager : MonoBehaviour
         if(PlayerPrefs.GetString("SAVE_DIFFICULTY") == "")
         {
             Debug.LogError("저장된 파일 없음 !!");
+            OnError?.Invoke();
             return;
         }
         DontDestroyOnLoad(this);
