@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 35687
+  controlID: 41042
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 35666
+  controlID: 41043
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -564,9 +564,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 33fa9405076bb934aac4ec4ab59f0dbe, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: acd3c720dbcb00740b1afc23160b6819, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 356910315350272775, guid: 33fa9405076bb934aac4ec4ab59f0dbe, type: 2}
+  - m_Target: {fileID: -8284675226800969806, guid: acd3c720dbcb00740b1afc23160b6819, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -661,10 +661,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 180}
+      scrollPos: {x: 0, y: 147}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 8622feff98d2ffff64e8ffff6ce8ffff82e8ffff86e8ffffbae8ffff9ee9fffface9ffff76ecffff76f8ffff58faffffe4faffffe06f0000
+      m_ExpandedIDs: 8622feff98d2ffff64e8ffff6ce8ffff82e8ffff86e8ffffbae8ffff9ee9fffface9ffff76ecffff76f8ffff58faffffe4faffff706f0000e06f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -707,8 +707,8 @@ MonoBehaviour:
     y: 0
     width: 372
     height: 939
-  m_MinSize: {x: 232, y: 271}
-  m_MaxSize: {x: 10002, y: 10021}
+  m_MinSize: {x: 230, y: 250}
+  m_MaxSize: {x: 10000, y: 10000}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -756,21 +756,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefab/Stage2Boss
+    - Assets/Animator/Animation/BossDIeEffect
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefab/Stage2Boss
+  - Assets/Animator/Animation/BossDIeEffect
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\after20220210\ProjectLab2D\IWannaBeTheJaeby
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 78}
-    m_SelectedIDs: 02ca0000
-    m_LastClickedID: 51714
+    m_SelectedIDs: ac9b0b00
+    m_LastClickedID: 760748
     m_ExpandedIDs: 000000000eb9000010b9000012b9000014b9000016b9000018b900001ab900001cb900001eb9000020b9000022b9000024b9000026b9000028b900002ab900002cb900002eb9000030b90000ea9f0b004ca00b00aaa10b00bea10b0000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -824,9 +824,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: b66f0000
-    m_LastClickedInstanceID: 28598
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: b89b0b00
+    m_LastClickedInstanceID: 760760
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -943,7 +943,7 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 28598
+  m_LastInspectedObjectInstanceID: 760760
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0

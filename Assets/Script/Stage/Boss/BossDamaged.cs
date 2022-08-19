@@ -88,13 +88,15 @@ public class BossDamaged : MonoBehaviour
         Summon();
         yield return new WaitForSeconds(0.5f);
         Summon();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         for (int i = 0; i<20; i++)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(Random.Range(0.1f, 0.15f));
             Summon();
         }
+        GetComponent<SpriteRenderer>().enabled = false;
+
         yield return new WaitForSeconds(2f);
 
         DieEnd?.Invoke(Save.Instance.playerMovemant.gameObject);

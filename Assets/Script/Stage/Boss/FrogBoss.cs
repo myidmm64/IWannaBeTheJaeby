@@ -305,7 +305,10 @@ public class FrogBoss : Boss
         _flyObj.SetActive(false);
         _spriteRenderer.color = Color.white;
         if (_spriteRenderer != null)
+        {
             _spriteRenderer.flipX = false;
+            _spriteRenderer.enabled = true;
+        }
         if (_baseAnimator != null)
             _baseAnimator.runtimeAnimatorController = _baseFrogController;
         if (_col != null)
