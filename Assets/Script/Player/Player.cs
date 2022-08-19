@@ -5,7 +5,16 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    public static bool _isEasyMode = true;
+    public static Difficulty difficulty = Difficulty.Easy;
+
+    public enum Difficulty
+    {
+        None,
+        Easy,
+        Normal,
+        Hard,
+        Extreme
+    }
 
     [field: SerializeField]
     private UnityEvent OnSaveButton = null;

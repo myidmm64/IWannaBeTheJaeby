@@ -16,6 +16,7 @@ public class FrogBoss : Boss
     private Sequence _seq = null;
     private Rigidbody2D _rigid = null;
     private SpriteRenderer _spriteRenderer = null;
+    private Collider2D _col = null;
 
     private Animator _baseAnimator = null;
 
@@ -49,6 +50,7 @@ public class FrogBoss : Boss
         _rigid = GetComponent<Rigidbody2D>();
         _spriteRenderer = transform.Find("AgentSprite").GetComponent<SpriteRenderer>();
         _baseAnimator = _spriteRenderer.GetComponent<Animator>();
+        _col = _spriteRenderer.GetComponent<Collider2D>();
     }
 
     private enum NextPattern
@@ -75,7 +77,7 @@ public class FrogBoss : Boss
             _seq.Kill();
         _seq = DOTween.Sequence();
 
-        _seq.Append(transform.DOMove(_mainPos.position, 1.5f).SetEase(Ease.Linear));
+        _seq.Append(transform.DOMove(_mainPos.position, 1f).SetEase(Ease.Linear));
         _seq.AppendCallback(() =>
         {
             _baseAnimator.SetTrigger("Tounge");
@@ -103,6 +105,7 @@ public class FrogBoss : Boss
             _seq.Kill();
         _seq = DOTween.Sequence();
 
+        _seq.AppendInterval(1f);
         Jump(_jumpPoss[0].position);
         Jump(_jumpPoss[1].position);
         Jump(_jumpPoss[2].position);
@@ -158,10 +161,10 @@ public class FrogBoss : Boss
         _seq.AppendInterval(1f);
         _seq.AppendCallback(() => { _baseAnimator.SetTrigger("Tounge"); });
         _seq.AppendInterval(0.5f);
-        _seq.AppendCallback(() => 
-        { 
+        _seq.AppendCallback(() =>
+        {
             target.SetActive(false);
-            switch(nextPattern)
+            switch (nextPattern)
             {
                 case NextPattern.FIRE:
                     _baseAnimator.runtimeAnimatorController = _fireFrogController;
@@ -183,10 +186,10 @@ public class FrogBoss : Boss
 
     private void Pattern3(NextPattern nextPattern)
     {
-        switch(nextPattern)
+        switch (nextPattern)
         {
             case NextPattern.FIRE:
-                FlySpawnPattern();
+                FireballSpawnPattern();
                 break;
             case NextPattern.WATER:
                 FlySpawnPattern();
@@ -205,12 +208,12 @@ public class FrogBoss : Boss
 
         int randomCount = Random.Range(1, 4);
 
-        for(int i = 0; i<randomCount; i++)
+        for (int i = 0; i < randomCount; i++)
         {
-            if(i == 0)
-                _seq.AppendInterval(2f);
+            if (i == 0)
+                _seq.AppendInterval(1f);
             else
-                _seq.AppendInterval(2.5f);
+                _seq.AppendInterval(2f);
 
             _seq.AppendCallback(() =>
             {
@@ -223,7 +226,7 @@ public class FrogBoss : Boss
             _spriteRenderer.color = Color.white;
             if (_seq != null)
                 _seq.Kill();
-            Pattern1(); 
+            Pattern1();
         });
     }
 
@@ -233,7 +236,7 @@ public class FrogBoss : Boss
             _seq.Kill();
         _seq = DOTween.Sequence();
 
-        _seq.AppendInterval(1f);
+        _seq.AppendInterval(0.5f);
         _seq.Append(transform.DOMove(_startPos.position, 1f));
         _seq.AppendCallback(() => { StartCoroutine(FlySpawn()); });
         _seq.AppendInterval(6f);
@@ -242,6 +245,7 @@ public class FrogBoss : Boss
         _seq.AppendCallback(() =>
         {
             _baseAnimator.runtimeAnimatorController = _baseFrogController;
+            _spriteRenderer.color = Color.white;
             if (_seq != null)
                 _seq.Kill();
             Pattern1();
@@ -250,7 +254,7 @@ public class FrogBoss : Boss
 
     private IEnumerator FlySpawn()
     {
-        for(int i = 0; i < 30; i++)
+        for (int i = 0; i < 30; i++)
         {
             FlyPool f = PoolManager.Instance.Pop("FlyObj") as FlyPool;
             f.transform.SetParent(_bassSpawnTrm);
@@ -261,9 +265,9 @@ public class FrogBoss : Boss
 
     private void Jump(Vector3 pos)
     {
-        _seq.AppendInterval(0.5f);
-        _seq.Append(transform.DOMove(pos, 0.5f));
-        _seq.AppendInterval(0.3f);
+        _seq.AppendInterval(0.25f);
+        _seq.Append(transform.DOMove(pos, 0.4f));
+        _seq.AppendInterval(0.2f);
         _seq.Append(transform.DOMoveY(_mainPos.position.y, 0.2f));
         _seq.AppendCallback(() =>
         {
@@ -282,7 +286,7 @@ public class FrogBoss : Boss
 
     private void SpawnJumpPressEffect()
     {
-        for(int i = 0; i<_jumpEffectPos.Length; i++)
+        for (int i = 0; i < _jumpEffectPos.Length; i++)
         {
             ShockWave shock = PoolManager.Instance.Pop("ShockWave") as ShockWave;
             shock.transform.position = _jumpEffectPos[i].position;
@@ -304,11 +308,20 @@ public class FrogBoss : Boss
             _spriteRenderer.flipX = false;
         if (_baseAnimator != null)
             _baseAnimator.runtimeAnimatorController = _baseFrogController;
+        if (_col != null)
+            _col.enabled = true;
 
         PoolableMono[] bossPoolable = _bassSpawnTrm.GetComponentsInChildren<PoolableMono>();
         for (int i = 0; i < bossPoolable.Length; i++)
         {
             PoolManager.Instance.Push(bossPoolable[i]);
         }
+    }
+
+    public void Die()
+    {
+        ResetBoss();
+        _col.enabled = false;
+        transform.position = Vector3.zero;
     }
 }

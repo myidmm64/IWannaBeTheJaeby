@@ -14,16 +14,16 @@ public class Map : MonoBehaviour
     private UnityEvent OnMapStarted = null;
 
 
-    private GameObject _easyTile = null;
+    private GameObject _modeTile = null;
 
 
     public virtual void Init()
     {
         OnMapReset?.Invoke();
-           
+
         OnMapStarted?.Invoke();
 
-        if(_isDashable)
+        if (_isDashable)
         {
             Save.Instance.playerMovemant.DashEnable();
         }
@@ -33,20 +33,17 @@ public class Map : MonoBehaviour
         }
 
 
-        if(Player._isEasyMode)
+        _modeTile = transform.Find($"ColliderTile/{Player.difficulty}ModeTile")?.gameObject;
+        if (_modeTile != null)
         {
-            _easyTile = transform.Find("ColliderTile/EasyModeTile").gameObject;
-            if (_easyTile != null)
-            {
-                _easyTile.SetActive(true);
-            }
+            _modeTile.SetActive(true);
         }
 
     }
 
     public virtual void MapExit()
     {
-        if(_isDashable)
+        if (_isDashable)
         {
             Save.Instance.playerMovemant.MovementDieReset();
         }
