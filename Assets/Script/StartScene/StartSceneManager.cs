@@ -79,6 +79,7 @@ public class StartSceneManager : MonoBehaviour
         {
             //_current.transform.rotation = Quaternion.identity;
             _seq.Append(_current.transform.DOLocalMove(Vector3.zero, 0.1f));
+            _current.transform.rotation = Quaternion.identity;
             _current.fontSize = 40f;
 
             StartSceneText currentText = _current.GetComponent<StartSceneText>();
@@ -86,7 +87,8 @@ public class StartSceneManager : MonoBehaviour
         }
 
         //text.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 10f));
-        _seq.Join(text.transform.DOLocalMove(Vector3.right * 60f, 0.1f));
+        _seq.Join(text.transform.DOLocalMove(Vector3.right * 35f, 0.1f));
+        text.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 7f));
         text.fontSize = 60f;
         _current = text;
 
@@ -108,6 +110,7 @@ public class StartSceneManager : MonoBehaviour
         for (int i = 0; i<_UIs.Count; i++)
         {
             _UIs[i].transform.position = Vector3.zero;
+            _UIs[i].transform.rotation = Quaternion.identity;
             _UIs[i].fontSize = 40f;
         }
 

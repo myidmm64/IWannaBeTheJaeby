@@ -28,7 +28,8 @@ public class ViewData : MonoBehaviour
         _mapText.SetText($"맵 - {PlayerPrefs.GetString("SAVE_MAP", $"1Map_0")}");
         _diffText.SetText($"난이도 - {PlayerPrefs.GetString("SAVE_DIFFICULTY", "Normal")}");
         _achieveText.SetText($"업적 - 0/1");
-        _playTimeText.SetText($"플레이타임 - {PlayerPrefs.GetFloat("SAVE_PLAYTIME", 0f)}");
+        string playTime = PlayerPrefs.GetFloat("SAVE_PLAYTIME", 0f).ToString("N2");
+        _playTimeText.SetText($"플레이타임 - {playTime}");
         _deathText.SetText($"데스 - {PlayerPrefs.GetInt("SAVE_DEATHCOUNT", 0)}");
     }
 

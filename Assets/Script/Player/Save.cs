@@ -53,6 +53,7 @@ public class Save : MonoBehaviour
 
 
     private float _playTime = 0f;
+    private float _firstPlayTime = 0f;
     private int _deathCount = 0;
     public int DeathCount
     {
@@ -77,7 +78,7 @@ public class Save : MonoBehaviour
 
     private void Update()
     {
-        _playTime = Time.time;
+        _playTime += Time.deltaTime;
     }
 
     public Vector3 CurrentSavePoint
@@ -111,13 +112,13 @@ public class Save : MonoBehaviour
         PlayerPrefs.SetFloat("SAVE_POINT_X", transform.position.x);
         PlayerPrefs.SetFloat("SAVE_POINT_Y", transform.position.y);
         PlayerPrefs.SetString("SAVE_DIFFICULTY", $"{DifficultyManager.Instance.difficulty.ToString()}");
-        PlayerPrefs.SetFloat("SAVE_PLAYTIME", _playTime);
+        PlayerPrefs.SetFloat("SAVE_PLAYTIME", _playTime + _firstPlayTime);
         PlayerPrefs.SetInt("SAVE_DEATHCOUNT", _deathCount);
     }
 
     private void LoadData()
     {
-        _playTime = PlayerPrefs.GetFloat("SAVE_PLAYTIME", 0f);
+        _firstPlayTime = PlayerPrefs.GetFloat("SAVE_PLAYTIME", 0f);
         _deathCount = PlayerPrefs.GetInt("SAVE_DEATHCOUNT", 0);
 
         Difficulty difficulty = Enum.Parse<Difficulty>(PlayerPrefs.GetString("SAVE_DIFFICULTY", "Normal"));
