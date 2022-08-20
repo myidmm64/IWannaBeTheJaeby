@@ -80,12 +80,19 @@ public class StartSceneManager : MonoBehaviour
             //_current.transform.rotation = Quaternion.identity;
             _seq.Append(_current.transform.DOLocalMove(Vector3.zero, 0.1f));
             _current.fontSize = 40f;
+
+            StartSceneText currentText = _current.GetComponent<StartSceneText>();
+            currentText?.Exit();
         }
 
         //text.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 10f));
         _seq.Join(text.transform.DOLocalMove(Vector3.right * 60f, 0.1f));
         text.fontSize = 60f;
         _current = text;
+
+        StartSceneText nextText = _current.GetComponent<StartSceneText>();
+        nextText?.Enter();
+
         _seq.AppendCallback(() =>
         {
             _lockKey = false;
@@ -97,12 +104,15 @@ public class StartSceneManager : MonoBehaviour
         if (_seq != null)
             _seq.Kill();
 
-        for(int i = 0; i<_UIs.Count; i++)
+
+        for (int i = 0; i<_UIs.Count; i++)
         {
             _UIs[i].transform.position = Vector3.zero;
             _UIs[i].fontSize = 40f;
         }
 
+        StartSceneText currentText = _current.GetComponent<StartSceneText>();
+        currentText?.Exit();
         _current = null;
         _UIs.Clear();
         for(int i = 0; i<textList.Count; i++)

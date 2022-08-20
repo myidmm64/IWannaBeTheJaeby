@@ -47,6 +47,7 @@ public class DifficultyManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    [ContextMenu("데이터 초기화")]
     public void DeleteSaveData()
     {
         PlayerPrefs.DeleteAll();

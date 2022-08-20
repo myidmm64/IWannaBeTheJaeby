@@ -21,6 +21,11 @@ public class DifferentTextChange : StartSceneText
     [field: SerializeField]
     private UnityEvent OnPastText = null;
 
+    [field: SerializeField]
+    private UnityEvent OnEnter = null;
+    [field: SerializeField]
+    private UnityEvent OnExit = null;
+
     private StartSceneManager _startSceneManager = null;
 
     private void Awake()
@@ -60,5 +65,15 @@ public class DifferentTextChange : StartSceneText
         }
         OnPastText?.Invoke();
         _startSceneManager.ResetList(_pastTexts);
+    }
+
+    public override void Enter()
+    {
+        OnEnter?.Invoke();
+    }
+
+    public override void Exit()
+    {
+        OnExit?.Invoke();
     }
 }
