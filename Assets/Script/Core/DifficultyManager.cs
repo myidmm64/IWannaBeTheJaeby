@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class DifficultyManager : MonoBehaviour
 {
-    private Difficulty _difficulty = Difficulty.Easy;
+    [SerializeField]
+    private Difficulty _difficulty = Difficulty.None;
     public Difficulty difficulty
     {
         get => _difficulty;
@@ -28,13 +29,15 @@ public class DifficultyManager : MonoBehaviour
     public void DifficultySet(Difficulty dif)
     {
         _difficulty = dif;
+        PlayerPrefs.SetString("SAVE_DIFFICULTY", $"{DifficultyManager.Instance.difficulty.ToString()}");
+
         DontDestroyOnLoad(this);
         SceneManager.LoadScene(1);
     }
 
     public void ReStart()
     {
-        if(PlayerPrefs.GetString("SAVE_DIFFICULTY") == "")
+        if(PlayerPrefs.GetString("SAVE_DIFFICULTY") == "None" || PlayerPrefs.GetString("SAVE_DIFFICULTY") == "")
         {
             Debug.LogError("저장된 파일 없음 !!");
             OnError?.Invoke();

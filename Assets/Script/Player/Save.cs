@@ -97,7 +97,7 @@ public class Save : MonoBehaviour
 
     private void LoadData()
     {
-        Difficulty difficulty = Enum.Parse<Difficulty>(PlayerPrefs.GetString("SAVE_DIFFICULTY", "Easy"));
+        Difficulty difficulty = Enum.Parse<Difficulty>(PlayerPrefs.GetString("SAVE_DIFFICULTY", "Normal"));
         DifficultyManager.Instance.difficulty = difficulty;
 
         string[] mapData = null;
@@ -107,7 +107,7 @@ public class Save : MonoBehaviour
 
         _saveMap = GameObject.Find(parentName).transform.Find(PlayerPrefs.GetString("SAVE_MAP", "1Map_0")).GetComponent<Map>();
         _currentMap = _saveMap;
-        Vector3 pos = new Vector3(PlayerPrefs.GetFloat("SAVE_POINT_X", 0f), PlayerPrefs.GetFloat("SAVE_POINT_Y", 0f), 0f);
+        Vector3 pos = new Vector3(PlayerPrefs.GetFloat("SAVE_POINT_X", -8.21f), PlayerPrefs.GetFloat("SAVE_POINT_Y", -3.23f), 0f);
         transform.position = pos;
 
     }

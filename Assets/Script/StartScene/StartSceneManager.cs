@@ -33,11 +33,21 @@ public class StartSceneManager : MonoBehaviour
         {
             UpUI();
         }
+
         if (Input.GetKeyDown(KeyCode.Return))
         {
             _current.GetComponent<StartSceneText>().Excute();
         }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _current.GetComponent<StartSceneText>().Excute();
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _current.GetComponent<StartSceneText>().Return();
+        }
+        else if (Input.GetKeyDown(KeyCode.Backspace))
         {
             _current.GetComponent<StartSceneText>().Return();
         }

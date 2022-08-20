@@ -936,6 +936,7 @@ GameObject:
   m_Component:
   - component: {fileID: 484406130}
   - component: {fileID: 484406132}
+  - component: {fileID: 484406133}
   - component: {fileID: 484406131}
   m_Layer: 5
   m_Name: LeaderBoardText
@@ -1061,6 +1062,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484406129}
   m_CullTransparentMesh: 1
+--- !u!114 &484406133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484406129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57f117af6b2763449c608148ebbca73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nextTexts: []
+  _pastTexts: []
+  _onlyEventNext: 1
+  _onlyEventPast: 0
+  OnNextText:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 390804644}
+        m_TargetAssemblyTypeName: WarringText, Assembly-CSharp
+        m_MethodName: Warring
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "\uCD94\uAC00\uB418\uC9C0 \uC54A\uC740 \uAE30\uB2A5\uC785\uB2C8\uB2E4."
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPastText:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &521649945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,6 +1345,7 @@ GameObject:
   m_Component:
   - component: {fileID: 583901775}
   - component: {fileID: 583901777}
+  - component: {fileID: 583901778}
   - component: {fileID: 583901776}
   m_Layer: 5
   m_Name: ExitButton
@@ -1435,6 +1471,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583901774}
   m_CullTransparentMesh: 1
+--- !u!114 &583901778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583901774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adcdb063210f8048bf5100b466a3489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &595117900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,19 +1846,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67728a85e0b8694ca0358ffa46308e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _difficulty: 0
   OnError:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 390804644}
         m_TargetAssemblyTypeName: WarringText, Assembly-CSharp
         m_MethodName: Warring
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: "\uC800\uC7A5\uB41C \uD30C\uC77C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!4 &649829536
@@ -3368,6 +3417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1671571469}
   - component: {fileID: 1671571471}
+  - component: {fileID: 1671571473}
   - component: {fileID: 1671571472}
   - component: {fileID: 1671571470}
   m_Layer: 5
@@ -3513,6 +3563,40 @@ MonoBehaviour:
   OnNextText:
     m_PersistentCalls:
       m_Calls: []
+  OnPastText:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1671571473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671571468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57f117af6b2763449c608148ebbca73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nextTexts: []
+  _pastTexts: []
+  _onlyEventNext: 1
+  _onlyEventPast: 0
+  OnNextText:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 390804644}
+        m_TargetAssemblyTypeName: WarringText, Assembly-CSharp
+        m_MethodName: Warring
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "\uCD94\uAC00\uB418\uC9C0 \uC54A\uC740 \uAE30\uB2A5\uC785\uB2C8\uB2E4."
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPastText:
     m_PersistentCalls:
       m_Calls: []
