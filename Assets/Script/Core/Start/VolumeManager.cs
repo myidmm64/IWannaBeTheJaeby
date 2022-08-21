@@ -31,7 +31,9 @@ public class VolumeManager : MonoBehaviour
 
     private void Init()
     {
-
+        _masterDb = PlayerPrefs.GetFloat("MASTER_DB", _maxDB);
+        _bGMDb = PlayerPrefs.GetFloat("BGM_DB", _maxDB);
+        _sfxDb = PlayerPrefs.GetFloat("SFX_DB", _maxDB);
 
         SetMixer();
     }
@@ -85,11 +87,16 @@ public class VolumeManager : MonoBehaviour
         _audioMixer.SetFloat("BGM", _bGMDb);
         _audioMixer.SetFloat("Death", _sfxDb);
 
+        PlayerPrefs.SetFloat("MASTER_DB", _masterDb);
+        PlayerPrefs.SetFloat("BGM_DB", _bGMDb);
+        PlayerPrefs.SetFloat("SFX_DB", _sfxDb);
+
         float max = ((Mathf.Abs(_maxDB) + Mathf.Abs(_minDB)) * 0.01f) * 100f;
         float time = 100 / max;
         float masterResult = _masterDb * time + 100;
         float bGMResult = _bGMDb * time + 100;
         float sfxResult = _sfxDb * time + 100;
+
 
         string masterText = masterResult.ToString("N0");
         _masterText.SetText("< ÀüÃ¼ " + masterText + "% >");

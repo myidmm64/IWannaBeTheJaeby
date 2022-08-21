@@ -47,10 +47,15 @@ public class DifficultyManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    [ContextMenu("데이터 초기화")]
+    [ContextMenu("이어하기 데이터 초기화")]
     public void DeleteSaveData()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey("SAVE_DIFFICULTY");
+        PlayerPrefs.DeleteKey("SAVE_MAP");
+        PlayerPrefs.DeleteKey("SAVE_POINT_X");
+        PlayerPrefs.DeleteKey("SAVE_POINT_Y");
+        PlayerPrefs.DeleteKey("SAVE_PLAYTIME");
+        PlayerPrefs.DeleteKey("SAVE_DEATHCOUNT");
     }
 }
 
