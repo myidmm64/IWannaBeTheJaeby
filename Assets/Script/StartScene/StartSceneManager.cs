@@ -29,9 +29,17 @@ public class StartSceneManager : MonoBehaviour
         {
             DownUI();
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             UpUI();
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            LeftUI();
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            RightUI();
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
@@ -67,6 +75,23 @@ public class StartSceneManager : MonoBehaviour
         _selectNum--;
         _selectNum = Mathf.Clamp(_selectNum, 0, _UIs.Count-1);
         ImpactText(_UIs[_selectNum]);
+    }
+
+    private void LeftUI()
+    {
+        StartSceneText text = _current.GetComponent<StartSceneText>();
+        if (text != null)
+        {
+            text.LeftAction();
+        }
+    }
+    private void RightUI()
+    {
+        StartSceneText text = _current.GetComponent<StartSceneText>();
+        if (text != null)
+        {
+            text.RightAction();
+        }
     }
 
     private void ImpactText(TextMeshProUGUI text)
@@ -118,10 +143,7 @@ public class StartSceneManager : MonoBehaviour
         currentText?.Exit();
         _current = null;
         _UIs.Clear();
-        for(int i = 0; i<textList.Count; i++)
-        {
-            _UIs.Add(textList[i]);
-        }
+        _UIs.AddRange(textList);
         _UIs[0].transform.localPosition = Vector3.zero;
         ImpactText(_UIs[0]);
 

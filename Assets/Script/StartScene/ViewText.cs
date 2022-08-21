@@ -16,13 +16,13 @@ public class ViewText : MonoBehaviour
         {
             for (int i = 0; i < _texts.Count; i++)
             {
-                _texts[i].enabled = true;
+                _texts[i].gameObject.SetActive(true);
             }
         }
 
         if (_text != null)
         {
-            _text.enabled = true;
+            _text.gameObject.SetActive(true);
         }
     }
 
@@ -32,13 +32,13 @@ public class ViewText : MonoBehaviour
         {
             for (int i = 0; i < _texts.Count; i++)
             {
-                _texts[i].enabled = false;
+                _texts[i].gameObject.SetActive(false);
             }
         }
 
         if (_text != null)
         {
-            _text.enabled = false;
+            _text.gameObject.SetActive(false);
         }
     }
 }

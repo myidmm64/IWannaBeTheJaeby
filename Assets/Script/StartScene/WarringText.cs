@@ -32,4 +32,10 @@ public class WarringText : MonoBehaviour
         _seq.Append(transform.DOMove(_originPos, 0.3f));
     }
 
+    private void OnDestroy()
+    {
+        _seq.Kill();
+        transform.DOKill();
+    }
+
 }
