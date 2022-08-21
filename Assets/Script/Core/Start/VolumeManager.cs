@@ -79,6 +79,13 @@ public class VolumeManager : MonoBehaviour
 
     private void SetMixer()
     {
+        if (_masterDb == _minDB)
+            _masterDb = -80f;
+        if (_bGMDb == _minDB)
+            _bGMDb = -80f;
+        if (_sfxDb == _minDB)
+            _sfxDb = -80f;
+
         _audioMixer.SetFloat("Master", _masterDb);
         _audioMixer.SetFloat("Sfx", _sfxDb);
         _audioMixer.SetFloat("Rain", _sfxDb + 5f);
