@@ -22,11 +22,15 @@ public class SplashVolumeSet : MonoBehaviour
         _sfxDb = PlayerPrefs.GetFloat("SFX_DB", _maxDB);
 
         if (_masterDb == _minDB)
-            _masterDb = -80f;
+            _audioMixer.SetFloat("Master", -80f);
         if (_bGMDb == _minDB)
-            _bGMDb = -80f;
+            _audioMixer.SetFloat("BGM", -80f);
         if (_sfxDb == _minDB)
-            _sfxDb = -80f;
+        {
+            _audioMixer.SetFloat("Sfx", -80f);
+            _audioMixer.SetFloat("Rain", -80f);
+            _audioMixer.SetFloat("Death", -80f);
+        }
 
         _audioMixer.SetFloat("Master", _masterDb);
         _audioMixer.SetFloat("Sfx", _sfxDb);
