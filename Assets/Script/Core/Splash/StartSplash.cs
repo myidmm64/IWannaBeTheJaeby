@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,5 +15,16 @@ public class StartSplash : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(3);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            StopAllCoroutines();
+            DOTween.KillAll();
+
+            SceneManager.LoadScene(3);
+        }
     }
 }

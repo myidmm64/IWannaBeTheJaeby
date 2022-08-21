@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +22,15 @@ public class GameManager : MonoBehaviour
         foreach(PoolingPair pair in _initList.list)
         {
             PoolManager.Instance.CreatePool(pair.prefab, pair.poolCnt);
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            DOTween.KillAll();
+            SceneManager.LoadScene(0);
         }
     }
 }
