@@ -31,7 +31,7 @@ public class VolumeManager : MonoBehaviour
 
     private void Init()
     {
-        _masterDb = PlayerPrefs.GetFloat("MASTER_DB", _maxDB);
+        _masterDb = PlayerPrefs.GetFloat("MASTER_DB", _maxDB - ((Mathf.Abs(_maxDB) + Mathf.Abs(_minDB)) * 0.01f) * 50f);
         _bGMDb = PlayerPrefs.GetFloat("BGM_DB", _maxDB);
         _sfxDb = PlayerPrefs.GetFloat("SFX_DB", _maxDB);
 
@@ -40,9 +40,7 @@ public class VolumeManager : MonoBehaviour
 
     public void MasterDbDown()
     {
-        Debug.Log(_masterDb);
         _masterDb -= ((Mathf.Abs(_maxDB) + Mathf.Abs(_minDB)) * 0.01f) * 10f;
-        Debug.Log(_masterDb);
         _masterDb = Mathf.Clamp(_masterDb, _minDB, _maxDB);
         SetMixer();
     }
