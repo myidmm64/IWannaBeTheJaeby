@@ -106,7 +106,7 @@ public class Save : MonoBehaviour
         SaveData();
     }
 
-    private void SaveData()
+    public void SaveData()
     {
         PlayerPrefs.SetString("SAVE_MAP", $"{_saveMap.name}");
         PlayerPrefs.SetFloat("SAVE_POINT_X", transform.position.x);

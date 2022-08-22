@@ -918,6 +918,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initList: {fileID: 11400000, guid: 111450457abcf93408caba2bb11303f8, type: 2}
+  OnExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2388274319008381009}
+        m_TargetAssemblyTypeName: Save, Assembly-CSharp
+        m_MethodName: SaveData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &617441234
 Transform:
   m_ObjectHideFlags: 0
@@ -1102,7 +1117,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.778, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -6542,6 +6557,17 @@ PrefabInstance:
       objectReference: {fileID: 1557106825}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da7f913ef2485414dabbccb8fcdb42df, type: 3}
+--- !u!114 &2388274319008381009 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2388274318599229238, guid: da7f913ef2485414dabbccb8fcdb42df, type: 3}
+  m_PrefabInstance: {fileID: 2388274319008381008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f505d35c6f7db349b1c0c1611bce613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2470429814952426802
 PrefabInstance:
   m_ObjectHideFlags: 0
