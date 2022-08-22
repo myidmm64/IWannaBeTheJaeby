@@ -14,6 +14,8 @@ public class BossDamaged : MonoBehaviour
     private Transform _bossObjTrm = null;
     [SerializeField]
     private float _randomCircle = 2f;
+
+    private bool _isDead = false;
     private int _curHp = 100;
     public int HP
     {
@@ -22,8 +24,9 @@ public class BossDamaged : MonoBehaviour
         {
             _curHp = value;
             _hpSlider.value = _curHp / (float)_maxHp;
-            if(value <= 0)
+            if(value <= 0 && _isDead == false)
             {
+                _isDead = true;
                 OnDie?.Invoke();
             }
         }
@@ -111,5 +114,10 @@ public class BossDamaged : MonoBehaviour
 
         AudioPoolable a = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
         a.Play(_explosionClip);
+    }
+
+    private void OnDisable()
+    {
+        _isDead = false;
     }
 }
