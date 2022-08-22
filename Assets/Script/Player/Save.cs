@@ -8,6 +8,8 @@ using UnityEngine.Events;
 public class Save : MonoBehaviour
 {
     [SerializeField]
+    private bool _isTest = false;
+    [SerializeField]
     private Transform _currentSavePoint = null;
     [SerializeField]
     private GameObject _player = null;
@@ -64,7 +66,9 @@ public class Save : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        LoadData();
+
+        if(_isTest == false)
+            LoadData();
 
         _rigid = _player.GetComponent<Rigidbody2D>();
         _saveable = true;
