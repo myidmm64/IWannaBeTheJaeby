@@ -9,7 +9,8 @@ public class WarringText : MonoBehaviour
     [SerializeField]
     private RectTransform _targetPos = null;
     private Sequence _seq = null;
-    private Vector3 _originPos = Vector3.zero;
+    [SerializeField]
+    private RectTransform _originPos = null;
     private TextMeshProUGUI _text = null;
     private RectTransform _trm = null;
 
@@ -20,23 +21,18 @@ public class WarringText : MonoBehaviour
         _text = GetComponent<TextMeshProUGUI>();
     }
 
-    private void Start()
-    {
-        _originPos = _trm.position;
-    }
-
     public void Warring(string text)
     {
         if (_seq != null)
             _seq.Kill();
 
-        _trm.position = _originPos;
+        _trm.position = _originPos.position;
         _text.SetText(text);
 
         _seq = DOTween.Sequence();
         _seq.Append(transform.DOMoveX(_targetPos.position.x, 0.3f));
         _seq.AppendInterval(0.5f);
-        _seq.Append(transform.DOMoveX(_originPos.x, 0.3f));
+        _seq.Append(transform.DOMoveX(_originPos.position.x, 0.3f)) ;
         _seq.AppendCallback(() =>
         {
             _text.SetText("");
