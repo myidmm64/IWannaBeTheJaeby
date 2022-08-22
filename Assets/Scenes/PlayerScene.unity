@@ -154,7 +154,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &14768501
 MonoBehaviour:
@@ -256,7 +256,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &326833294
 PrefabInstance:
@@ -356,7 +356,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &482060128
 PlayableDirector:
@@ -898,6 +898,7 @@ GameObject:
   m_Component:
   - component: {fileID: 617441234}
   - component: {fileID: 617441233}
+  - component: {fileID: 617441235}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -946,8 +947,23 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &617441235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617441232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396e848437330404fbe344701ea918f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefix: "\u2605"
+  backColor: {r: 0.43867922, g: 0.9556642, b: 1, a: 1}
+  fontColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1001 &629253271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1140,7 +1156,7 @@ Transform:
   m_Children:
   - {fileID: 974126358}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &785688155
 PrefabInstance:
@@ -1319,6 +1335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 807453937}
   - component: {fileID: 807453936}
+  - component: {fileID: 807453938}
   m_Layer: 0
   m_Name: Volume
   m_TagString: Untagged
@@ -1354,8 +1371,23 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &807453938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807453935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396e848437330404fbe344701ea918f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefix: "\u25CF"
+  backColor: {r: 1, g: 0.6987091, b: 0, a: 1}
+  fontColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &849556563 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 849556563, guid: 775156af5a67ced4097ed267f99f47fd, type: 3}
@@ -1775,7 +1807,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!19719996 &1149771366 stripped
 TilemapCollider2D:
@@ -2704,7 +2736,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1663502341
 PrefabInstance:
@@ -2963,7 +2995,7 @@ Transform:
   m_Children:
   - {fileID: 793616859}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1809140166
 Animator:
@@ -2996,6 +3028,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2982cc9336b34db4f92d0d793cbf4661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1922632777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1922632778}
+  - component: {fileID: 1922632779}
+  - component: {fileID: 1922632780}
+  m_Layer: 0
+  m_Name: "DifMan(\uC784\uC2DC)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1922632778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922632777}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1922632779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922632777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67728a85e0b8694ca0358ffa46308e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _difficulty: 2
+  OnError:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResetGame:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1922632780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922632777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396e848437330404fbe344701ea918f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefix: "\u203B"
+  backColor: {r: 1, g: 0.41037738, b: 0.41037738, a: 1}
+  fontColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1001 &1967386935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6404,7 +6503,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1628590274679443554, guid: ad877d3ab3e8e0c41ae89541d639cf1a, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1628590274679443554, guid: ad877d3ab3e8e0c41ae89541d639cf1a, type: 3}
       propertyPath: m_LocalPosition.x
