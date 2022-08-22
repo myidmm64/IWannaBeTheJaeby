@@ -37,11 +37,17 @@ public class WarringText : MonoBehaviour
         _seq.Append(transform.DOMoveX(_targetPos.position.x, 0.3f));
         _seq.AppendInterval(0.5f);
         _seq.Append(transform.DOMoveX(_originPos.x, 0.3f));
+        _seq.AppendCallback(() =>
+        {
+            _text.SetText("");
+        });
     }
 
     private void OnDestroy()
     {
-        _seq.Kill();
+        if (_seq != null)
+            _seq.Kill();
+
         transform.DOKill();
     }
 

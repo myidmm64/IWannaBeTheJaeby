@@ -59,4 +59,10 @@ public class StartSplash : MonoBehaviour
             SceneManager.LoadScene(3);
         }
     }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+        DOTween.KillAll();
+    }
 }

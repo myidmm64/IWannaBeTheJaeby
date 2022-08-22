@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ResolutionManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class ResolutionManager : MonoBehaviour
     private TextMeshProUGUI _resolutionText = null;
     [SerializeField]
     private TextMeshProUGUI _fullScreenText = null;
+    [field: SerializeField]
+    private UnityEvent OnWarring = null;
 
     List<Resolution> resolutions = new List<Resolution>();
     private int _resolNum = 0;
@@ -43,6 +46,7 @@ public class ResolutionManager : MonoBehaviour
 
         _resolutionText?.SetText("< " + resolutions[_resolNum].width + "x" + resolutions[_resolNum].height + " " + resolutions[_resolNum].refreshRate + " >");
         PlayerPrefs.SetInt("RESOLUTION_NUMBER",_resolNum);
+        OnWarring?.Invoke();
     }
     public void ChangeResolutionDown()
     {
@@ -52,6 +56,7 @@ public class ResolutionManager : MonoBehaviour
 
         _resolutionText?.SetText("< " + resolutions[_resolNum].width + "x" + resolutions[_resolNum].height + " " + resolutions[_resolNum].refreshRate + " >");
         PlayerPrefs.SetInt("RESOLUTION_NUMBER", _resolNum);
+        OnWarring?.Invoke();
     }
     public void SetFullScreen()
     {

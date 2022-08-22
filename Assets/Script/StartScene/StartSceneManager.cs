@@ -11,6 +11,12 @@ public class StartSceneManager : MonoBehaviour
     private List<TextMeshProUGUI> _UIs = null;
     private int _selectNum = 0;
     private bool _lockKey = false;
+    public bool LockKey
+    {
+        get => _lockKey;
+        set => _lockKey = value;
+    }
+
     private int _lastSelec = -1;
 
     Sequence _seq = null;
@@ -150,5 +156,12 @@ public class StartSceneManager : MonoBehaviour
         _selectNum = 0;
         _lastSelec = -1;
         _lockKey = false;
+    }
+
+    private void OnDestroy()
+    {
+        if (_seq != null)
+            _seq.Kill();
+        StopAllCoroutines();
     }
 }

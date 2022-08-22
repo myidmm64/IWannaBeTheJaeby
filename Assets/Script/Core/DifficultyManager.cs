@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,6 +21,8 @@ public class DifficultyManager : MonoBehaviour
 
     [field: SerializeField]
     private UnityEvent OnError = null;
+    [field: SerializeField]
+    private UnityEvent OnResetGame = null;
 
     private void Awake()
     {
@@ -62,6 +65,14 @@ public class DifficultyManager : MonoBehaviour
     public void DeleteAllData()
     {
         PlayerPrefs.DeleteAll();
+        OnResetGame?.Invoke();
+        StartCoroutine(GoSplash());
+    }
+
+    private IEnumerator GoSplash()
+    {
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(0);
     }
 }
 
