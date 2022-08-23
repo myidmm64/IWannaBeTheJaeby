@@ -14,6 +14,12 @@ public class BossDamaged : MonoBehaviour
     private Transform _bossObjTrm = null;
     [SerializeField]
     private float _randomCircle = 2f;
+    [SerializeField]
+    private float _effectSize = 1f;
+    [SerializeField]
+    private int _effectCount = 20;
+    [SerializeField]
+    private int _lasteffectCount = 10;
 
     private bool _isDead = false;
     private int _curHp = 100;
@@ -42,7 +48,12 @@ public class BossDamaged : MonoBehaviour
 
     private void Awake()
     {
-        switch(DifficultyManager.Instance.difficulty)
+        SetMaxHP();
+    }
+
+    public void SetMaxHP()
+    {
+        switch (DifficultyManager.Instance.difficulty)
         {
             case Difficulty.None:
                 break;
@@ -92,9 +103,15 @@ public class BossDamaged : MonoBehaviour
         Summon();
         yield return new WaitForSeconds(0.5f);
 
-        for (int i = 0; i<20; i++)
+        for (int i = 0; i<_effectCount; i++)
         {
             yield return new WaitForSeconds(Random.Range(0.1f, 0.15f));
+            Summon();
+        }
+
+        for (int i = 0; i < _lasteffectCount; i++)
+        {
+            yield return new WaitForSeconds(Random.Range(0.05f, 0.08f));
             Summon();
         }
         GetComponent<SpriteRenderer>().enabled = false;
@@ -109,6 +126,7 @@ public class BossDamaged : MonoBehaviour
         ShockWave s = PoolManager.Instance.Pop("BossDieEffect") as ShockWave;
         s.transform.SetParent(_bossObjTrm);
         s.transform.position = transform.position + (Vector3)(Random.insideUnitCircle * _randomCircle);
+        s.transform.localScale = Vector3.one * _effectSize;
         s.StartAnimation();
         CameraManager.instance.CameraShake(24f, 60f, 0.2f);
 

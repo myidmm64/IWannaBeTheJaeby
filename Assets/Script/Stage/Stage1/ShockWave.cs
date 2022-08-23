@@ -22,5 +22,6 @@ public class ShockWave : PoolableMono
     public override void Reset()
     {
         transform.position = Vector3.zero;
+        transform.localScale = Vector3.one;
     }
 }

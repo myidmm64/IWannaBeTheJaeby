@@ -15,7 +15,7 @@ public class Stage3BossManager : MonoBehaviour
     private Vector3[] _originPos = null;
 
     [SerializeField]
-    private GameObject[] _startBossObjects = null;
+    private GameObject _bossObject = null;
     private bool _bossStarted = false;
 
 
@@ -63,17 +63,15 @@ public class Stage3BossManager : MonoBehaviour
 
     private void BossSpawn()
     {
-        for (int i = 0; i < _startBossObjects.Length; i++)
-        {
-            _startBossObjects[i].SetActive(true);
-        }
+        _bossObject.SetActive(true);
+        _bossObject.GetComponent<MengueBoss>().BossStart();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            if(_bossStarted == false)
+            if (_bossStarted == false)
             {
                 _bossStarted = true;
                 if (_seq != null)
@@ -95,9 +93,6 @@ public class Stage3BossManager : MonoBehaviour
         _playerImage.position = _originPos[0];
         _bossImage.position = _originPos[1];
 
-        for (int i = 0; i < _startBossObjects.Length; i++)
-        {
-            _startBossObjects[i].SetActive(false);
-        }
+        _bossObject.SetActive(false);
     }
 }

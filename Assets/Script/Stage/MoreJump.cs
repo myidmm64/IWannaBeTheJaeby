@@ -5,6 +5,8 @@ using DG.Tweening;
 
 public class MoreJump : MonoBehaviour
 {
+    [SerializeField]
+    private float _genTime = 1.5f;
     private SpriteRenderer _spriteRenderer = null;
     private Collider2D _col = null;
 
@@ -50,7 +52,7 @@ public class MoreJump : MonoBehaviour
     {
         _spriteRenderer.enabled = false;
         _col.enabled = false;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(_genTime);
         _spriteRenderer.enabled = true;
         _col.enabled = true;
     }
