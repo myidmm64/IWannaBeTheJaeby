@@ -96,7 +96,7 @@ public class MengueBoss : Boss
             _seq.Kill();
         transform.DOKill();
 
-        transform.position = _jumpTrms[0].position - Vector3.down * 5f;
+        transform.position = new Vector3(_jumpTrms[0].position.x, _bossTrms[_swordTrms.Length].position.y, 0f);
         _seq = DOTween.Sequence();
         _seq.Append(transform.DOMove(_jumpTrms[0].position, 0.5f));
         _seq.Append(transform.DOJump(_jumpTrms[1].position, 13f, 1, 0.7f));
@@ -141,6 +141,7 @@ public class MengueBoss : Boss
         }
         if (_seq != null)
             _seq.Kill();
+        transform.position = _originPos;
     }
 
     public override void ResetBoss()

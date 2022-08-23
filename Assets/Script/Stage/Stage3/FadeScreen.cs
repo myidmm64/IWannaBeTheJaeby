@@ -1,18 +1,30 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FadeScreen : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private float _targetFade = 0f;
+    [SerializeField]
+    private float _duration = 0f;
+    private Image _image = null;
+
+
+    private void Awake()
     {
-        
+        _image = GetComponent<Image>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Fade()
     {
-        
+        _image.DOFade(_targetFade, _duration);
+    }
+    public void ResetFade()
+    {
+        _image.DOKill();
+        _image.DOFade(0f, 0f);
     }
 }

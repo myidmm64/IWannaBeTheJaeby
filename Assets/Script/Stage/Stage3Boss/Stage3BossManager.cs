@@ -26,21 +26,21 @@ public class Stage3BossManager : MonoBehaviour
         {
             _originPos = new Vector3[2];
             _isFirst = false;
-            _playerImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
-            _playerImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * 0.5f);
-            _bossImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
-            _bossImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * 0.5f);
+            _playerImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.currentResolution.width);
+            _playerImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.currentResolution.height * 0.5f);
+            _bossImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.currentResolution.width);
+            _bossImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.currentResolution.height * 0.5f);
+            _playerImage.anchoredPosition = new Vector2(Screen.currentResolution.width * -1f, 0f);
+            _bossImage.anchoredPosition = new Vector2(Screen.currentResolution.width, 0f);
 
-            _playerImage.anchoredPosition = new Vector2(-Screen.width, 0f);
-            _bossImage.anchoredPosition = new Vector2(Screen.width, 0f);
-
-            _originPos[0] = _playerImage.position;
-            _originPos[1] = _bossImage.position;
+            _originPos[0] = _playerImage.anchoredPosition;
+            _originPos[1] = _bossImage.anchoredPosition;
         }
 
         if (_seq != null)
             _seq.Kill();
         _seq = DOTween.Sequence();
+        _seq.AppendInterval(0.2f);
         _seq.Append(_playerImage.DOAnchorPosX(0f, 1f));
         _seq.AppendCallback(() =>
         {
@@ -76,8 +76,8 @@ public class Stage3BossManager : MonoBehaviour
                 _bossStarted = true;
                 if (_seq != null)
                     _seq.Kill();
-                _playerImage.position = _originPos[0];
-                _bossImage.position = _originPos[1];
+                _playerImage.anchoredPosition = _originPos[0];
+                _bossImage.anchoredPosition = _originPos[1];
 
                 BossSpawn();
             }
@@ -90,8 +90,8 @@ public class Stage3BossManager : MonoBehaviour
             _seq.Kill();
 
         _bossStarted = false;
-        _playerImage.position = _originPos[0];
-        _bossImage.position = _originPos[1];
+        _playerImage.anchoredPosition = _originPos[0];
+        _bossImage.anchoredPosition = _originPos[1];
 
         _bossObject.SetActive(false);
     }

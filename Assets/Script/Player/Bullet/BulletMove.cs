@@ -19,7 +19,7 @@ public class BulletMove : PoolableMono
 
     private void Start()
     {
-        Vector3 worldToScreen = _cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height,0f));
+        Vector3 worldToScreen = _cam.ScreenToWorldPoint(new Vector3(Screen.currentResolution.width, Screen.currentResolution.height, 0f));
         _bound = new Vector2(worldToScreen.x ,  worldToScreen.x * -1f);
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using DG.Tweening;
 
 public class PlayerDieSound : MonoBehaviour
 {
@@ -13,14 +14,21 @@ public class PlayerDieSound : MonoBehaviour
     private AudioSource _audioSource;
     private float _volume;
 
-    private TextMeshPro[] _text = new TextMeshPro[2];
+    [SerializeField]
+    private TextMeshProUGUI[] _text;
+    private Vector3[] _originPos = new Vector3[2];
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        _text[0] = GetComponent<TextMeshPro>();
-        _text[1] = transform.Find("Text2").GetComponent<TextMeshPro>();
     }
+
+    private void Start()
+    {
+        _originPos[0] = _text[0].transform.position;
+        _originPos[1] = _text[1].transform.position;
+    }
+
 
     public void PlayDieSound()
     {
@@ -33,6 +41,10 @@ public class PlayerDieSound : MonoBehaviour
 
         _text[0].enabled = true;
         _text[1].enabled = true;
+
+        _text[0].transform.DOShakePosition(0.1f, 10f).SetLoops(-1, LoopType.Yoyo);
+
+        _text[1].transform.DOShakePosition(0.1f, 7f, 5).SetLoops(-1, LoopType.Yoyo);
     }
 
     public void StopDieSound()
@@ -47,5 +59,10 @@ public class PlayerDieSound : MonoBehaviour
 
         _text[0].enabled = false;
         _text[1].enabled = false;
+
+        _text[0].transform.DOKill();
+        _text[1].transform.DOKill();
+        _text[0].transform.SetPositionAndRotation(_originPos[0], Quaternion.identity);
+        _text[1].transform.SetPositionAndRotation(_originPos[1], Quaternion.identity);
     }
 }
