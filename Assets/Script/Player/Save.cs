@@ -157,6 +157,16 @@ public class Save : MonoBehaviour
         _saveMap.Init();
 
         _currentMap = _saveMap;
+
+        _warringText?.WarringReset();
     }
 
+
+    [SerializeField]
+    private WarringText _warringText = null;
+
+    public void Warring(string text)
+    {
+        _warringText.Warring(text);
+    }
 }

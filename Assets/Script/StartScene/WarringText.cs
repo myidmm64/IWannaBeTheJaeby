@@ -47,4 +47,13 @@ public class WarringText : MonoBehaviour
         transform.DOKill();
     }
 
+    public void WarringReset()
+    {
+        if (_seq != null)
+            _seq.Kill();
+
+        transform.DOKill();
+        _trm.position = _originPos.position;
+    }
+
 }

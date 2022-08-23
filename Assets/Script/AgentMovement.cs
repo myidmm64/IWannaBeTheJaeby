@@ -35,12 +35,16 @@ public class AgentMovement : MonoBehaviour
 
     [SerializeField]
     protected bool _dashable = true;
+    protected bool _moreDash = false;
     private Coroutine _dashCoroutine = null;
 
+
+    PlayerJump _playerJump = null;
 
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
+        _playerJump ??= GetComponent<PlayerJump>();
     }
 
     protected virtual void FixedUpdate()
@@ -73,12 +77,17 @@ public class AgentMovement : MonoBehaviour
 
     public void Dash(Vector2 dir)
     {
-        if (_dashable == false)
-            return;
-
-        if (_dashCoroutine != null)
-            StopCoroutine(_dashCoroutine);
-        _dashCoroutine = StartCoroutine(DashCooltime());
+        if (_dashable)
+        {
+            if (_dashCoroutine != null)
+                StopCoroutine(_dashCoroutine);
+            _dashCoroutine = StartCoroutine(DashCooltime());
+        }
+        else if (_moreDash)
+        {
+            _moreDash = false;
+            _playerJump?.MoreJump();
+        }
 
         VelocityStopImmediately();
         _rigid.AddForce(dir * _dashPower, ForceMode2D.Impulse);
