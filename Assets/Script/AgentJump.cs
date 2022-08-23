@@ -111,7 +111,6 @@ public class AgentJump : MonoBehaviour
         if (_isDoubleJump)
         {
             jumpPow = _jumpPower * _secondJumpPower;
-            Debug.Log("´õºí!!");
         }
 
         OnJumpPress?.Invoke();

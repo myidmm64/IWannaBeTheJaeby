@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MengueBoss : MonoBehaviour
+public class MengueBoss : Boss
 {
     private SpriteRenderer _spriteRenderer = null;
     private Collider2D _col = null;
@@ -12,19 +12,20 @@ public class MengueBoss : MonoBehaviour
         _spriteRenderer = _col.GetComponent<SpriteRenderer>();
     }
 
-    public void BossReset()
-    {
-        if(_col != null)
-        {
-            _col.enabled = true;
-            _spriteRenderer.enabled = true;
-        }
-    }
     public void DieReset()
     {
         if(_col != null)
         {
             _col.enabled = false;
+        }
+    }
+
+    public override void ResetBoss()
+    {
+        if (_col != null)
+        {
+            _col.enabled = true;
+            _spriteRenderer.enabled = true;
         }
     }
 }

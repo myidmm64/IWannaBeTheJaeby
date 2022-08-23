@@ -27,8 +27,6 @@ public class FrogBoss : Boss
     private GameObject _radarPrefab = null;
 
     [SerializeField]
-    private Transform _bassSpawnTrm = null;
-    [SerializeField]
     private GameObject _torchObj = null;
     [SerializeField]
     private GameObject _bucketObj = null;
@@ -310,7 +308,7 @@ public class FrogBoss : Boss
         for (int i = 0; i < 30; i++)
         {
             FlyPool f = PoolManager.Instance.Pop("FlyObj") as FlyPool;
-            f.transform.SetParent(_bassSpawnTrm);
+            f.transform.SetParent(_bossObjectTrm);
             f.transform.position = new Vector2(Random.Range(-8.5f, 8.5f), _startPos.position.y);
             yield return new WaitForSeconds(0.2f);
         }
@@ -342,7 +340,7 @@ public class FrogBoss : Boss
         Quaternion rot = Quaternion.Euler(new Vector3(0f, 0f, z));
         CameraManager.instance.CameraShake(4f, 20f, 0.25f);
         BulletMove waterbim = PoolManager.Instance.Pop("WaterBim") as BulletMove;
-        waterbim.transform.SetParent(_bassSpawnTrm);
+        waterbim.transform.SetParent(_bossObjectTrm);
         waterbim.transform.SetPositionAndRotation(transform.position + Vector3.right * 2f, rot);
     }
 
@@ -350,7 +348,7 @@ public class FrogBoss : Boss
     {
         CameraManager.instance.CameraShake(8f, 40f, 0.5f);
         BulletMove fireball = PoolManager.Instance.Pop("FireBall") as BulletMove;
-        fireball.transform.SetParent(_bassSpawnTrm);
+        fireball.transform.SetParent(_bossObjectTrm);
         fireball.transform.position = transform.position + Vector3.right * 2f;
     }
 
@@ -389,19 +387,6 @@ public class FrogBoss : Boss
             _baseAnimator.runtimeAnimatorController = _baseFrogController;
         if (_col != null)
             _col.enabled = true;
-
-        for (int i = 0; i < _bassSpawnTrm.childCount; i++)
-        {
-            PoolableMono mono = _bassSpawnTrm.GetChild(i).GetComponent<PoolableMono>();
-            if (mono != null)
-            {
-                PoolManager.Instance.Push(_bassSpawnTrm.GetChild(i).GetComponent<PoolableMono>());
-            }
-            else
-            {
-                Destroy(_bassSpawnTrm.GetChild(i));
-            }
-        }
     }
 
     public void Die()
