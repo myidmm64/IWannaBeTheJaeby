@@ -22,6 +22,8 @@ public class BossDamaged : MonoBehaviour
     private int _lasteffectCount = 10;
 
     private bool _isDead = false;
+    private bool _isGodMode = false;
+    public bool IsGodMode { get => _isGodMode; set => _isGodMode = value; }
     private int _curHp = 100;
     public int HP
     {
@@ -81,6 +83,8 @@ public class BossDamaged : MonoBehaviour
     {
         if(collision.CompareTag("PlayerAtk"))
         {
+            if (_isGodMode) return;
+
             HP--;
             AudioPoolable a = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
             a.Play(_damageClip);
@@ -137,5 +141,6 @@ public class BossDamaged : MonoBehaviour
     private void OnDisable()
     {
         _isDead = false;
+        _isGodMode = false;
     }
 }

@@ -96,10 +96,10 @@ public class MengueBoss : Boss
             _seq.Kill();
         transform.DOKill();
 
-        transform.position = _jumpTrms[0].position - Vector3.down * 3f;
+        transform.position = _jumpTrms[0].position - Vector3.down * 5f;
         _seq = DOTween.Sequence();
         _seq.Append(transform.DOMove(_jumpTrms[0].position, 0.5f));
-        _seq.Append(transform.DOJump(_jumpTrms[1].position, 10f, 1, 1f).SetEase(Ease.Linear));
+        _seq.Append(transform.DOJump(_jumpTrms[1].position, 13f, 1, 0.7f));
         _seq.AppendCallback(() =>
         {
             for(int i = 0; i<_enemys.Length; i++)
@@ -108,7 +108,29 @@ public class MengueBoss : Boss
             }
         });
         _seq.AppendInterval(0.5f);
-        _seq.Append(transform.DOMove(_originPos, 0.5f));
+        _seq.AppendCallback(() =>
+        {
+            _damaged.IsGodMode = true;
+        });
+        _seq.Append(transform.DOMove(_bossTrms[_swordTrms.Length].position, 0.5f));
+        _seq.AppendCallback(() =>
+        {
+            _damaged.IsGodMode = false;
+
+            if (_seq != null)
+                _seq.Kill();
+            Pattern2();
+        });
+    }
+
+    private void Pattern2()
+    {
+        if (_seq != null)
+            _seq.Kill();
+
+        transform.position = new Vector3(0, 8f, 0f);
+        _seq = DOTween.Sequence();
+        _seq.Append(transform.DOMove(_originPos, 1f));
     }
 
     public void DieReset()
