@@ -26,6 +26,8 @@ public class MengueBoss : Boss
     private GameObject[] _coins = null;
     [SerializeField]
     private Sprite _bulletSprite = null;
+    [SerializeField]
+    private GameObject[] _interactionObj = null;
 
     private Collider2D _swordCol = null;
     private SpriteRenderer _swordSprite = null;
@@ -162,7 +164,46 @@ public class MengueBoss : Boss
 
     private void Pattern4()
     {
+        if (_seq != null)
+            _seq.Kill();
+        _seq = DOTween.Sequence();
+        _seq.AppendInterval(2f);
+        _seq.Append(transform.DOMoveY(-3f, 0.25f).SetEase(Ease.InOutBack));
+        _seq.AppendCallback(() =>
+        {
+            CameraManager.instance.CameraShake(10f, 40f, 0.5f);
+        });
+        _seq.AppendInterval(2f);
+        _seq.Append(transform.DOMove(_originPos, 0.5f));
+        _seq.AppendCallback(() =>
+        {
+            if (_seq != null)
+                _seq.Kill();
+            Pattern5();
+        });
+    }
 
+    private void Pattern5()
+    {
+        StartCoroutine(Pattern5Coroutine());
+    }
+
+    private IEnumerator Pattern5Coroutine()
+    {
+        for (int i = 0; i < _coins.Length; i++)
+        {
+            _coins[i].SetActive(false);
+        }
+
+        for (int i = 0; i<_interactionObj.Length; i++)
+        {
+            _interactionObj[i].SetActive(true);
+            CameraManager.instance.CameraShake(4f, 30f, 0.2f);
+            yield return new WaitForSeconds(0.25f);
+            _interactionObj[i].SetActive(false);
+        }
+        yield return new WaitForSeconds(3f);
+        BossRoutine();
     }
 
     private IEnumerator SpawnBullet()
@@ -171,7 +212,8 @@ public class MengueBoss : Boss
             _animationSeq.Kill();
         _animationSeq = DOTween.Sequence();
         _animationSeq.Append(transform.DOShakePosition(0.1f, 0.6f)).SetLoops(-1, LoopType.Yoyo);
-        CameraManager.instance.CameraShake(10f, 30f, 0.05f * 100f + 3f, true);
+        CameraManager.instance.CompletePrevFeedBack();
+        CameraManager.instance.CameraShake(5f, 30f, 0.05f * 100f + 1f, true);
 
         for (int i = 0; i < 100; i++)
         {
@@ -205,13 +247,36 @@ public class MengueBoss : Boss
 
     public void DieReset()
     {
-        if (_col != null)
-        {
-            _col.enabled = false;
-        }
+        StopAllCoroutines();
+        transform.DOKill();
+
         if (_seq != null)
             _seq.Kill();
-        transform.position = _originPos;
+        if (_animationSeq != null)
+            _animationSeq.Kill();
+
+        if (_originPos != Vector3.zero)
+        {
+            transform.position = _originPos;
+            transform.rotation = Quaternion.identity;
+            _sword.transform.position = _swordTrms[0].transform.position;
+            _sword.transform.rotation = Quaternion.identity;
+            _swordSprite.enabled = false;
+            _swordCol.enabled = false;
+        }
+
+        for (int i = 0; i < _enemys.Length; i++)
+        {
+            _enemys[i].SetActive(false);
+        }
+        for (int i = 0; i < _coins.Length; i++)
+        {
+            _coins[i].SetActive(false);
+        }
+        for (int i = 0; i < _interactionObj.Length; i++)
+        {
+            _interactionObj[i].SetActive(false);
+        }
     }
 
     public override void ResetBoss()
@@ -225,13 +290,16 @@ public class MengueBoss : Boss
 
         StopAllCoroutines();
         transform.DOKill();
+
         if (_seq != null)
             _seq.Kill();
         if (_animationSeq != null)
             _animationSeq.Kill();
+
         if (_originPos != Vector3.zero)
         {
             transform.position = _originPos;
+            transform.rotation = Quaternion.identity;
             _sword.transform.position = _swordTrms[0].transform.position;
             _sword.transform.rotation = Quaternion.identity;
         }
@@ -243,6 +311,11 @@ public class MengueBoss : Boss
         for (int i = 0; i < _coins.Length; i++)
         {
             _coins[i].SetActive(false);
+        }
+        for (int i = 0; i < _interactionObj.Length; i++)
+        {
+            _interactionObj[i].GetComponent<MoveInteraction>().TargetsReset();
+            _interactionObj[i].SetActive(false);
         }
     }
 }
