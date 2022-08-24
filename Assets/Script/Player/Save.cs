@@ -159,6 +159,8 @@ public class Save : MonoBehaviour
         _currentMap = _saveMap;
 
         _warringText?.WarringReset();
+        if (CameraManager.instance != null)
+            CameraManager.instance.CompletePrevFeedBack();
     }
 
 

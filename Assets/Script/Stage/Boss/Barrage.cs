@@ -50,6 +50,7 @@ public class Barrage : BulletMove
         _col.offset = Vector2.zero;
         _sprite.enabled = false;
         _col.enabled = false;
+        transform.localScale = Vector3.one;
     }
 
     protected override void Move()

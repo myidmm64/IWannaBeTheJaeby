@@ -199,7 +199,7 @@ public class MengueBoss : Boss
         {
             _interactionObj[i].SetActive(true);
             CameraManager.instance.CameraShake(4f, 30f, 0.2f);
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.1f);
             _interactionObj[i].SetActive(false);
         }
         yield return new WaitForSeconds(3f);
@@ -213,15 +213,17 @@ public class MengueBoss : Boss
         _animationSeq = DOTween.Sequence();
         _animationSeq.Append(transform.DOShakePosition(0.1f, 0.6f)).SetLoops(-1, LoopType.Yoyo);
         CameraManager.instance.CompletePrevFeedBack();
-        CameraManager.instance.CameraShake(5f, 30f, 0.05f * 100f + 1f, true);
+        CameraManager.instance.CameraShake(5f, 30f, 0.05f * 100 + 1f, true);
 
         for (int i = 0; i < 100; i++)
         {
             Barrage s = PoolManager.Instance.Pop("Barrage") as Barrage;
             s.transform.SetParent(_bossObjectTrm);
-            Quaternion rot = Quaternion.AngleAxis(Random.Range(-45f, -135f) - 90f, Vector3.forward);
+            Quaternion rot = Quaternion.AngleAxis(Random.Range(-30f, -150f) - 90f, Vector3.forward);
             s.transform.SetPositionAndRotation(transform.position, rot);
             s.SetBarrage(5f, new Vector2(0.19f, 0.31f), Vector2.zero, _bulletSprite);
+            s.transform.localScale = Vector3.one * 1.2f;
+            
             yield return new WaitForSeconds(0.05f);
         }
 
