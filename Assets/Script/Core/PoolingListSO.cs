@@ -13,5 +13,4 @@ public class PoolingPair
 public class PoolingListSO : ScriptableObject
 {
     public List<PoolingPair> list = new List<PoolingPair>();
-
 }

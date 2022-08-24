@@ -13,10 +13,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private UnityEvent OnExit = null;
 
+    private static GameManager _instance = null;
+    public static GameManager Instance
+    {
+        get => _instance;
+    }
+
     private void Awake()
     {
         PoolManager.Instance = new PoolManager(transform);
-
+        if (_instance == null)
+            _instance = this;
         CreatePool();
     }
 
@@ -26,6 +33,11 @@ public class GameManager : MonoBehaviour
         {
             PoolManager.Instance.CreatePool(pair.prefab, pair.poolCnt);
         }
+    }
+
+    public void PoolAdd(PoolableMono prefab, int poolCnt)
+    {
+        PoolManager.Instance.CreatePool(prefab, poolCnt);
     }
 
     private void Update()

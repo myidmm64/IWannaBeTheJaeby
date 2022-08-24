@@ -19,7 +19,11 @@ public class ShockWave : PoolableMono
         PoolManager.Instance.Push(this);
     }
 
-    public override void Reset()
+    public override void PopReset()
+    {
+    }
+
+    public override void PushReset()
     {
         transform.position = Vector3.zero;
         transform.localScale = Vector3.one;

@@ -304,7 +304,7 @@ public class FrogBoss : Boss
 
     private IEnumerator FlySpawn()
     {
-        CameraManager.instance.CameraShake(4f, 20f, 0.2f * 30);
+        CameraManager.instance.CameraShake(4f, 20f, 0.2f * 30, true);
         for (int i = 0; i < 30; i++)
         {
             FlyPool f = PoolManager.Instance.Pop("FlyObj") as FlyPool;

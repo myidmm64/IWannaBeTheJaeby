@@ -30,12 +30,13 @@ public class PoolManager
             return null;
         }
         PoolableMono item = _pools[prefabName].Pop();
-        item.Reset();
+        item.PopReset();
         return item;
     }
     public void Push(PoolableMono obj)
     {
         //앞뒤공백만지워주는 trim
+        obj.PushReset();
         _pools[obj.name.Trim()].Push(obj);
     }
 }

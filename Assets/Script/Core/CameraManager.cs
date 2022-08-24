@@ -21,7 +21,7 @@ public class CameraManager : MonoBehaviour
 
     private void OnEnable()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -53,9 +53,9 @@ public class CameraManager : MonoBehaviour
     /// <param name="如甸府绰 沥档"></param>
     /// <param name="如甸府绰 后档"></param>
     /// <param name="如甸副 矫埃"></param>
-    public void CameraShake(float amplitude, float intensity, float duration)
+    public void CameraShake(float amplitude, float intensity, float duration, bool conti = false)
     {
-        if(_currentShakeAmount > amplitude)
+        if (_currentShakeAmount > amplitude)
         {
             return;
         }
@@ -66,15 +66,19 @@ public class CameraManager : MonoBehaviour
 
         _currentShakeAmount = _noise.m_AmplitudeGain;
 
-        _shakeCoroutine = StartCoroutine(ShakeCorutine(amplitude, duration));
+        _shakeCoroutine = StartCoroutine(ShakeCorutine(amplitude, duration, conti));
     }
 
-    private IEnumerator ShakeCorutine(float amplitude, float duration)
+    private IEnumerator ShakeCorutine(float amplitude, float duration, bool conti)
     {
         float time = duration;
         while (time >= 0)
         {
-            _noise.m_AmplitudeGain = Mathf.Lerp(0, amplitude, time / duration);
+            if (conti)
+                _noise.m_AmplitudeGain = amplitude;
+            else
+                _noise.m_AmplitudeGain = Mathf.Lerp(0, amplitude, time / duration);
+
             yield return null;
             time -= Time.deltaTime;
         }
@@ -106,7 +110,7 @@ public class CameraManager : MonoBehaviour
 
     public void CameraReset()
     {
-        if(_zoomCoroutine != null)
+        if (_zoomCoroutine != null)
         {
             StopCoroutine(_zoomCoroutine);
         }

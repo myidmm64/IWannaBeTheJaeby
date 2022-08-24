@@ -18,7 +18,12 @@ public class FlyPool : PoolableMono
         }
     }
 
-    public override void Reset()
+    public override void PopReset()
+    {
+        transform.position = Vector3.zero;
+    }
+
+    public override void PushReset()
     {
         transform.position = Vector3.zero;
     }
