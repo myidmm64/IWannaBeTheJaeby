@@ -249,6 +249,8 @@ public class MengueBoss : Boss
 
     public void DieReset()
     {
+        _col.enabled = false;
+
         StopAllCoroutines();
         transform.DOKill();
 
