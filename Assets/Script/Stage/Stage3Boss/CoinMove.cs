@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CoinMove : AgentJump
 {
@@ -10,6 +11,8 @@ public class CoinMove : AgentJump
     [SerializeField]
     private AudioClip _breakClip = null;
     private AudioSource _audioSource = null;
+    [field: SerializeField]
+    private UnityEvent OnJumpEnd = null;
 
     private void FixedUpdate()
     {
@@ -20,7 +23,7 @@ public class CoinMove : AgentJump
     {
         if(_audioSource == null)
             _audioSource = GetComponent<AudioSource>();
-        _audioSource.Play();
+
         _originPos = transform.position;
     }
 
@@ -31,10 +34,12 @@ public class CoinMove : AgentJump
         {
             ForceJump(Random.Range(_jumpPower * 0.9f, _jumpPower), Vector3.up);
 
-            _audioSource.Play();
+            if(_audioSource.clip != null)
+                _audioSource.Play();
             //AudioPoolable audio = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
             //audio.PlayRandomness(_breakClip);
             CameraManager.instance.CameraShake(4f, 20f, 0.2f);
+            OnJumpEnd?.Invoke();
         }
     }
 

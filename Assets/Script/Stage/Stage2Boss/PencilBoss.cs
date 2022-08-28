@@ -20,12 +20,15 @@ public class PencilBoss : Boss
     private Sequence _moveSeq = null;
     [SerializeField]
     private Sprite _eraserSprite = null;
+    [SerializeField]
+    private GameObject _dalgona = null;
 
 
     private void OnEnable()
     {
         Moving();
         BossRoutine();
+        transform.Find("Bariler").GetComponent<SpriteRenderer>().enabled = true;
     }
 
     private void Moving()
@@ -82,7 +85,18 @@ public class PencilBoss : Boss
 
     private void Pattern1()
     {
+        StartCoroutine(SpawnDalgona());
+    }
 
+    private IEnumerator SpawnDalgona()
+    {
+        GameObject dal = Instantiate(_dalgona, _bossObjectTrm);
+        dal.transform.position = new Vector3(-2f, _endPos.y - 0.5f);
+        yield return new WaitForSeconds(1f);
+        GameObject dal2 = Instantiate(_dalgona, _bossObjectTrm);
+        dal2.transform.position = new Vector3(2f, _endPos.y - 0.5f);
+        yield return new WaitForSeconds(4f);
+        Pattern0();
     }
 
     private IEnumerator ThrowEraser()
@@ -97,12 +111,13 @@ public class PencilBoss : Boss
             Vector3 dis = (target.position - transform.position).normalized;
             Quaternion rot = Quaternion.AngleAxis(Mathf.Atan2(dis.y, dis.x) * Mathf.Rad2Deg - 90f, Vector3.forward);
             s.transform.SetPositionAndRotation(transform.position, rot);
-            s.SetBarrage(25f, new Vector2(1f, 1.4f), new Vector2(0.02f, 0.1f), _eraserSprite);
+            s.SetBarrage(16.5f, new Vector2(1f, 1.4f), new Vector2(0.02f, 0.1f), _eraserSprite);
             s.transform.localScale = Vector3.one;
 
             CameraManager.instance.CameraShake(4f, 30f, 0.2f);
             yield return new WaitForSeconds(1f);
         }
 
+        Pattern1();
     }
 }
