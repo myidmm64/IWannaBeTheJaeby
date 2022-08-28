@@ -18,10 +18,16 @@ public class JumpPopObserver : MonoBehaviour, IObserver
 
     private void OnEnable()
     {
+        _poped = _firstPop;
+
         if (_isFirst)
         {
+            _isFirst = false;
+
             if(_firstPop)
-                _originPos = transform.position + Vector3.up * _popAmount;
+            {
+                _originPos = transform.position - (transform.up * _popAmount);
+            }
             else
                 _originPos = transform.position;
         }
@@ -38,7 +44,7 @@ public class JumpPopObserver : MonoBehaviour, IObserver
         if (_poped)
             _seq.Append(transform.DOMove(_originPos, _popSpeed));
         else
-            _seq.Append(transform.DOMove(_originPos + Vector3.up * _popAmount, _popSpeed));
+            _seq.Append(transform.DOMove(_originPos + transform.up * _popAmount, _popSpeed));
         _poped = !_poped;
     }
 
@@ -46,8 +52,12 @@ public class JumpPopObserver : MonoBehaviour, IObserver
     {
         if (_seq != null)
             _seq.Kill();
-        _poped = _firstPop;
         transform.DOKill();
-        transform.position = _originPos;
+        _poped = _firstPop;
+
+        if(_firstPop)
+            transform.position = _originPos + (transform.up * _popAmount);
+        else
+            transform.position = _originPos;
     }
 }
