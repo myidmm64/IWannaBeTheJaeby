@@ -95,7 +95,7 @@ public class PencilBoss : Boss
         yield return new WaitForSeconds(1f);
         GameObject dal2 = Instantiate(_dalgona, _bossObjectTrm);
         dal2.transform.position = new Vector3(2f, _endPos.y - 0.5f);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(4.5f);
         Pattern0();
     }
 
@@ -111,7 +111,7 @@ public class PencilBoss : Boss
             Vector3 dis = (target.position - transform.position).normalized;
             Quaternion rot = Quaternion.AngleAxis(Mathf.Atan2(dis.y, dis.x) * Mathf.Rad2Deg - 90f, Vector3.forward);
             s.transform.SetPositionAndRotation(transform.position, rot);
-            s.SetBarrage(16.5f, new Vector2(1f, 1.4f), new Vector2(0.02f, 0.1f), _eraserSprite);
+            s.SetBarrage(12f, new Vector2(1f, 1.4f), new Vector2(0.02f, 0.1f), _eraserSprite);
             s.transform.localScale = Vector3.one;
 
             CameraManager.instance.CameraShake(4f, 30f, 0.2f);

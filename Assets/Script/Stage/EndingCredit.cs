@@ -9,26 +9,28 @@ public class EndingCredit : MonoBehaviour
 {
     private TextMeshProUGUI _text = null;
     [SerializeField]
-    private Transform _target = null;
+    private RectTransform _target = null;
+    private RectTransform _trm = null;
     [SerializeField]
     private float _duration = 5f;
 
     private void Awake()
     {
+        _trm = GetComponent<RectTransform>();
         _text = GetComponent<TextMeshProUGUI>();
     }
 
     public void StartEnding()
     {
-        if (Save.Instance.playerMovemant.gameObject.activeSelf == false) return;
-
         _text.enabled = true;
         Save.Instance.Saveable = false;
         Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DOLocalMove(_target.position, _duration));
+        seq.Append(_trm.DOMove(_target.position, _duration));
         seq.AppendCallback(() =>
         {
-            SceneManager.LoadScene(1);
+            seq.Kill();
+            DOTween.KillAll();
+            SceneManager.LoadScene(0);
         });
 
     }

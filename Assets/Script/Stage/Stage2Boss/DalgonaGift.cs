@@ -31,7 +31,7 @@ public class DalgonaGift : MonoBehaviour
 
     private IEnumerator SpawnCoroutine()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         for (int i = 0; i < 4; i++)
         {
