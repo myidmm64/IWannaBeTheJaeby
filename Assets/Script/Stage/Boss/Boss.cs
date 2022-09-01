@@ -1,40 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : MonoBehaviour
+public abstract class Boss : MonoBehaviour
 {
-    public void StartBoss()
-    {
-        StartCoroutine(RRR());
-    }
+    [SerializeField]
+    protected Transform _bossObjectTrm = null;
 
     private void OnDisable()
     {
+        DestroyTrash();
         ResetBoss();
     }
 
-    private IEnumerator RRR()
+    public virtual void DestroyTrash()
     {
-        Debug.Log("패턴ㄴ 1");
-        yield return new WaitForSeconds(2f);
-        Debug.Log("패턴ㄴ 2");
-        yield return new WaitForSeconds(2f);
-        Debug.Log("패턴ㄴ 3");
-        yield return new WaitForSeconds(2f);
-        Debug.Log("패턴ㄴ 4");
-        yield return new WaitForSeconds(2f);
-        Debug.Log("패턴 2");
-        yield return new WaitForSeconds(2f);
-        Debug.Log("패턴 3");
-        yield return new WaitForSeconds(2f);
-        Debug.Log("패턴 4");
+        List<GameObject> destroyList = new List<GameObject>();
+        PoolableMono mono = null;
+
+        int count = _bossObjectTrm.childCount;
+        for (int i = 0; i < count; i++)
+        {
+            mono = _bossObjectTrm.GetChild(i).GetComponent<PoolableMono>();
+            if (mono != null)
+            {
+                PoolManager.Instance.Push(mono);
+            }
+            else
+            {
+                destroyList.Add(_bossObjectTrm.GetChild(i).gameObject);
+            }
+        }
+
+        if (destroyList.Count > 0)
+            for (int i = 0; i < destroyList.Count; i++)
+            {
+                Destroy(destroyList[i]);
+            }
     }
 
-    public void ResetBoss()
-    {
-        StopAllCoroutines();
-        transform.position = Vector3.zero;
-        Debug.Log("리셋또");
-    }
+    public abstract void ResetBoss();
 }

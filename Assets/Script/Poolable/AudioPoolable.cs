@@ -11,7 +11,7 @@ public class AudioPoolable : PoolableMono
         _source = GetComponent<AudioSource>();
     }
 
-    public override void Reset()
+    public override void PopReset()
     {
         _source.clip = null;
         _source.volume = 1f;
@@ -48,5 +48,9 @@ public class AudioPoolable : PoolableMono
     {
         yield return new WaitForSeconds(time);
         PoolManager.Instance.Push(this);
+    }
+
+    public override void PushReset()
+    {
     }
 }

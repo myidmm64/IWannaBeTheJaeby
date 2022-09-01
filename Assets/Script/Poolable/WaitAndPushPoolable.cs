@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaitAndPushPoolable : PoolableMono
 {
-    public override void Reset()
+    public override void PopReset()
     {
         StopAllCoroutines();
         transform.position = Vector3.zero;
@@ -13,6 +13,10 @@ public class WaitAndPushPoolable : PoolableMono
     public void Push(float time)
     {
         StartCoroutine(WaitCoroutine(time));
+    }
+
+    public override void PushReset()
+    {
     }
 
     private IEnumerator WaitCoroutine(float time)

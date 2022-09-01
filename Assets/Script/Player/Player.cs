@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    public static bool _isEasyMode = true;
-
     [field: SerializeField]
     private UnityEvent OnSaveButton = null;
 

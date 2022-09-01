@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class PoolableMono : MonoBehaviour
 {
-    public abstract void Reset();
-        
-    
+    public abstract void PopReset();
+    public abstract void PushReset();
+
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAttack : AgentMeleeAttack
 {
     [SerializeField]
-    private GameObject _bullet = null;
+    private Transform _bulletSpawnPos = null;
     [SerializeField]
     private bool _isAutoShoot = true;
     [SerializeField]
@@ -73,13 +73,13 @@ public class PlayerAttack : AgentMeleeAttack
         {
             bullet = PoolManager.Instance.Pop("Bullet") as BulletMove;
             bullet.gameObject.SetActive(true);
-            bullet.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 180f, 0f));
+            bullet.transform.SetPositionAndRotation(_bulletSpawnPos.position, Quaternion.Euler(0f, 180f, 0f));
         }
         else
         {
             bullet = PoolManager.Instance.Pop("Bullet") as BulletMove;
             bullet.gameObject.SetActive(true);
-            bullet.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 0f, 0f));
+            bullet.transform.SetPositionAndRotation(_bulletSpawnPos.position, Quaternion.Euler(0f, 0f, 0f));
         }
     }
 }

@@ -9,6 +9,8 @@ public class BackgroundMove : MonoBehaviour
     [SerializeField]
     private bool _isFlowBackground = false;
     private SpriteRenderer _spriteRenderer = null;
+    [SerializeField]
+    private bool _isRight = true;
 
     private void Awake()
     {
@@ -19,7 +21,14 @@ public class BackgroundMove : MonoBehaviour
     {
         if(_isFlowBackground)
         {
-            _spriteRenderer.material.mainTextureOffset += Vector2.right * _speed * Time.deltaTime;
+            if(_isRight)
+            {
+                _spriteRenderer.material.mainTextureOffset += Vector2.right * _speed * Time.deltaTime;
+            }
+            else
+            {
+                _spriteRenderer.material.mainTextureOffset += Vector2.up * _speed * Time.deltaTime;
+            }
         }
     }
 

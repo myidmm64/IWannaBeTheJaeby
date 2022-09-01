@@ -36,7 +36,7 @@ public class LeapMove : PoolableMono
         }
     }
 
-    public override void Reset()
+    public override void PopReset()
     {
         _speed = 0f;
         _rigid.velocity = Vector2.zero;
@@ -47,5 +47,9 @@ public class LeapMove : PoolableMono
     {
         if(gameObject.activeSelf == true)
             PoolManager.Instance.Push(this);
+    }
+
+    public override void PushReset()
+    {
     }
 }

@@ -103,6 +103,14 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: cd2d7ba422359ea459e2e7ece32b3594
     name: BGM
+  - guid: bf4cf75cc79ec5346b83cda65f7152d6
+    name: Death
+  - guid: d202684bd83923847b286e7febee44df
+    name: Sfx
+  - guid: 162aafe17206e0c489859133611ea97f
+    name: Master
+  - guid: 48bad6603c578144c9b46147fcabc500
+    name: Rain
   m_AudioMixerGroupViews:
   - guids:
     - 35e15ffa335aa5a4397b1f7a15c1a959

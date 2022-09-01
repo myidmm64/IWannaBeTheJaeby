@@ -68,6 +68,8 @@ public class MoveInteraction : Interaction
                 _moveTargets[i].target.velocity = dir * _moveTargets[i].speed;
             }
         }
+
+        GetComponent<Collider2D>().enabled = false;
     }
 
     public override void DoExitInteraction()
@@ -80,13 +82,13 @@ public class MoveInteraction : Interaction
 
     public void TargetsReset()
     {
+        GetComponent<Collider2D>().enabled = true;
         if (_isFirst)
         {
             _isFirst = false;
             for (int i = 0; i < _moveTargets.Length; i++)
             {
                 _moveTargets[i].originPos = _moveTargets[i].target.position;
-                Debug.Log(_moveTargets[i].originPos);
             }
         }
 

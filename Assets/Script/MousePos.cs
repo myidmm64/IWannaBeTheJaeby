@@ -24,8 +24,8 @@ public class MousePos : MonoBehaviour
     private void Update()
     {
         Vector3 tmpScreenPos = Camera.main.WorldToScreenPoint(somethingToTest.transform.position);
-        SetCursorPos((int)tmpScreenPos.x, Screen.height - (int)tmpScreenPos.y);
-        transform.position = Camera.main.ScreenToWorldPoint(new Vector3((int)tmpScreenPos.x, Screen.height - (int)tmpScreenPos.y, 0f));
+        SetCursorPos((int)tmpScreenPos.x, Screen.currentResolution.height - (int)tmpScreenPos.y);
+        transform.position = Camera.main.ScreenToWorldPoint(new Vector3((int)tmpScreenPos.x, Screen.currentResolution.height - (int)tmpScreenPos.y, 0f));
     }
 
 

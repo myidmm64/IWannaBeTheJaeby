@@ -119,7 +119,7 @@ public class PopupPoolObject : PoolableMono
         });
     }
 
-    public override void Reset()
+    public override void PopReset()
     {
         if (_meshRenderer == null)
         {
@@ -139,5 +139,9 @@ public class PopupPoolObject : PoolableMono
         _text.transform.localScale = Vector3.one;
 
         _text.color = Color.white;
+    }
+
+    public override void PushReset()
+    {
     }
 }

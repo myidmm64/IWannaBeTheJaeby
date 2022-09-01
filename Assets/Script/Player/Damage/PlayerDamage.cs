@@ -35,6 +35,7 @@ public class PlayerDamage : AgentDamage
     public override void Die()
     {
         Debug.Log("ав╬З╬Н©Д");
+        Save.Instance.DeathCount++;
         DieVoice();
         OnDie?.Invoke();
         transform.root.gameObject.SetActive(false);

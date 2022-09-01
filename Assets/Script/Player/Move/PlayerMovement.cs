@@ -7,6 +7,10 @@ public class PlayerMovement : AgentMovement
     [SerializeField]
     private Transform _visualSpriteTrm = null;
 
+    [SerializeField]
+    private float _moreDashCooltime = 0.4f;
+    private Coroutine _moreDashCoroutine = null;
+
     private bool _filp = false;
 
     protected override void Update()
@@ -19,16 +23,20 @@ public class PlayerMovement : AgentMovement
 
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            _filp = _visualSpriteTrm.localScale.x < 0f;
+            if(_dashable || _moreDash)
+            {
+                _filp = _visualSpriteTrm.localScale.x < 0f;
 
-            if(_filp)
-            {
-                Dash(Vector2.left);
+                if (_filp)
+                {
+                    Dash(Vector2.left);
+                }
+                else
+                {
+                    Dash(Vector2.right);
+                }
             }
-            else
-            {
-                Dash(Vector2.right);
-            }
+
         }
     }
 
@@ -39,5 +47,19 @@ public class PlayerMovement : AgentMovement
     public void DashDisable()
     {
         _dashable = false;
+        _moreDash = false;
+    }
+
+    public void MoreDash()
+    {
+        if (_moreDashCoroutine != null)
+            StopCoroutine(_moreDashCoroutine);
+        _moreDashCoroutine = StartCoroutine(MoreDashCoroutine());
+    }
+    private IEnumerator MoreDashCoroutine()
+    {
+        _moreDash = true;
+        yield return new WaitForSeconds(_moreDashCooltime);
+        _moreDash = false;
     }
 }
