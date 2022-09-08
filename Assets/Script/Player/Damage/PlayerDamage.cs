@@ -38,10 +38,10 @@ public class PlayerDamage : AgentDamage
         TimeController.instance.ModifyTimeScale(0f, 0f, () =>
         {
             Save.Instance.Saveable = false;
-            CameraManager.instance.CameraShake(3f, 40f, 0.03f, true);
             TimeController.instance.ModifyTimeScale(1f, 0.05f, () =>
             {
                 Save.Instance.Saveable = true;
+                CameraManager.instance.CameraShake(5f, 40f, 0.03f, true);
                 RealDie();
                 });
         });
