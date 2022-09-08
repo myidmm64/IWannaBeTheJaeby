@@ -35,6 +35,20 @@ public class PlayerDamage : AgentDamage
     public override void Die()
     {
         Debug.Log("ав╬З╬Н©Д");
+        TimeController.instance.ModifyTimeScale(0f, 0f, () =>
+        {
+            Save.Instance.Saveable = false;
+            CameraManager.instance.CameraShake(3f, 40f, 0.03f, true);
+            TimeController.instance.ModifyTimeScale(1f, 0.05f, () =>
+            {
+                Save.Instance.Saveable = true;
+                RealDie();
+                });
+        });
+    }
+
+    private void RealDie()
+    {
         Save.Instance.DeathCount++;
         DieVoice();
         OnDie?.Invoke();
