@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJump : AgentJump
+public class PlayerNormalJump : AgentJump
 {
     [SerializeField]
     private float _maxAcceleration = 1f; // 최대로 높이 뛰기

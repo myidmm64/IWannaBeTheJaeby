@@ -21,7 +21,7 @@ public class SwallowMove : AgentMovement
     [SerializeField]
     private GameObject _player = null;
     private PlayerAttack _playerAttack = null;
-    private PlayerJump _playerJumps = null;
+    private PlayerNormalJump _playerJumps = null;
     private PlayerMovement _playerMove = null;
     private Rigidbody2D _playerRigid = null;
     [field: SerializeField]
@@ -41,7 +41,7 @@ public class SwallowMove : AgentMovement
 
         _playerRigid = _player.GetComponent<Rigidbody2D>();
         _playerAttack = _player.GetComponent<PlayerAttack>();
-        _playerJumps = _player.GetComponent<PlayerJump>();
+        _playerJumps = _player.GetComponent<PlayerNormalJump>();
         _playerMove = _player.GetComponent<PlayerMovement>();
         _rigid = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();

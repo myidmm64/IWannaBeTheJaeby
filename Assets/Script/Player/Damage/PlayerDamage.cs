@@ -8,7 +8,7 @@ public class PlayerDamage : AgentDamage
 {
     [field:SerializeField]
     private UnityEvent OnDie = null;
-    private PlayerJump _playerJump = null;
+    private PlayerNormalJump _playerJump = null;
     [SerializeField]
     private TextMeshPro _playerVoice = null;
 
@@ -17,7 +17,7 @@ public class PlayerDamage : AgentDamage
 
     protected override void Awake()
     {
-        _playerJump = transform.parent.GetComponent<PlayerJump>();
+        _playerJump = transform.parent.GetComponent<PlayerNormalJump>();
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

@@ -39,12 +39,12 @@ public class AgentMovement : MonoBehaviour
     private Coroutine _dashCoroutine = null;
 
 
-    PlayerJump _playerJump = null;
+    PlayerNormalJump _playerJump = null;
 
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
-        _playerJump ??= GetComponent<PlayerJump>();
+        _playerJump ??= GetComponent<PlayerNormalJump>();
     }
 
     protected virtual void FixedUpdate()
