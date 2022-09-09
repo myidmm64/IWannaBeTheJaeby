@@ -41,14 +41,31 @@ public class PlayerDieSound : MonoBehaviour
 
         _text[0].enabled = true;
         _text[1].enabled = true;
-
-        _text[0].transform.DOShakePosition(0.1f, 10f).SetLoops(-1, LoopType.Yoyo);
-
+        _text[0].transform.localScale = Vector3.one;
+        _text[1].transform.localScale = Vector3.one;
+        _text[0].transform.DOShakePosition(0.1f, 7f, 5).SetLoops(-1, LoopType.Yoyo);
         _text[1].transform.DOShakePosition(0.1f, 7f, 5).SetLoops(-1, LoopType.Yoyo);
+        StartCoroutine(TextDance());
+    }
+
+    private IEnumerator TextDance()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _text[0].transform.DOScale(1.2f, 0.45f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            _text[0].transform.DOScale(1f, 0.1f).SetEase(Ease.Linear);
+        }).SetLoops(-1, LoopType.Restart);
+
+        _text[1].transform.DOScale(1.2f, 0.45f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            _text[1].transform.DOScale(1f, 0.1f).SetEase(Ease.Linear);
+        }).SetLoops(-1, LoopType.Restart);
     }
 
     public void StopDieSound()
     {
+        StopAllCoroutines();
+
         _audioSource.Stop();
         _mixer.SetFloat("BGM", _volume);
 

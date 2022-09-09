@@ -1508,6 +1508,17 @@ TilemapCollider2D:
   m_CorrespondingSourceObject: {fileID: 3042638984753639956, guid: 9485be7455ecc384385b39250b3f4c90, type: 3}
   m_PrefabInstance: {fileID: 3042638984741672222}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &951528730 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 562482358, guid: a019f280f599879438dbe939f58efaf0, type: 3}
+  m_PrefabInstance: {fileID: 4845707785536676613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2982cc9336b34db4f92d0d793cbf4661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!19719996 &967289270 stripped
 TilemapCollider2D:
   m_CorrespondingSourceObject: {fileID: 3042638985708548366, guid: 9485be7455ecc384385b39250b3f4c90, type: 3}
@@ -2730,7 +2741,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3042374019906784231, guid: 051aa9b15574d864a833aed81d4b82a0, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 2c38e85077afa034395d2c87fd9e4b08, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1244c3019598ebb4d9cf771137abfd62, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4036,11 +4047,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2388274318599229237, guid: da7f913ef2485414dabbccb8fcdb42df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.83
+      value: -6.55
       objectReference: {fileID: 0}
     - target: {fileID: 2388274318599229237, guid: da7f913ef2485414dabbccb8fcdb42df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.67
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 2388274318599229237, guid: da7f913ef2485414dabbccb8fcdb42df, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4085,11 +4096,11 @@ PrefabInstance:
     - target: {fileID: 2388274318599229238, guid: da7f913ef2485414dabbccb8fcdb42df, type: 3}
       propertyPath: _saveMap
       value: 
-      objectReference: {fileID: 4845707785536676614}
+      objectReference: {fileID: 951528730}
     - target: {fileID: 2388274318599229238, guid: da7f913ef2485414dabbccb8fcdb42df, type: 3}
       propertyPath: _currentMap
       value: 
-      objectReference: {fileID: 4845707785536676614}
+      objectReference: {fileID: 951528730}
     - target: {fileID: 2388274318599229238, guid: da7f913ef2485414dabbccb8fcdb42df, type: 3}
       propertyPath: _warringText
       value: 
@@ -6331,17 +6342,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a019f280f599879438dbe939f58efaf0, type: 3}
---- !u!114 &4845707785536676614 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2036701356, guid: a019f280f599879438dbe939f58efaf0, type: 3}
-  m_PrefabInstance: {fileID: 4845707785536676613}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2982cc9336b34db4f92d0d793cbf4661, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6218172989182161324
 PrefabInstance:
   m_ObjectHideFlags: 0
