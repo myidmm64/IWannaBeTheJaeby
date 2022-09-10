@@ -170,7 +170,14 @@ public class Save : MonoBehaviour
     public void RevertSave()
     {
         if (_lastSave.map == null) return;
-        SavePointSet(_lastSave.map);
+        Map tempMap = _saveMap;
+        Vector3 tempPos = _currentSavePoint.position;
+
+        _saveMap = _lastSave.map;
+        _currentSavePoint.position = _lastSave.position;
+
+        _lastSave.map = tempMap;
+        _lastSave.position = tempPos;
         Restart();
     }
 
