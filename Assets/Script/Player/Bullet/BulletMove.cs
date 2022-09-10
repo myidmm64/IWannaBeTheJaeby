@@ -61,13 +61,20 @@ public class BulletMove : PoolableMono
             {
                 return;
             }
-            if (collision.CompareTag("Swallow") == true || collision.CompareTag("Interaction") == true || collision.CompareTag("PlayerAtk") == true)
+            else if (collision.CompareTag("Swallow") == true || collision.CompareTag("Interaction") == true || collision.CompareTag("PlayerAtk") == true)
             {
                 return;
             }
-
             else
             {
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.right, 0.1f);
+                if (hit.collider != null)
+                {
+                    WaitAndPushPoolable p = PoolManager.Instance.Pop("BulletPr") as WaitAndPushPoolable;
+                    bool filped = transform.right.x < 0; // true¸é ¿ÞÂÊ
+                    Quaternion rot = filped ? Quaternion.identity : Quaternion.AngleAxis(180f, Vector3.forward);
+                    p.transform.SetPositionAndRotation(hit.point, rot);
+                }
                 PoolManager.Instance.Push(this);
             }
         }
@@ -82,6 +89,7 @@ public class BulletMove : PoolableMono
 
     public override void PopReset()
     {
+        transform.position = Vector3.zero;
     }
 
     protected virtual void ChildReset()

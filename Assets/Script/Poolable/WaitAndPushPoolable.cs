@@ -8,6 +8,7 @@ public class WaitAndPushPoolable : PoolableMono
     {
         StopAllCoroutines();
         transform.position = Vector3.zero;
+        transform.rotation = Quaternion.identity;
     }
 
     public void Push(float time)
@@ -22,6 +23,11 @@ public class WaitAndPushPoolable : PoolableMono
     private IEnumerator WaitCoroutine(float time)
     {
         yield return new WaitForSeconds(time);
+        PoolManager.Instance.Push(this);
+    }
+
+    public void PushImm()
+    {
         PoolManager.Instance.Push(this);
     }
 }

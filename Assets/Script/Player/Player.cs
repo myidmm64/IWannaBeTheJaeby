@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     [field: SerializeField]
     private UnityEvent OnSaveButton = null;
+    [field: SerializeField]
+    private UnityEvent OnRevertSaveButton = null;
 
 
     private void Update()
@@ -14,6 +16,10 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R))
         {
             OnSaveButton?.Invoke();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            OnRevertSaveButton?.Invoke();
         }
     }
 }

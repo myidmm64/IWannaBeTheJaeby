@@ -27,7 +27,9 @@ public class SavePoint : MonoBehaviour
         {
             Debug.Log("ºº¿Ã∫Í");
             _animator.SetTrigger("Save");
-            StartCoroutine(SaveCoroutine());    
+            StartCoroutine(SaveCoroutine());
+            PaticleObj p = PoolManager.Instance.Pop("SaveParticle") as PaticleObj;
+            p.transform.position = transform.position;
             Save.Instance.SavePointSet(_saveMap);
         }
     }

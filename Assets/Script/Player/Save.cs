@@ -63,6 +63,8 @@ public class Save : MonoBehaviour
         set => _deathCount = value;
     }
 
+    private SaveDatas _lastSave;
+
     private void Awake()
     {
         _instance = this;
@@ -97,8 +99,10 @@ public class Save : MonoBehaviour
 
     public void SavePointSet(Map saveMap)
     {
-        _saveMap = saveMap;
+        _lastSave.map = _saveMap;
+        _lastSave.position = _currentSavePoint.position;
 
+        _saveMap = saveMap;
         _currentSavePoint.position = _player.transform.position;
 
         OnSave?.Invoke();
@@ -163,6 +167,13 @@ public class Save : MonoBehaviour
             CameraManager.instance.CompletePrevFeedBack();
     }
 
+    public void RevertSave()
+    {
+        if (_lastSave.map == null) return;
+        SavePointSet(_lastSave.map);
+        Restart();
+    }
+
 
     [SerializeField]
     private WarringText _warringText = null;
@@ -171,4 +182,10 @@ public class Save : MonoBehaviour
     {
         _warringText.Warring(text);
     }
+}
+
+public struct SaveDatas
+{
+    public Map map;
+    public Vector3 position;
 }

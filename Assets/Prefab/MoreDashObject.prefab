@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _genTime: 1.5
+  _effectColor: {r: 0, g: 0.7264151, b: 0.0322852, a: 1}
 --- !u!212 &4523328889564653507
 SpriteRenderer:
   m_ObjectHideFlags: 0

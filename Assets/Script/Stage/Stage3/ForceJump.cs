@@ -10,6 +10,7 @@ public class ForceJump : MoreJump
 
     protected override void DoSome(Collider2D col)
     {
+        base.DoSome(col);
         col.transform.parent.GetComponent<AgentJump>().ForceJump(_power, Vector3.up, 2);
     }
 }

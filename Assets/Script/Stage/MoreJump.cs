@@ -7,6 +7,8 @@ public class MoreJump : MonoBehaviour
 {
     [SerializeField]
     private float _genTime = 1.5f;
+    [SerializeField]
+    private Color _effectColor = Color.white;
     private SpriteRenderer _spriteRenderer = null;
     private Collider2D _col = null;
 
@@ -36,7 +38,9 @@ public class MoreJump : MonoBehaviour
 
     protected virtual void DoSome(Collider2D col)
     {
-
+        PaticleObj p = PoolManager.Instance.Pop("ObjectParticle") as PaticleObj;
+        p.SetColor(_effectColor);
+        p.transform.position = transform.position;
     }
 
     private void OnDisable()

@@ -112,6 +112,11 @@ public class AgentJump : MonoBehaviour
         {
             jumpPow = _jumpPower * _secondJumpPower;
         }
+        if (_currentJumpCnt > 0)
+        {
+            PaticleObj p = PoolManager.Instance.Pop("JumpParticle") as PaticleObj;
+            p.transform.position = transform.position + Vector3.up * 0.1f;
+        }
 
         OnJumpPress?.Invoke();
 
