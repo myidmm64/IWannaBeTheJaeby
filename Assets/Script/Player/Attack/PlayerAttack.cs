@@ -20,6 +20,16 @@ public class PlayerAttack : AgentMeleeAttack
     [SerializeField]
     private bool _filp = false;
 
+    KeySetting _keySetting = null;
+
+    private void Start()
+    {
+        if (_keySetting == null)
+        {
+            _keySetting = KeyManager.Instance.keySetting;
+        }
+    }
+
     void Update()
     {
 
@@ -33,7 +43,7 @@ public class PlayerAttack : AgentMeleeAttack
 
         if (_isAutoShoot)
         {
-            if (Input.GetKey(KeyCode.X))
+            if (Input.GetKey(_keySetting.Keys[KeyAction.ATTACK]))
             {
                 _timer += Time.deltaTime;
 
@@ -50,7 +60,7 @@ public class PlayerAttack : AgentMeleeAttack
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(_keySetting.Keys[KeyAction.ATTACK]))
             {
                 Attack();
 

@@ -17,17 +17,26 @@ public class PlayerNormalJump : AgentJump
     [SerializeField]
     private float _acceleration = 0f;
 
+    KeySetting _keySetting = null;
+
+    private void Start()
+    {
+        if (_keySetting == null)
+        {
+            _keySetting = KeyManager.Instance.keySetting;
+        }
+    }
 
     protected override void Update()
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(_keySetting.Keys[KeyAction.JUMP]))
         {
             Jump(1f + _acceleration);
             JumpRenewal();
         }
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKey(_keySetting.Keys[KeyAction.JUMP]))
         {
             _curTime += Time.deltaTime;
             if (_curTime < _timer)
@@ -39,7 +48,7 @@ public class PlayerNormalJump : AgentJump
             if (_acceleration < _maxAcceleration)
                 JumpProportion(_accelerationPower);
         }
-        if (Input.GetKeyUp(KeyCode.C))
+        if (Input.GetKeyUp(_keySetting.Keys[KeyAction.JUMP]))
         {
             _acceleration = 0f;
             _curTime = 0f;

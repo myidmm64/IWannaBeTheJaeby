@@ -13,15 +13,46 @@ public class PlayerMovement : AgentMovement
 
     private bool _filp = false;
 
+    KeySetting _keySetting = null;
+
+    private void Start()
+    {
+        if(_keySetting == null)
+        {
+            _keySetting = KeyManager.Instance.keySetting;
+        }
+    }
+
     protected override void Update()
     {
         base.Update();
 
-        _moveDir.x = Input.GetAxisRaw("Horizontal");
+        if (Input.GetKey(_keySetting.Keys[KeyAction.RIGHT]))
+        {
+            _moveDir.x = 1f;
+            if (Input.GetKey(_keySetting.Keys[KeyAction.LEFT]))
+            {
+                _moveDir.x = 0f;
+            }
+        }
+        else if (Input.GetKey(_keySetting.Keys[KeyAction.LEFT]))
+        {
+            _moveDir.x = -1f;
+            if (Input.GetKey(_keySetting.Keys[KeyAction.RIGHT]))
+            {
+                _moveDir.x = 0f;
+            }
+        }
+
+        else
+        {
+            _moveDir.x = 0f;
+        }
+
         _moveDir.y = _rigid.velocity.y;
 
 
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(Input.GetKeyDown(_keySetting.Keys[KeyAction.DASH]))
         {
             if(_dashable || _moreDash)
             {

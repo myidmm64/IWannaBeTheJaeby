@@ -12,7 +12,7 @@ public enum KeyAction
     ATTACK,
     DASH,
     RESTART,
-    SAVEREVERT,
+    SAVE_REVERT,
     SIZE
 }
 
@@ -37,6 +37,18 @@ public struct KeyData
 public class KeyManager : MonoBehaviour
 {
     private KeySetting _keySetting = new KeySetting();
+    public KeySetting keySetting
+    {
+        get => _keySetting;
+    }
+    private static KeyManager _instance = null;
+    public static KeyManager Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
 
     KeyCode[] defaultKeys = new KeyCode[]
     {
@@ -51,6 +63,7 @@ public class KeyManager : MonoBehaviour
 
     private void Awake()
     {
+        _instance = this;
         LoadKeyData();
     }
 
