@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
+[System.Serializable]
 public enum KeyAction
 {
     LEFT,
@@ -9,18 +11,33 @@ public enum KeyAction
     JUMP,
     ATTACK,
     DASH,
-    SAVE,
+    RESTART,
     SAVEREVERT,
     SIZE
 }
 
-public static class KeySetting
+[System.Serializable]
+public class KeySetting
 {
-    public static Dictionary<KeyAction, KeyCode> keys = new Dictionary<KeyAction, KeyCode>();
+    private Dictionary<KeyAction, KeyCode> _keys = new Dictionary<KeyAction, KeyCode>();
+    public Dictionary<KeyAction, KeyCode> Keys
+    {
+        get => _keys;
+        set => _keys = value;
+    }
+}
+
+[System.Serializable]
+public struct KeyData
+{
+    public KeyAction key;
+    public KeyCode value;
 }
 
 public class KeyManager : MonoBehaviour
 {
+    private KeySetting _keySetting = new KeySetting();
+
     KeyCode[] defaultKeys = new KeyCode[]
     {
         KeyCode.LeftArrow,
@@ -31,11 +48,35 @@ public class KeyManager : MonoBehaviour
         KeyCode.R,
         KeyCode.P,
     };
+
     private void Awake()
     {
-        for(int i = 0; i < (int)KeyAction.SIZE; i++)
+        LoadKeyData();
+    }
+
+    private void LoadKeyData()
+    {
+        string path = Application.dataPath + "/Save/KeyData.json";
+        KeyDataClass keyData = new KeyDataClass();
+        keyData = JsonUtility.FromJson<KeyDataClass>(File.ReadAllText(path));
+        if(keyData.KeyDatas.Count != (int)KeyAction.SIZE)
         {
-            KeySetting.keys.Add((KeyAction)i, defaultKeys[i]);
+            for(int i = 0; i<(int)KeyAction.SIZE; i++)
+            {
+                _keySetting.Keys.Add((KeyAction)i, defaultKeys[i]);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < keyData.KeyDatas.Count; i++)
+            {
+                _keySetting.Keys.Add(keyData.KeyDatas[i].key, keyData.KeyDatas[i].value);
+            }
+        }
+
+        for (int i = 0; i < (int)KeyAction.SIZE; i++)
+        {
+            Debug.Log(_keySetting.Keys[(KeyAction)i].ToString());
         }
     }
 }
