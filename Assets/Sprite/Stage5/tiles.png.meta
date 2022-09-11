@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -5805,14 +5805,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tiles_25: -1306558648
+      tiles_145: -1644810236
       tiles_66: 125869101
       tiles_74: 1860837306
+      tiles_30: -637842170
       tiles_33: 1459071300
       tiles_94: 2111974659
       tiles_112: 192723897
       tiles_212: -2085394348
-      tiles_223: -660159869
+      tiles_256: -2027797021
       tiles_67: 735382479
       tiles_81: -480510220
       tiles_183: -561569679
@@ -5826,10 +5827,9 @@ TextureImporter:
       tiles_91: -2107646812
       tiles_211: 956634840
       tiles_46: 1419311730
-      tiles_256: -2027797021
+      tiles_269: 1677240791
       tiles_65: -334728095
       tiles_43: 775444485
-      tiles_269: 1677240791
       tiles_16: 1383301802
       tiles_4: -854686948
       tiles_87: -1834991841
@@ -5943,23 +5943,23 @@ TextureImporter:
       tiles_198: 1180576106
       tiles_122: 1170209680
       tiles_19: 1964731486
-      tiles_128: -316108915
       tiles_203: 1715734552
-      tiles_173: 831342662
+      tiles_128: -316108915
       tiles_154: -137579666
       tiles_199: 56532464
+      tiles_173: 831342662
       tiles_41: -1677204895
       tiles_35: 581504758
+      tiles_241: -1563960822
       tiles_178: 371356122
       tiles_191: 888189694
-      tiles_241: -1563960822
       tiles_110: -838585691
-      tiles_148: 696887979
       tiles_98: -1734793879
       tiles_262: -1440707874
       tiles_21: -1068061734
       tiles_52: -1328942702
       tiles_184: -1745342650
+      tiles_148: 696887979
       tiles_8: -657298012
       tiles_57: 1430568378
       tiles_92: -1494564487
@@ -6063,19 +6063,19 @@ TextureImporter:
       tiles_31: 475899375
       tiles_222: -552037361
       tiles_15: -1236511848
-      tiles_103: -957318296
+      tiles_126: -1539552479
+      tiles_164: -1543695326
       tiles_111: 210448627
       tiles_58: 1064410409
       tiles_37: -1001224656
-      tiles_10: 101529860
+      tiles_103: -957318296
       tiles_221: -1812628252
-      tiles_126: -1539552479
-      tiles_108: 941450276
+      tiles_10: 101529860
       tiles_175: -289020754
+      tiles_223: -660159869
+      tiles_108: 941450276
+      tiles_25: -1306558648
       tiles_140: -1423264819
-      tiles_164: -1543695326
-      tiles_145: -1644810236
-      tiles_30: -637842170
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
