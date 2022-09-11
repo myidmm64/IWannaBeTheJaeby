@@ -59,6 +59,7 @@ public class DifficultyManager : MonoBehaviour
         PlayerPrefs.DeleteKey("SAVE_POINT_Y");
         PlayerPrefs.DeleteKey("SAVE_PLAYTIME");
         PlayerPrefs.DeleteKey("SAVE_DEATHCOUNT");
+        PlayerPrefs.DeleteKey("SAVE_ACHIEVEMENT");
     }
 
     [ContextMenu("모든 데이터 초기화")]

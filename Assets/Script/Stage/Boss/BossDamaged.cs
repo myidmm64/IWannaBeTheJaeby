@@ -42,6 +42,8 @@ public class BossDamaged : MonoBehaviour
     [field: SerializeField]
     private UnityEvent OnDie = null;
     [field: SerializeField]
+    private UnityEvent OnDieEffectEnd = null;
+    [field: SerializeField]
     private UnityEvent<GameObject> DieEnd = null;
     [SerializeField]
     private AudioClip _damageClip = null;
@@ -119,6 +121,8 @@ public class BossDamaged : MonoBehaviour
             Summon();
         }
         GetComponent<SpriteRenderer>().enabled = false;
+
+        OnDieEffectEnd?.Invoke();
 
         yield return new WaitForSeconds(2f);
 
