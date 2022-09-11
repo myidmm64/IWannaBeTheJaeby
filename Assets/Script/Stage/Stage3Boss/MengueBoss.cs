@@ -263,6 +263,7 @@ public class MengueBoss : Boss
 
         if (_originPos != Vector3.zero)
         {
+            
             transform.position = _originPos;
             transform.rotation = Quaternion.identity;
             _sword.transform.position = _swordTrms[0].transform.position;

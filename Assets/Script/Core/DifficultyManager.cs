@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -60,12 +61,16 @@ public class DifficultyManager : MonoBehaviour
         PlayerPrefs.DeleteKey("SAVE_PLAYTIME");
         PlayerPrefs.DeleteKey("SAVE_DEATHCOUNT");
         PlayerPrefs.DeleteKey("SAVE_ACHIEVEMENT");
+        string path = Application.dataPath + "/Save/AchieveSave.json";
+        File.WriteAllText(path, "");
     }
 
     [ContextMenu("모든 데이터 초기화")]
     public void DeleteAllData()
     {
         PlayerPrefs.DeleteAll();
+        string path = Application.dataPath + "/Save/AchieveSave.json";
+        File.WriteAllText(path, "");
         OnResetGame?.Invoke();
         StartCoroutine(GoSplash());
     }
