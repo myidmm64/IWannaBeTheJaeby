@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class PencilBoss : Boss
 {
+    [SerializeField]
+    private Achievements _achievements = null;
 
     [SerializeField]
     private Transform _movePos;
@@ -119,5 +121,9 @@ public class PencilBoss : Boss
         }
 
         Pattern1();
+    }
+    public void AchievementSet()
+    {
+        _achievements.Popup("¹®¹æ±¸ÀÇ ´Ü°ñ¼Õ´Ô", "¿¬ÇÊ±ðÀÌ°¡ ²ÇÂ¥!!", 2);
     }
 }

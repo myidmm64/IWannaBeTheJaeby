@@ -362,6 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _endPosTrm: {fileID: 3899538732831377395}
+  _achiClip: {fileID: 8300000, guid: 59f3f13402494f347b3fc1b3ad0200d7, type: 3}
 --- !u!1 &3899538734465259464
 GameObject:
   m_ObjectHideFlags: 0

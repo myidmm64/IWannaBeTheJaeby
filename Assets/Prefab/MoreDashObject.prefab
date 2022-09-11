@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _genTime: 1.5
   _effectColor: {r: 0, g: 0.7264151, b: 0.0322852, a: 1}
+  _moreClip: {fileID: 8300000, guid: 812124bb0bc27a74fbe1567eb7479999, type: 3}
 --- !u!212 &4523328889564653507
 SpriteRenderer:
   m_ObjectHideFlags: 0

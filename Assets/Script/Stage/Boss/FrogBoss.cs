@@ -6,6 +6,8 @@ using DG.Tweening;
 public class FrogBoss : Boss
 {
     [SerializeField]
+    private Achievements _achievements = null;
+    [SerializeField]
     private Transform _startPos = null;
     [SerializeField]
     private Transform _mainPos = null;
@@ -404,4 +406,8 @@ public class FrogBoss : Boss
         _radarPrefab.transform.position = target.transform.position + Vector3.up * 0.5f;
     }
 
+    public void AchievementSet()
+    {
+        _achievements.Popup("개구리의 왕이 되다", "더이상 밟히지 않을 것 같다", 1);
+    }
 }

@@ -126,3 +126,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _genTime: 1.5
   _effectColor: {r: 0.01027944, g: 0.37078306, b: 0.7264151, a: 1}
+  _moreClip: {fileID: 8300000, guid: 812124bb0bc27a74fbe1567eb7479999, type: 3}

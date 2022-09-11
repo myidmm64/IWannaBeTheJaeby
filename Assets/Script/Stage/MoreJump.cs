@@ -9,6 +9,8 @@ public class MoreJump : MonoBehaviour
     private float _genTime = 1.5f;
     [SerializeField]
     private Color _effectColor = Color.white;
+    [SerializeField]
+    private AudioClip _moreClip = null;
     private SpriteRenderer _spriteRenderer = null;
     private Collider2D _col = null;
 
@@ -41,6 +43,12 @@ public class MoreJump : MonoBehaviour
         PaticleObj p = PoolManager.Instance.Pop("ObjectParticle") as PaticleObj;
         p.SetColor(_effectColor);
         p.transform.position = transform.position;
+
+        if (_moreClip != null)
+        {
+            AudioPoolable a = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
+            a.Play(_moreClip);
+        }
     }
 
     private void OnDisable()

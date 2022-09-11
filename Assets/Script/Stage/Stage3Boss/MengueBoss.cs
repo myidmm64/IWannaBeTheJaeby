@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class MengueBoss : Boss
 {
+    [SerializeField]
+    private Achievements _achievements = null;
     private SpriteRenderer _spriteRenderer = null;
     private Collider2D _col = null;
     private BossDamaged _damaged = null;
@@ -321,5 +323,9 @@ public class MengueBoss : Boss
             _interactionObj[i].GetComponent<MoveInteraction>().TargetsReset();
             _interactionObj[i].SetActive(false);
         }
+    }
+    public void AchievementSet()
+    {
+        _achievements.Popup("100만원을 모으다", "이걸로 치킨이나 먹을까?", 3);
     }
 }
