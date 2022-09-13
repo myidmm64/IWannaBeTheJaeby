@@ -24,7 +24,7 @@ public class BlinkObject : MonoBehaviour
             _seq.Kill();
         _spriteRenderer.color = _startColor;
         _seq = DOTween.Sequence();
-        _seq.Append(_spriteRenderer.DOFade(1f, _fadeInDuration).SetEase(Ease.Linear));
+        _seq.Append(_spriteRenderer.DOFade(0.6f, _fadeInDuration).SetEase(Ease.Linear));
         _seq.Append(_spriteRenderer.DOFade(0f, _fadeOutDuration).SetEase(Ease.Linear)).SetLoops(-1);
     }
 
