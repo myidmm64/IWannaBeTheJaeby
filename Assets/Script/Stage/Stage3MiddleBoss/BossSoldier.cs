@@ -10,34 +10,33 @@ public class BossSoldier : Boss
     private Transform _enemysTrm = null;
     [SerializeField]
     private GameObject _firstGroundTile = null;
+    private SoldierUIManager _soldierUIManager = null;
 
     private Sequence _seq = null;
 
     private void OnEnable()
     {
+        if( _soldierUIManager == null)
+            _soldierUIManager = GetComponent<SoldierUIManager>();
         BossRoutine();
         _firstGroundTile.SetActive(true);
     }
 
     private void BossRoutine()
     {
-        StartCoroutine(FirstCoroutine());
-    }
-
-    private IEnumerator FirstCoroutine()
-    {
-        yield return new WaitForSeconds(2f);
-        for (int i = 0; i < _enemysTrm.childCount; i++)
-        {
-            _enemysTrm.GetChild(i).Find("AgentSprite").GetComponent<EnemyDamage>().Damaged();
-        }
-        _firstGroundTile.SetActive(false);
         Pattern0();
     }
 
     private void Pattern0()
     {
-
+        _soldierUIManager.SetText("모든 적이", "1초 뒤에", "죽는다", 1f , ()=>
+        {
+            for (int i = 0; i < _enemysTrm.childCount; i++)
+            {
+                _enemysTrm.GetChild(i).Find("AgentSprite").GetComponent<EnemyDamage>().Damaged();
+            }
+            _firstGroundTile.SetActive(false);
+        });
     }
 
     public override void ResetBoss()

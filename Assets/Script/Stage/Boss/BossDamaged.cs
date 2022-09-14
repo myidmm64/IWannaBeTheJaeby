@@ -50,12 +50,10 @@ public class BossDamaged : MonoBehaviour
     [SerializeField]
     private AudioClip _explosionClip = null;
 
-    private SpriteRenderer _originSpriteRenderer = null;
 
     private void Awake()
     {
         SetMaxHP();
-        _originSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void SetMaxHP()
@@ -93,15 +91,12 @@ public class BossDamaged : MonoBehaviour
             HP--;
             AudioPoolable a = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
             a.Play(_damageClip);
-            StartCoroutine(DamageCoroutine());
         }
     }
 
     private IEnumerator DamageCoroutine()
     {
-        _originSpriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.05f);
-        _originSpriteRenderer.color = Color.white;
     }
 
     public void SummonDieEffect()
