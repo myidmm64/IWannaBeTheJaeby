@@ -35,7 +35,7 @@ public class EnemyDamage : AgentDamage
         _spriteRenderer.enabled = false;
         _parentsCol.enabled = false;
     }
-    protected override void Damaged()
+    public override void Damaged()
     {
         base.Damaged();
         AudioPoolable au = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
