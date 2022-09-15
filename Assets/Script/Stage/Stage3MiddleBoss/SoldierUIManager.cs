@@ -29,7 +29,7 @@ public class SoldierUIManager : MonoBehaviour
 
     private Sequence _seq = null;
 
-    public void SetText(string first, string second, string third, float callbackTime , Action Callback)
+    public void SetText(string first, string second, string third, float callbackTime , float resetTime , Action Callback)
     {
         if (_seq != null)
         {
@@ -53,25 +53,36 @@ public class SoldierUIManager : MonoBehaviour
         {
             CameraManager.instance.CameraShake(20f, 4f, 0.2f);
             _secondWordImage.gameObject.SetActive(true);
+            _firstLinkObject.SetActive(true);
+            _firstLinkObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(-400f, _firstLinkObject.GetComponent<RectTransform>().anchoredPosition3D.y);
         });
         _seq.Append(_secondWordImage.transform.DOScale(1f, 0.5f));
+        _seq.Join(_firstLinkObject.GetComponent<RectTransform>().DOAnchorPosX(-200f, 0.5f));
         _seq.AppendCallback(() =>
         {
             CameraManager.instance.CameraShake(20f, 4f, 0.2f);
             _thirdWordImage.gameObject.SetActive(true);
-            _firstLinkObject.SetActive(true);
+            _secondLinkObject.SetActive(true);
+            _secondLinkObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, _secondLinkObject.GetComponent<RectTransform>().anchoredPosition3D.y);
         });
         _seq.Append(_thirdWordImage.transform.DOScale(1f, 0.5f));
+        _seq.Join(_secondLinkObject.GetComponent<RectTransform>().DOAnchorPosX(200f, 0.5f));
         _seq.AppendCallback(() =>
         {
             CameraManager.instance.CameraShake(20f, 4f, 0.2f);
-            _secondLinkObject.SetActive(true);
+            StartCoroutine(ResetCoroutine(resetTime));
         });
         _seq.AppendInterval(callbackTime);
         _seq.AppendCallback(() =>
         {
             Callback?.Invoke();
         });
+    }
+
+    private IEnumerator ResetCoroutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+        ResetUI();
     }
 
     public void ResetUI()

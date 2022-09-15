@@ -29,7 +29,12 @@ public class BossSoldier : Boss
 
     private void Pattern0()
     {
-        _soldierUIManager.SetText("모든 적이", "1초 뒤에", "죽는다", 1f , ()=>
+        StartCoroutine(Pattern0Coroutine());
+    }
+
+    private IEnumerator Pattern0Coroutine()
+    {
+        _soldierUIManager.SetText("모든 적이", "1초 뒤에", "죽는다", 1f, 1f, () =>
         {
             for (int i = 0; i < _enemysTrm.childCount; i++)
             {
@@ -37,6 +42,7 @@ public class BossSoldier : Boss
             }
             _firstGroundTile.SetActive(false);
         });
+        yield return new WaitForSeconds(2f);
     }
 
     public override void ResetBoss()
