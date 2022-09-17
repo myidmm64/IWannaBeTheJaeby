@@ -21,6 +21,14 @@ public class BossDamaged : MonoBehaviour
     [SerializeField]
     private int _lasteffectCount = 10;
 
+    private Color _originColor = Color.white;
+    private Color _changeColor = Color.white;
+    public Color ChangeColor
+    {
+        get => _changeColor;
+        set => _changeColor = value;
+    }
+
     private bool _isDead = false;
     private bool _isGodMode = false;
     public bool IsGodMode { get => _isGodMode; set => _isGodMode = value; }
@@ -32,7 +40,7 @@ public class BossDamaged : MonoBehaviour
         {
             _curHp = value;
             _hpSlider.value = _curHp / (float)_maxHp;
-            if(value <= 0 && _isDead == false)
+            if (value <= 0 && _isDead == false)
             {
                 _isDead = true;
                 OnDie?.Invoke();
@@ -50,10 +58,18 @@ public class BossDamaged : MonoBehaviour
     [SerializeField]
     private AudioClip _explosionClip = null;
 
+    private SpriteRenderer _damageSprite = null;
 
     private void Awake()
     {
         SetMaxHP();
+    }
+
+    protected virtual void Start()
+    {
+        _damageSprite = GetComponent<SpriteRenderer>();
+        _originColor = _damageSprite.color;
+        _changeColor = _originColor;
     }
 
     public void SetMaxHP()
@@ -84,19 +100,25 @@ public class BossDamaged : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("PlayerAtk"))
+        if (collision.CompareTag("PlayerAtk"))
         {
             if (_isGodMode) return;
 
             HP--;
             AudioPoolable a = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
             a.Play(_damageClip);
+
+            if (HP <= 1)
+                return;
+            StartCoroutine(DamageCoroutine());
         }
     }
 
     private IEnumerator DamageCoroutine()
     {
-        yield return new WaitForSeconds(0.05f);
+        _damageSprite.color = Color.red;    
+        yield return new WaitForSeconds(0.03f);
+        _damageSprite.color = _changeColor;
     }
 
     public void SummonDieEffect()
@@ -115,7 +137,7 @@ public class BossDamaged : MonoBehaviour
         Summon();
         yield return new WaitForSeconds(0.5f);
 
-        for (int i = 0; i<_effectCount; i++)
+        for (int i = 0; i < _effectCount; i++)
         {
             yield return new WaitForSeconds(Random.Range(0.1f, 0.15f));
             Summon();
@@ -148,9 +170,19 @@ public class BossDamaged : MonoBehaviour
         a.Play(_explosionClip);
     }
 
+    private void OnEnable()
+    {
+        if (_damageSprite != null)
+        {
+            _damageSprite.color = _originColor;
+            _changeColor = _originColor;
+        }
+    }
+
     private void OnDisable()
     {
         _isDead = false;
         _isGodMode = false;
+        StopAllCoroutines();
     }
 }

@@ -48,6 +48,8 @@ public class FrogBoss : Boss
     private bool _isFirst = false;
     private Vector3 _originPos = Vector3.zero;
 
+    private BossDamaged _bossDamaged = null;
+
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
@@ -62,6 +64,7 @@ public class FrogBoss : Boss
             _isFirst = true;
             _originPos = _torchObj.transform.position;
         }
+        _bossDamaged = transform.Find("AgentSprite").GetComponent<BossDamaged>();
     }
 
     private enum NextPattern
@@ -187,6 +190,7 @@ public class FrogBoss : Boss
                 case NextPattern.WATER:
                     _baseAnimator.runtimeAnimatorController = _baseFrogController;
                     _spriteRenderer.color = Color.blue;
+                    _bossDamaged.ChangeColor = Color.blue;
                     break;
                 case NextPattern.FLY:
                     _baseAnimator.runtimeAnimatorController = _flyFrogController;
@@ -243,6 +247,7 @@ public class FrogBoss : Boss
         {
             _baseAnimator.runtimeAnimatorController = _baseFrogController;
             _spriteRenderer.color = Color.white;
+            _bossDamaged.ChangeColor = Color.white;
             if (_seq != null)
                 _seq.Kill();
             Pattern1();
@@ -264,6 +269,7 @@ public class FrogBoss : Boss
         {
             _baseAnimator.runtimeAnimatorController = _baseFrogController;
             _spriteRenderer.color = Color.white;
+            _bossDamaged.ChangeColor = Color.white;
             if (_seq != null)
                 _seq.Kill();
             Pattern1();
@@ -298,6 +304,7 @@ public class FrogBoss : Boss
         {
             _baseAnimator.runtimeAnimatorController = _baseFrogController;
             _spriteRenderer.color = Color.white;
+            _bossDamaged.ChangeColor = Color.white;
             if (_seq != null)
                 _seq.Kill();
             Pattern1();
