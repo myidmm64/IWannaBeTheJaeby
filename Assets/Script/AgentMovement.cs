@@ -18,6 +18,11 @@ public class AgentMovement : MonoBehaviour
     private float _minYVelocity = -6f;
 
     protected bool _isStop = false;
+    public bool IsStop
+    {
+        get => _isStop;
+        set => _isStop = value;
+    }
 
     protected Rigidbody2D _rigid = null;
 

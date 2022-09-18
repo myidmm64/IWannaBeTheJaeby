@@ -27,8 +27,9 @@ public class BulletMove : PoolableMono
 
     protected virtual void Start()
     {
-        Vector3 worldToScreen = _cam.ScreenToWorldPoint(new Vector3(Screen.currentResolution.width, Screen.currentResolution.height, 0f));
-        _boundX = new Vector2(worldToScreen.x ,  worldToScreen.x * -1f); // аб©Л
+        //Vector3 worldToScreen = _cam.ScreenToWorldPoint(new Vector3(Screen.currentResolution.width, Screen.currentResolution.height, 0f));
+        Vector3 worldToScreen = new Vector3(9f, 5f);
+        _boundX = new Vector2(worldToScreen.x * - 1f,  worldToScreen.x); // аб©Л
         _boundY = new Vector2(worldToScreen.y, worldToScreen.y * -1f); // ╩Сго
     }
 
@@ -37,7 +38,7 @@ public class BulletMove : PoolableMono
     {
         Move();
 
-        if(transform.position.x < _boundX.y || transform.position.x > _boundX.x || transform.position.y > _boundY.x || transform.position.y < _boundY.y)
+        if(transform.position.x < _boundX.x || transform.position.x > _boundX.y || transform.position.y > _boundY.x || transform.position.y < _boundY.y)
         {
             PoolManager.Instance.Push(this);
         }

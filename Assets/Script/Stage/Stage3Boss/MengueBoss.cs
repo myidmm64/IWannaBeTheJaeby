@@ -37,6 +37,9 @@ public class MengueBoss : Boss
     private Sequence _seq = null;
     private Sequence _animationSeq = null;
 
+    [SerializeField]
+    private AudioClip _shootClip = null;
+
     private bool _isFirst = true;
     private Vector3 _originPos = Vector3.zero;
 
@@ -225,7 +228,8 @@ public class MengueBoss : Boss
             s.transform.SetPositionAndRotation(transform.position, rot);
             s.SetBarrage(5f, new Vector2(0.19f, 0.31f), Vector2.zero, _bulletSprite);
             s.transform.localScale = Vector3.one * 1.2f;
-            
+            AudioPoolable au = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
+            au.Play(_shootClip, 0.6f);
             yield return new WaitForSeconds(0.05f);
         }
 
