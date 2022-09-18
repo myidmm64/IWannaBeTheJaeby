@@ -13,6 +13,8 @@ public class FrogBoss : Boss
     private Transform _mainPos = null;
     [SerializeField]
     private AudioClip _randSmashClip = null;
+    [SerializeField]
+    private AudioClip _iceBreakClip = null;
 
     [SerializeField]
     private Transform[] _jumpPoss = null;
@@ -351,6 +353,8 @@ public class FrogBoss : Boss
         BulletMove waterbim = PoolManager.Instance.Pop("WaterBim") as BulletMove;
         waterbim.transform.SetParent(_bossObjectTrm);
         waterbim.transform.SetPositionAndRotation(transform.position + Vector3.right * 2f, rot);
+        AudioPoolable a = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
+        a.Play(_iceBreakClip);
     }
 
     private void SpawnFireball()

@@ -331,6 +331,6 @@ public class MengueBoss : Boss
     }
     public void AchievementSet()
     {
-        _achievements.Popup("100만원을 모으다", "이걸로 치킨이나 먹을까?", 3);
+        _achievements.Popup("100만원을 모으다", "이걸로 치킨이나 먹을까?", 4);
     }
 }

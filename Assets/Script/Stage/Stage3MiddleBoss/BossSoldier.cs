@@ -8,6 +8,9 @@ using Random = UnityEngine.Random;
 public class BossSoldier : Boss
 {
     [SerializeField]
+    private Achievements _achievements = null;
+
+    [SerializeField]
     private Transform _enemysTrm = null;
     [SerializeField]
     private GameObject _firstGroundTile = null;
@@ -250,5 +253,9 @@ public class BossSoldier : Boss
     {
         ResetBoss();
         transform.position = new Vector3(_originPos.x, 3f);
+    }
+    public void AchievementSet()
+    {
+        _achievements.Popup("단어의 1인자", "'플레이어가','기쁨에','춤춘다'", 4);
     }
 }
