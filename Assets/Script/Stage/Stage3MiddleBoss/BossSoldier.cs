@@ -256,6 +256,6 @@ public class BossSoldier : Boss
     }
     public void AchievementSet()
     {
-        _achievements.Popup("단어의 1인자", "'플레이어가','기쁨에','춤춘다'", 4);
+        _achievements.Popup("단어의 1인자", "'플레이어가','기쁨에','춤춘다'", 3);
     }
 }

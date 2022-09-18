@@ -2591,7 +2591,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -170, y: -52}
+  m_AnchoredPosition: {x: -170, y: -53}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &574188302
@@ -2616,7 +2616,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: '[Backspace key] : back
 
-    [Enter key] : select'
+    [Enter key] : select
+
+    [Arrow Key] : move'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a59e778236c5c540af3b6411195fc70, type: 2}
   m_sharedMaterial: {fileID: 3263684313286165655, guid: 8a59e778236c5c540af3b6411195fc70, type: 2}
