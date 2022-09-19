@@ -36,6 +36,8 @@ public class BossSoldier : Boss
     private Coroutine _jumpCoroutine = null;
     private Coroutine _playerStopCoroutine = null;
 
+    private SpriteRenderer _spriteRenderer = null;
+
     private void Start()
     {
         _originPos = transform.position;
@@ -44,10 +46,13 @@ public class BossSoldier : Boss
 
     private void OnEnable()
     {
+        if (_spriteRenderer == null)
+            _spriteRenderer = transform.Find("AgentSprite").GetComponent<SpriteRenderer>();
         if( _soldierUIManager == null)
             _soldierUIManager = GetComponent<SoldierUIManager>();
         BossRoutine();
         _firstGroundTile.SetActive(true);
+        _spriteRenderer.enabled = true;
     }
 
     private void BossRoutine()
