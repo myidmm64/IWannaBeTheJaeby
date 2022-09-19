@@ -9,6 +9,31 @@ public class RacheBoss : Boss
     private Animator _animator = null;
     private readonly int _attackHash = Animator.StringToHash("Attack");
     private RacheSprite _racheSprite = null;
+    [SerializeField]
+    private List<SpawnBreathPos> _startSpawnBreathPositions = new List<SpawnBreathPos>();
+
+    private float BreathSize
+    {
+        get
+        {
+            if (_racheSprite == null) return 1f;
+            return _racheSprite.BreathSize;
+        }
+        set
+        {
+            if (_racheSprite == null) return;
+            _racheSprite.BreathSize = value;
+        }
+    }
+
+    [System.Serializable]
+    public struct SpawnBreathPos
+    {
+        public Transform trm;
+        public bool flip;
+        public float duration;
+        public float breathSize;
+    }
 
     private void OnEnable()
     {
@@ -27,23 +52,39 @@ public class RacheBoss : Boss
 
     private void Pattern0()
     {
-        StartCoroutine(StartAnimationCoroutine());
-    }
-    private IEnumerator StartAnimationCoroutine()
-    {
-        _animator.SetBool(_attackHash, true);
-        yield return new WaitForSeconds(2f);
-        _animator.SetBool(_attackHash, false);
+        StartCoroutine(SpawnBreathsCoroutine(_startSpawnBreathPositions));
     }
 
     public override void ResetBoss()
     {
         StopAllCoroutines();
         _animator.SetBool(_attackHash, false);
+        DetachBreath();
+        _racheSprite.FlipReset();
+        BreathSize = 1f;
+    }
+
+    private IEnumerator SpawnBreathsCoroutine(List<SpawnBreathPos> breathPositions)
+    {
+        for (int i = 0; i < breathPositions.Count; i++)
+        {
+            transform.position = breathPositions[i].trm.position;
+            _racheSprite.FlipSprite(breathPositions[i].flip);
+            BreathSize = breathPositions[i].breathSize;
+            _animator.SetBool(_attackHash, true);
+            yield return new WaitForSeconds(breathPositions[i].duration);
+            _animator.SetBool(_attackHash, false);
+        }
+    }
+
+    private void DetachBreath()
+    {
+        _racheSprite.DetachBreath();
     }
 
     public void AchievementSet()
     {
         _achievements.Popup("¸¶¿ÕÀ» ¹«Âî¸£´Ù", "ÇØÄ¡¿ü³ª..?", 5);
     }
+
 }

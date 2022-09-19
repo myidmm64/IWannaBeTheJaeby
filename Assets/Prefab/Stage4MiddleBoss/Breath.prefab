@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8696781870545845239}
   - component: {fileID: 8696781870545845237}
   - component: {fileID: 8696781870545845238}
-  - component: {fileID: 273830430244221274}
+  - component: {fileID: 3631175092413814529}
   m_Layer: 0
   m_Name: Breath
   m_TagString: Die
@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2007071881
-  m_SortingLayer: 2
-  m_SortingOrder: 50
+  m_SortingLayerID: 2093570843
+  m_SortingLayer: 3
+  m_SortingOrder: 20
   m_Sprite: {fileID: -811221228, guid: a8d48379e10cfbd48a3c91391aaf985a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,8 +106,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &273830430244221274
-BoxCollider2D:
+--- !u!60 &3631175092413814529
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -119,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.71144027, y: -0.6797082}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.83, y: 0.82}
@@ -129,6 +129,19 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.583692, y: 0.6150187}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.8485421, y: -0.36238676}
+      - {x: -1.0360289, y: -0.38205996}
+      - {x: -1.171778, y: -0.696326}
+      - {x: -1.4180437, y: -0.7201347}
+      - {x: -1.4664876, y: -0.9085278}
+      - {x: -1.357896, y: -0.96735233}
+      - {x: -0.049582392, y: -0.99616414}
+      - {x: 0.0637255, y: -0.8942113}
+      - {x: 0.01808244, y: -0.726231}
+      - {x: -0.16128504, y: -0.6866714}
+      - {x: -0.27173653, y: -0.51051736}
+      - {x: -0.08655387, y: -0.20707256}
+      - {x: -0.25513998, y: -0.086585045}
+      - {x: -0.50398266, y: -0.2529254}

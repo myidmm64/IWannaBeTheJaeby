@@ -9,14 +9,45 @@ public class RacheSprite : MonoBehaviour
     private GameObject _breathObject = null;
     private List<GameObject> _breaths = new List<GameObject>();
 
+    private float _breathSize = 1f;
+    public float BreathSize
+    {
+        get => _breathSize;
+        set => _breathSize = value;
+    }
+
+    private bool _fliped = false;
+
     private void Start()
     {
         _breathTrm = transform.Find("BreathPosition");
     }
 
+    public void FlipSprite(bool flip)
+    {
+        Vector3 localScale = transform.localScale;
+        if (flip)
+        {
+            localScale.x = Mathf.Abs(localScale.x) * -1f;
+        }
+        else
+        {
+            localScale.x = Mathf.Abs(localScale.x);
+        }
+        _fliped = flip;
+        transform.localScale = localScale;
+    }
+
+    public void FlipReset()
+    {
+        transform.localScale = Vector3.one;
+        _fliped = false;
+    }
+
     public void SpawnBreath()
     {
         GameObject breath = Instantiate(_breathObject, _breathTrm);
+        breath.transform.localScale = Vector3.one * BreathSize;
         _breaths.Add(breath);
     }
 
@@ -30,10 +61,5 @@ public class RacheSprite : MonoBehaviour
             }
             _breaths.Clear();
         }
-    }
-
-    private void OnDisable()
-    {
-        DetachBreath();
     }
 }
