@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class RacheBoss : Boss
 {
@@ -11,6 +12,9 @@ public class RacheBoss : Boss
     private RacheSprite _racheSprite = null;
     [SerializeField]
     private List<SpawnBreathPos> _startSpawnBreathPositions = new List<SpawnBreathPos>();
+    private Vector3 _originPos = Vector3.zero;
+
+    private Sequence _seq = null;
 
     private float BreathSize
     {
@@ -31,6 +35,8 @@ public class RacheBoss : Boss
     {
         public Transform trm;
         public bool flip;
+        public float moveDuration;
+        public float enterDuration;
         public float duration;
         public float breathSize;
     }
@@ -41,6 +47,7 @@ public class RacheBoss : Boss
         {
             _animator = transform.Find("AgentSprite").GetComponent<Animator>();
             _racheSprite = _animator.GetComponent<RacheSprite>();
+            _originPos = transform.position;
         }
         BossRoutine();
     }
@@ -52,28 +59,44 @@ public class RacheBoss : Boss
 
     private void Pattern0()
     {
-        StartCoroutine(SpawnBreathsCoroutine(_startSpawnBreathPositions));
+        SpawnBreaths(_startSpawnBreathPositions);
     }
 
     public override void ResetBoss()
     {
         StopAllCoroutines();
+        if (_seq != null)
+            _seq.Kill();
         _animator.SetBool(_attackHash, false);
         DetachBreath();
         _racheSprite.FlipReset();
         BreathSize = 1f;
+        transform.position = _originPos;
     }
 
-    private IEnumerator SpawnBreathsCoroutine(List<SpawnBreathPos> breathPositions)
+    private void SpawnBreaths(List<SpawnBreathPos> breathPositions)
     {
+        _seq = DOTween.Sequence();
         for (int i = 0; i < breathPositions.Count; i++)
         {
-            transform.position = breathPositions[i].trm.position;
-            _racheSprite.FlipSprite(breathPositions[i].flip);
-            BreathSize = breathPositions[i].breathSize;
-            _animator.SetBool(_attackHash, true);
-            yield return new WaitForSeconds(breathPositions[i].duration);
-            _animator.SetBool(_attackHash, false);
+            if (breathPositions[i].trm == null) continue;
+            SpawnBreathPos target = breathPositions[i];
+            _seq.Append(transform.DOMove(target.trm.position, target.moveDuration));
+            _seq.AppendCallback(() =>
+            {
+                _racheSprite.FlipSprite(target.flip);
+            });
+            _seq.AppendInterval(target.enterDuration);
+            _seq.AppendCallback(() =>
+            {
+                BreathSize = target.breathSize;
+                _animator.SetBool(_attackHash, true);
+            });
+            _seq.AppendInterval(target.duration);
+            _seq.AppendCallback(() =>
+            {
+                _animator.SetBool(_attackHash, false);
+            });
         }
     }
 

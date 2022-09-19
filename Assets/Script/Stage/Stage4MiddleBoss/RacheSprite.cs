@@ -18,8 +18,11 @@ public class RacheSprite : MonoBehaviour
 
     private bool _fliped = false;
 
+    private Vector3 _originScale = Vector3.zero;
+
     private void Start()
     {
+        _originScale = transform.localScale;
         _breathTrm = transform.Find("BreathPosition");
     }
 
@@ -40,7 +43,7 @@ public class RacheSprite : MonoBehaviour
 
     public void FlipReset()
     {
-        transform.localScale = Vector3.one;
+        transform.localScale = _originScale;
         _fliped = false;
     }
 
