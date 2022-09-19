@@ -110,4 +110,9 @@ public class RacheBoss : Boss
         _achievements.Popup("¸¶¿ÕÀ» ¹«Âî¸£´Ù", "ÇØÄ¡¿ü³ª..?", 5);
     }
 
+    public void DieReset()
+    {
+        ResetBoss();
+    }
+
 }
