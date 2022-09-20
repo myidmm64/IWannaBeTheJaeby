@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class RacheBoss : Boss
 {
@@ -10,6 +11,16 @@ public class RacheBoss : Boss
     private Animator _animator = null;
     private readonly int _attackHash = Animator.StringToHash("Attack");
     private RacheSprite _racheSprite = null;
+
+    [SerializeField]
+    private GameObject _rightFireWalls = null;
+    [SerializeField]
+    private GameObject _leftFireWalls = null;
+    [SerializeField]
+    private AudioClip _bulletShotClip = null;
+    [SerializeField]
+    private Sprite _bulletSprite = null;
+
     [SerializeField]
     private List<SpawnBreathPos> _startSpawnBreathPositions = new List<SpawnBreathPos>();
     private Vector3 _originPos = Vector3.zero;
@@ -49,6 +60,10 @@ public class RacheBoss : Boss
             _racheSprite = _animator.GetComponent<RacheSprite>();
             _originPos = transform.position;
         }
+
+        _leftFireWalls.transform.position = Vector3.right * -12.5f;
+        _rightFireWalls.transform.position = Vector3.right * 12.5f;
+
         BossRoutine();
     }
 
@@ -59,7 +74,21 @@ public class RacheBoss : Boss
 
     private void Pattern0()
     {
-        SpawnBreaths(_startSpawnBreathPositions);
+        SpawnBreaths(_startSpawnBreathPositions, Pattern1);
+    }
+
+    private void Pattern1()
+    {
+        Debug.Log("¾Æ¾Æ¾Æ¾Ó");
+        if (_seq != null)
+            _seq.Kill();
+        _seq = DOTween.Sequence();
+        _seq.Append(_leftFireWalls.transform.DOMoveX(-7.6f, 1f));
+        _seq.Join(_rightFireWalls.transform.DOMoveX(7.6f, 1f));
+        _seq.AppendCallback(() =>
+        {
+
+        });
     }
 
     public override void ResetBoss()
@@ -74,7 +103,7 @@ public class RacheBoss : Boss
         transform.position = _originPos;
     }
 
-    private void SpawnBreaths(List<SpawnBreathPos> breathPositions)
+    private void SpawnBreaths(List<SpawnBreathPos> breathPositions, Action Callback)
     {
         _seq = DOTween.Sequence();
         for (int i = 0; i < breathPositions.Count; i++)
@@ -97,6 +126,26 @@ public class RacheBoss : Boss
             {
                 _animator.SetBool(_attackHash, false);
             });
+        }
+        _seq.AppendCallback(() =>
+        {
+            Callback?.Invoke();
+        });
+    }
+
+    private void SpawnBulletByCircle(int count)
+    {
+        CameraManager.instance.CameraShake(20f, 4f, 0.2f);
+        AudioPoolable au = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
+        au.Play(_bulletShotClip, 0.8f);
+        for (int i = 0; i <= 360 / count; i++)
+        {
+            Barrage s = PoolManager.Instance.Pop("Barrage") as Barrage;
+            s.transform.SetParent(_bossObjectTrm);
+            Quaternion rot = Quaternion.AngleAxis(i * 10f, Vector3.forward);
+            s.transform.SetPositionAndRotation(transform.position, rot);
+            s.SetBarrage(5f, new Vector2(0.4f, 0.69f), Vector2.zero, _bulletSprite);
+            s.transform.localScale = Vector3.one * 0.7f;
         }
     }
 
