@@ -85,10 +85,24 @@ public class RacheBoss : Boss
         _seq = DOTween.Sequence();
         _seq.Append(_leftFireWalls.transform.DOMoveX(-7.6f, 1f));
         _seq.Join(_rightFireWalls.transform.DOMoveX(7.6f, 1f));
+        _seq.Join(transform.DOMove(_originPos, 0.8f));
         _seq.AppendCallback(() =>
         {
-
+            StartCoroutine(Pattern1BulletCoroutine());
         });
+    }
+
+    private IEnumerator Pattern1BulletCoroutine()
+    {
+        SpawnBulletByCircle(transform.position, 36, 3f);
+        SpawnBulletByCircle(transform.position + new Vector3(-3f, 3f), 36, 3f);
+        SpawnBulletByCircle(transform.position - new Vector3(-3f, -3f), 36, 3f);
+        yield return new WaitForSeconds(1.5f);
+        SpawnBulletByCircle(transform.position, 36, 3.5f);
+        yield return new WaitForSeconds(1f);
+        SpawnBulletByCircle(transform.position + new Vector3(1.5f, 2f), 36, 4f);
+        SpawnBulletByCircle(transform.position + new Vector3(-1.5f, 2f), 36, 4f);
+
     }
 
     public override void ResetBoss()
@@ -133,19 +147,19 @@ public class RacheBoss : Boss
         });
     }
 
-    private void SpawnBulletByCircle(int count)
+    private void SpawnBulletByCircle(Vector3 pos, int count, float speed)
     {
-        CameraManager.instance.CameraShake(20f, 4f, 0.2f);
+        CameraManager.instance.CameraShake(10f, 4f, 0.2f);
         AudioPoolable au = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
-        au.Play(_bulletShotClip, 0.8f);
-        for (int i = 0; i <= 360 / count; i++)
+        au.Play(_bulletShotClip, 0.6f);
+        for (int i = 0; i <= count; i++)
         {
             Barrage s = PoolManager.Instance.Pop("Barrage") as Barrage;
             s.transform.SetParent(_bossObjectTrm);
             Quaternion rot = Quaternion.AngleAxis(i * 10f, Vector3.forward);
-            s.transform.SetPositionAndRotation(transform.position, rot);
-            s.SetBarrage(5f, new Vector2(0.4f, 0.69f), Vector2.zero, _bulletSprite);
-            s.transform.localScale = Vector3.one * 0.7f;
+            s.transform.SetPositionAndRotation(pos, rot);
+            s.SetBarrage(speed, new Vector2(0.49f, 0.49f), Vector2.zero, _bulletSprite);
+            s.transform.localScale = Vector3.one * 0.5f;
         }
     }
 

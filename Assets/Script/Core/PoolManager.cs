@@ -37,6 +37,7 @@ public class PoolManager
     {
         //앞뒤공백만지워주는 trim
         obj.PushReset();
+        obj.transform.SetParent(_trmParent);
         _pools[obj.name.Trim()].Push(obj);
     }
 }
