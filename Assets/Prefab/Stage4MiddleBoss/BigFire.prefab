@@ -147,6 +147,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _isShake: 1
 --- !u!50 &7976436836817438641
 Rigidbody2D:
   serializedVersion: 4
@@ -181,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _smallFire: {fileID: 1156069079670543736, guid: bbde0fe7818ca4a4d97b1b2e97b7276c, type: 3}
+  _isMoveFire: 0
 --- !u!82 &5221319412598511700
 AudioSource:
   m_ObjectHideFlags: 0
@@ -193,7 +195,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -3134111449056885162, guid: 051aa9b15574d864a833aed81d4b82a0, type: 2}
   m_audioClip: {fileID: 8300000, guid: fdf0f49b55b777c44a096288f37ef7df, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
