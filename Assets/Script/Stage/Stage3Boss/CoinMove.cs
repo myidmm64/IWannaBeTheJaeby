@@ -13,6 +13,8 @@ public class CoinMove : AgentJump
     private AudioSource _audioSource = null;
     [field: SerializeField]
     private UnityEvent OnJumpEnd = null;
+    [SerializeField]
+    private bool _isShake = true;
 
     private void FixedUpdate()
     {
@@ -38,7 +40,8 @@ public class CoinMove : AgentJump
                 _audioSource.Play();
             //AudioPoolable audio = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
             //audio.PlayRandomness(_breakClip);
-            CameraManager.instance.CameraShake(4f, 20f, 0.2f);
+            if(_isShake)
+                CameraManager.instance.CameraShake(4f, 20f, 0.2f);
             OnJumpEnd?.Invoke();
         }
     }

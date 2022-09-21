@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BreathPositionController
+  m_Controller: {fileID: 9100000, guid: 37799a9c1ca48e849baededc84cf0145, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 753b1645893a3e4488f96e03d40f0e6b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2978ff42c4fa79f4eba8f455967f1e6a, type: 2}

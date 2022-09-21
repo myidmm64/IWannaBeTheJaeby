@@ -16,28 +16,16 @@ public abstract class Boss : MonoBehaviour
 
     public virtual void DestroyTrash()
     {
-        List<GameObject> destroyList = new List<GameObject>();
-        PoolableMono mono = null;
-
-        int count = _bossObjectTrm.childCount;
-        for (int i = 0; i < count; i++)
+        PoolableMono[] monos = _bossObjectTrm.GetComponentsInChildren<PoolableMono>();
+        for(int i = 0; i<monos.Length; i++)
         {
-            mono = _bossObjectTrm.GetChild(i).GetComponent<PoolableMono>();
-            if (mono != null)
-            {
-                PoolManager.Instance.Push(mono);
-            }
-            else
-            {
-                destroyList.Add(_bossObjectTrm.GetChild(i).gameObject);
-            }
+            PoolManager.Instance.Push(monos[i]);
         }
-
-        if (destroyList.Count > 0)
-            for (int i = 0; i < destroyList.Count; i++)
-            {
-                Destroy(destroyList[i]);
-            }
+        int count = _bossObjectTrm.childCount;
+        for(int i = 0; i< count; i++)
+        {
+            Destroy(_bossObjectTrm.GetChild(i).gameObject);
+        }
     }
 
     public abstract void ResetBoss();

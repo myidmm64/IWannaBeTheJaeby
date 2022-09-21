@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class RacheSprite : MonoBehaviour
 {
     private Transform _breathTrm = null;
     [SerializeField]
     private GameObject _breathObject = null;
+    [SerializeField]
+    private GameObject _bigBreathObject = null;
+    [SerializeField]
+    private GameObject _breathPositionObject = null;
     private List<GameObject> _breaths = new List<GameObject>();
 
     private float _breathSize = 1f;
@@ -54,6 +59,23 @@ public class RacheSprite : MonoBehaviour
         _breaths.Add(breath);
     }
 
+    public void SpawnBigBreath()
+    {
+        GameObject breath = Instantiate(_bigBreathObject, _breathTrm);
+        Transform target = breath.transform.Find("FireWall");
+        Collider2D col = target.GetComponent<Collider2D>();
+        col.enabled = false;
+        target.transform.localScale = new Vector3(0.2f, target.transform.localScale.y, 1f);
+        Sequence seq = DOTween.Sequence();
+        seq.AppendInterval(0.5f);
+        seq.AppendCallback(() =>
+        {
+            col.GetComponent<Collider2D>().enabled = true;
+        });
+        seq.Append(target.transform.DOScaleX(1.5f, 0.2f));
+        _breaths.Add(breath);
+    }
+
     public void DetachBreath()
     {
         if(_breaths.Count > 0)
@@ -64,5 +86,20 @@ public class RacheSprite : MonoBehaviour
             }
             _breaths.Clear();
         }
+    }
+
+    public void EnableBreathPosition()
+    {
+        _breathPositionObject.SetActive(true);
+    }
+
+    public void DisableBreathPosition()
+    {
+        _breathPositionObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        DisableBreathPosition();
     }
 }
