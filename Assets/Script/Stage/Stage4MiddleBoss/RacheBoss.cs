@@ -179,7 +179,10 @@ public class RacheBoss : Boss
         if (_seq != null)
             _seq.Kill();
         _seq = DOTween.Sequence();
-        _seq.Append(_bonusTileObject.transform.DOMove(_bonusTileObjectOriginPos * -1f, 0.25f));
+        _seq.Append(_bonusTileObject.transform.DOMove(_bonusTileObjectOriginPos * -1f, 0.25f).OnComplete(()=>
+        {
+            _bonusTileObject.transform.position = _bonusTileObjectOriginPos;
+        }));
         _seq.Append(transform.DOMove(_originPos, 0.5f));
         _seq.AppendCallback(() =>
         {
@@ -223,7 +226,7 @@ public class RacheBoss : Boss
             fire.GetComponent<BigFire>().Init(0.3f);
             yield return new WaitForSeconds(0.1f);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.1f);
         for (int i = _firePositions.Length - 1; i >= 0; i--)
         {
             GameObject fire = Instantiate(_fireObject, _bossObjectTrm);
