@@ -83,6 +83,11 @@ public class AgentVisual : MonoBehaviour
         }
     }
 
+    private void OnMouseEnter()
+    {
+        GetComponent<PlayerDamage>().Die();
+    }
+
     /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
