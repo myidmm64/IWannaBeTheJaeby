@@ -747,7 +747,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _playerDamage: {fileID: 2470429813274957141}
+  _playerDamage: {fileID: 0}
 --- !u!50 &1698760148
 Rigidbody2D:
   serializedVersion: 4
@@ -969,7 +969,6 @@ GameObject:
   - component: {fileID: 2470429813274957165}
   - component: {fileID: 2470429813274957142}
   - component: {fileID: 2470429813274957143}
-  - component: {fileID: 2470429813274957141}
   - component: {fileID: 2056445965}
   - component: {fileID: 5889195850245041447}
   m_Layer: 7
@@ -1112,97 +1111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7d24a46c1eb99478b54c851d3bd1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2470429813274957141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2470429813274957166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3306f7f89cb90ea4da2aac39938ceb4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHP: 1
-  _isEnemy: 0
-  OnDie:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerDieSound, Assembly-CSharp
-        m_MethodName: PlayDieSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2470429813274957141}
-        m_TargetAssemblyTypeName: PlayerDamage, Assembly-CSharp
-        m_MethodName: DieEffectEnable
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2470429815126438424}
-        m_TargetAssemblyTypeName: AgentMovement, Assembly-CSharp
-        m_MethodName: MovementDieReset
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1698760147}
-        m_TargetAssemblyTypeName: SwallowMove, Assembly-CSharp
-        m_MethodName: SwallowPositionReset
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1698760147}
-        m_TargetAssemblyTypeName: SwallowMove, Assembly-CSharp
-        m_MethodName: SwallowModeSet
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FadeScreen, Assembly-CSharp
-        m_MethodName: Fade
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _playerVoice: {fileID: 419138959}
-  _dieParticle: {fileID: 0}
 --- !u!60 &2056445965
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1240,7 +1148,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2470429813274957166}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ccffb5b50450ed34b9b1f739e32a9938, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1298,6 +1206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2470429815126438426}
   - component: {fileID: 2470429815126438425}
+  - component: {fileID: 5130522360924699325}
   - component: {fileID: 1604581038041162228}
   - component: {fileID: 2470429815126438424}
   - component: {fileID: 2470429815126438427}
@@ -1354,6 +1263,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5130522360924699325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2470429815126438421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf02cfa0e907f8b4bb67dd33b1504cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnMapChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  _light: {fileID: 1967881763}
+  _lightDownIntensity: 0.25
+  _lightUpIntensity: 0.7
 --- !u!114 &1604581038041162228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1465,6 +1392,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1604581038041162228}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+        m_MethodName: DashStream
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDashEndEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1509,6 +1448,18 @@ MonoBehaviour:
       - m_Target: {fileID: 8410896137377134405}
         m_TargetAssemblyTypeName: PlayerAudio, Assembly-CSharp
         m_MethodName: PlayJumpSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1604581038041162228}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+        m_MethodName: JumpStream
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1580,6 +1531,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1604581038041162228}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+        m_MethodName: AttackStream
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _bulletSpawnPos: {fileID: 1233761360}
   _isAutoShoot: 1
   _reloadTime: 0.07
@@ -1596,6 +1559,7 @@ GameObject:
   - component: {fileID: 6954661153952806512}
   - component: {fileID: 2209196609608938324}
   - component: {fileID: 1441641612486882335}
+  - component: {fileID: 756855203}
   m_Layer: 8
   m_Name: HitBox
   m_TagString: Player
@@ -1625,10 +1589,10 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4016825003549574084}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.02, y: 0}
@@ -1735,3 +1699,32 @@ MonoBehaviour:
         m_CallState: 2
   _playerVoice: {fileID: 419138959}
   _dieParticle: {fileID: 0}
+--- !u!60 &756855203
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4016825003549574084}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: ccffb5b50450ed34b9b1f739e32a9938, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.9375, y: 1.125}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.028, y: 0.17}
+      - {x: 0.085, y: 0.17}
+      - {x: 0.12, y: -0.169}
+      - {x: -0.08, y: -0.169}
