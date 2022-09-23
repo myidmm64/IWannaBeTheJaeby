@@ -12,6 +12,8 @@ public class MoreJump : MonoBehaviour
     [SerializeField]
     private AudioClip _moreClip = null;
     private SpriteRenderer _spriteRenderer = null;
+    [SerializeField]
+    private SpriteRenderer _childSprite = null;
     private Collider2D _col = null;
 
     private Vector3 originPos = Vector3.zero;
@@ -56,6 +58,7 @@ public class MoreJump : MonoBehaviour
         if (_spriteRenderer == null || _col == null) return;
 
         _spriteRenderer.enabled = true;
+        _childSprite.enabled = true;
         _col.enabled = true;
         transform.position = originPos;
     }
@@ -63,9 +66,11 @@ public class MoreJump : MonoBehaviour
     private IEnumerator MoreJumpCoroutine()
     {
         _spriteRenderer.enabled = false;
+        _childSprite.enabled = false;
         _col.enabled = false;
         yield return new WaitForSeconds(_genTime);
         _spriteRenderer.enabled = true;
+        _childSprite.enabled = true;
         _col.enabled = true;
     }
 }
