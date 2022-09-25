@@ -24,6 +24,12 @@ public class PencilBoss : Boss
     private Sprite _eraserSprite = null;
     [SerializeField]
     private GameObject _dalgona = null;
+    [SerializeField]
+    private LineRenderer _lineRenderer = null;
+    [SerializeField]
+    private GameObject _ragerAttack;
+    [SerializeField]
+    private Material _ragerAttackMaterial;
 
 
     private void OnEnable()
@@ -31,6 +37,7 @@ public class PencilBoss : Boss
         Moving();
         BossRoutine();
         transform.Find("Bariler").GetComponent<SpriteRenderer>().enabled = true;
+        _lineRenderer.enabled = false;
     }
 
     private void Moving()
@@ -87,6 +94,11 @@ public class PencilBoss : Boss
 
     private void Pattern1()
     {
+        StartCoroutine(Rager());
+    }
+
+    private void Pattern2()
+    {
         StartCoroutine(SpawnDalgona());
     }
 
@@ -122,6 +134,56 @@ public class PencilBoss : Boss
 
         Pattern1();
     }
+    private IEnumerator Rager()
+    {
+        Transform target = Save.Instance.playerMovemant.transform;
+        float time = 0.4f;
+        _moveSeq.Pause();
+        _lineRenderer.enabled = true;
+        _ragerAttackMaterial.SetFloat("_Alpha", 1f);
+        _ragerAttackMaterial.SetColor("_Color", Color.red);
+        _lineRenderer.startColor = Color.red; 
+        _lineRenderer.endColor = Color.red;
+
+        while(time > 0f)
+		{
+            time -= 0.01f;
+            _lineRenderer.startWidth = (1f - time) * 0.05f;
+            _lineRenderer.endWidth = (1f - time) * 0.05f;
+            _lineRenderer.SetPosition(0, transform.position);
+            _lineRenderer.SetPosition(1, target.transform.position);
+            yield return new WaitForSeconds(0.01f);
+        }
+        GameObject dal = Instantiate(_ragerAttack, null);
+        dal.SetActive(false);
+        dal.transform.position = target.transform.position;
+        yield return new WaitForSeconds(0.05f);
+        _ragerAttackMaterial.SetColor("_Color", Color.white);
+        yield return new WaitForSeconds(0.05f);
+        _ragerAttackMaterial.SetColor("_Color", Color.red);
+        yield return new WaitForSeconds(0.05f);
+        _ragerAttackMaterial.SetColor("_Color", Color.white);
+        yield return new WaitForSeconds(0.05f);
+        _ragerAttackMaterial.SetColor("_Color", Color.red);
+        yield return new WaitForSeconds(0.05f);
+        _ragerAttackMaterial.SetColor("_Color", Color.white);
+        yield return new WaitForSeconds(0.3f);
+        _lineRenderer.startWidth = 2f;
+        _lineRenderer.endWidth = 2f;
+        _ragerAttackMaterial.DOFloat(50f, "_Alpha", 0.2f);
+        dal.SetActive(true);
+        Destroy(dal, 0.3f);
+        yield return new WaitForSeconds(0.15f);
+        _ragerAttackMaterial.DOFloat(1f, "_Alpha", 0.1f);
+        yield return new WaitForSeconds(0.1f);
+        _lineRenderer.enabled = false;
+        _moveSeq.Play();
+
+
+        Pattern2();
+    }
+
+
     public void AchievementSet()
     {
         _achievements.Popup("¹®¹æ±¸ÀÇ ´Ü°ñ¼Õ´Ô", "¿¬ÇÊ±ðÀÌ°¡ ²ÇÂ¥!!", 2);
