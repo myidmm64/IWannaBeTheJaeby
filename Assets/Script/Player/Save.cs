@@ -19,7 +19,7 @@ public class Save : MonoBehaviour
     {
         get
         {
-            if(_playerMovement == null)
+            if (_playerMovement == null)
             {
                 _playerMovement = _player.GetComponent<PlayerMovement>();
             }
@@ -65,11 +65,13 @@ public class Save : MonoBehaviour
 
     private SaveDatas _lastSave;
 
+    private RealPlayer _realPlayer = null;
+
     private void Awake()
     {
         _instance = this;
 
-        if(_isTest == false)
+        if (_isTest == false)
             LoadData();
 
         _rigid = _player.GetComponent<Rigidbody2D>();
@@ -78,6 +80,8 @@ public class Save : MonoBehaviour
 
     private void Start()
     {
+        _realPlayer = playerMovemant.GetComponent<RealPlayer>();
+
         Restart();
         OnFirstSave?.Invoke();
     }
@@ -95,6 +99,23 @@ public class Save : MonoBehaviour
     public void SetCurrentMap(Map currentMap)
     {
         _currentMap = currentMap;
+
+
+        _realPlayer.OnMapChanged?.Invoke();
+        PlayerLightSet();
+    }
+
+    public void PlayerLightSet()
+    {
+        string[] mapClamp = _currentMap.name.Split("Map_");
+        if (mapClamp[0] == "3")
+        {
+            _realPlayer.LightDown();
+        }
+        else
+        {
+            _realPlayer.LightUp();
+        }
     }
 
     public void SavePointSet(Map saveMap)
@@ -165,6 +186,8 @@ public class Save : MonoBehaviour
         _warringText?.WarringReset();
         if (CameraManager.instance != null)
             CameraManager.instance.CompletePrevFeedBack();
+
+        PlayerLightSet();
     }
 
     public void RevertSave()

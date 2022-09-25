@@ -13,20 +13,27 @@ public class MousePos : MonoBehaviour
     [SerializeField]
     private float _speed = 2f;
 
-    public GameObject somethingToTest;
+    Vector3 targetPos = Vector3.zero;
 
-    private void Start()
+    private IEnumerator SetDestination()
     {
-        //Vector3 tmpScreenPos = Camera.main.WorldToScreenPoint(somethingToTest.transform.position);
-        //SetCursorPos((int)tmpScreenPos.x, Screen.height - (int)tmpScreenPos.y);
+        for(int i = 0; i <4; i++)
+        {
+            float time = 0f;
+            targetPos = Camera.main.WorldToScreenPoint(_target.transform.position);
+            targetPos.y *= -1f;
+            targetPos.y += Screen.currentResolution.height;
+            Vector2 mousePosition = (Vector2)Input.mousePosition;
+            mousePosition.y *= -1f;
+            mousePosition.y += Screen.currentResolution.height;
+            while (time < 1f)
+            {
+                SetCursorPos((int)Mathf.Lerp(mousePosition.x, targetPos.x, time), (int)Mathf.Lerp(mousePosition.y , targetPos.y, time));// (int)targetPos.y);
+                Debug.Log(((int)targetPos.x).ToString() + "fasdf" + ((int)targetPos.y).ToString());
+                time += Time.deltaTime;
+                yield return null;
+            }
+            yield return new WaitForSeconds(1f);
+        }
     }
-
-    private void Update()
-    {
-        Vector3 tmpScreenPos = Camera.main.WorldToScreenPoint(somethingToTest.transform.position);
-        SetCursorPos((int)tmpScreenPos.x, Screen.currentResolution.height - (int)tmpScreenPos.y);
-        transform.position = Camera.main.ScreenToWorldPoint(new Vector3((int)tmpScreenPos.x, Screen.currentResolution.height - (int)tmpScreenPos.y, 0f));
-    }
-
-
 }
