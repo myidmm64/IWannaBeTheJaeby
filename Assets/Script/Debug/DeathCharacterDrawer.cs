@@ -33,6 +33,7 @@ public class DeathCharacterDrawer : MonoBehaviour
 			GameObject obj = new GameObject();
 			obj.transform.SetParent(parent);
 			var spriteRender = obj.AddComponent<SpriteRenderer>();
+			spriteRender.sortingLayerName = "Agent";
 			spriteRender.sprite = data.sprite;
 			spriteRender.color = new Color(1, 1, 1, 0.3f);
 			obj.transform.position = data.position;
