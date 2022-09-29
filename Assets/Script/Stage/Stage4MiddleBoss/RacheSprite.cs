@@ -13,6 +13,8 @@ public class RacheSprite : MonoBehaviour
     [SerializeField]
     private GameObject _breathPositionObject = null;
     private List<GameObject> _breaths = new List<GameObject>();
+    [SerializeField]
+    private AudioClip _bigBreathClip = null;
 
     private float _breathSize = 1f;
     public float BreathSize
@@ -71,6 +73,9 @@ public class RacheSprite : MonoBehaviour
         seq.AppendCallback(() =>
         {
             col.GetComponent<Collider2D>().enabled = true;
+            AudioPoolable au = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
+            au.Play(_bigBreathClip);
+            CameraManager.instance.CameraShake(10f, 40f, 0.5f);
         });
         seq.Append(target.transform.DOScaleX(1.5f, 0.2f));
         _breaths.Add(breath);

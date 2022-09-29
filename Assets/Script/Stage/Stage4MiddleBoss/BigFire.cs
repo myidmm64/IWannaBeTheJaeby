@@ -42,6 +42,7 @@ public class BigFire : MonoBehaviour
 
     public void Flip()
     {
+        CameraManager.instance.CameraShake(5f, 40f, 0.2f);
         transform.rotation = Quaternion.Euler(cur.x, cur.y, cur.z * -1f);
         _isFilped = true;
     }

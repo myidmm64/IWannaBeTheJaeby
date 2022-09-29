@@ -20,6 +20,8 @@ public class RacheBoss : Boss
     [SerializeField]
     private AudioClip _bulletShotClip = null;
     [SerializeField]
+    private AudioClip _breathClip = null;
+    [SerializeField]
     private Sprite _bulletSprite = null;
     [SerializeField]
     private Transform[] _firePositions = null;
@@ -284,6 +286,7 @@ public class RacheBoss : Boss
             {
                 BreathSize = target.breathSize;
                 _animator.SetBool(_attackHash, true);
+                StartCoroutine( ShakeCoroutine(target.breathSize, target.duration));
             });
             _seq.AppendInterval(target.duration);
             _seq.AppendCallback(() =>
@@ -295,6 +298,14 @@ public class RacheBoss : Boss
         {
             Callback?.Invoke();
         });
+    }
+
+    private IEnumerator ShakeCoroutine(float time, float duration)
+    {
+        yield return new WaitForSeconds(0.3f);
+        AudioPoolable au = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
+        au.Play(_breathClip);
+        CameraManager.instance.CameraShake(2f * time, 20, duration);
     }
 
     private void SpawnBulletByCircle(Vector3 pos, int count, float speed)
