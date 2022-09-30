@@ -87,6 +87,7 @@ public class RacheSprite : MonoBehaviour
         {
             for(int i = 0; i < _breaths.Count; i++)
             {
+                _breaths[i].transform.DOKill();
                 Destroy(_breaths[i]);
             }
             _breaths.Clear();
