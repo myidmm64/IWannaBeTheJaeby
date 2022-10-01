@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04490f63defd1774eaa65d835b1f4593
-      internalID: 2077715854
+      spriteID: 9f5b089a885902246b2960459c55c1eb
+      internalID: -1221654854
       vertices: []
       indices: 
       edges: []
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4476a1911f3b05745a6e7db35ae7e230
-      internalID: 1495665201
+      spriteID: 3465c16ed2253d14fa7ab773beb2679b
+      internalID: -771490462
       vertices: []
       indices: 
       edges: []
@@ -161,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ab452a5d42b768498313acd52a55751
-      internalID: 2086886483
+      spriteID: 826c0d4a7a6ada94680816d4673957a6
+      internalID: -1562037417
       vertices: []
       indices: 
       edges: []
@@ -178,9 +178,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pisasimages_1: 1495665201
-      pisasimages_0: 2077715854
-      pisasimages_2: 2086886483
+      pisasimages_1: -771490462
+      pisasimages_0: -1221654854
+      pisasimages_2: -1562037417
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
