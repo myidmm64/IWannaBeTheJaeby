@@ -24,6 +24,10 @@ public class MapChanger : MonoBehaviour
     private GameObject _CurrentStage = null;
     [SerializeField]
     private GameObject _NextStage = null;
+
+    [Header("노래 바꿀 거에요?")]
+    [SerializeField]
+    private bool _restartBgm = true;
     
 
 
@@ -55,7 +59,8 @@ public class MapChanger : MonoBehaviour
             _nextMap.gameObject.SetActive(true);
             _nextMap.Init();
             _NextStage.gameObject.SetActive(true);
-            _NextStage.GetComponent<StageBGMAudio>().NormalBGMPlay();
+            if(_restartBgm)
+                _NextStage.GetComponent<StageBGMAudio>().NormalBGMPlay();
             Save.Instance.SetCurrentMap(_nextMap);
             _CurrentStage.gameObject.SetActive(false);
             _currentMap.gameObject.SetActive(false);
