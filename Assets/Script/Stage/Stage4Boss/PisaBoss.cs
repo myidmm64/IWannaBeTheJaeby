@@ -45,6 +45,8 @@ public class PisaBoss : Boss
     [SerializeField]
     private GameObject _movingObj = null;
 
+    private bool _isSkipable = true;
+
     private void OnEnable()
     {
         if (_seq != null)
@@ -206,6 +208,9 @@ public class PisaBoss : Boss
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
+            if (_isSkipable == false) return;
+
+            _isSkipable = false;
             transform.position = Vector3.zero;
             BossRoutine();
         }
@@ -218,12 +223,16 @@ public class PisaBoss : Boss
         StopAllCoroutines();
         transform.position = _originPos;
         CameraManager.instance.CompletePrevFeedBack();
+        _isSkipable = true;
     }
 
     public void DieReset()
     {
         _col.enabled = false;
-        ResetBoss();
+        if (_seq != null)
+            _seq.Kill();
+        StopAllCoroutines();
+        CameraManager.instance.CompletePrevFeedBack();
         transform.position = new Vector3(0f, 1.34f, 0f);
     }
 
@@ -231,6 +240,8 @@ public class PisaBoss : Boss
     {
         if (_seq != null)
             _seq.Kill();
+
+        _spriteRenderer.enabled = true;
         _seq = DOTween.Sequence();
         _seq.Append(transform.DOMoveY(_originPos.y, 0.5f));
         _seq.AppendCallback(() =>

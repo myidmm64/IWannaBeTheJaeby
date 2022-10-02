@@ -6,6 +6,9 @@ public class BossMap : Map
 {
     private StageBGMAudio _bgmSource = null;
 
+    [SerializeField]
+    private bool _isChangeBgm = true;
+
     private void Awake()
     {
         _bgmSource = transform.root.GetComponent<StageBGMAudio>();
@@ -15,6 +18,7 @@ public class BossMap : Map
     {
         base.Init();
 
-        _bgmSource.BossBGMPlay();
+        if(_isChangeBgm)
+            _bgmSource.BossBGMPlay();
     }
 }

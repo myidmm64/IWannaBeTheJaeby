@@ -32,7 +32,7 @@ public class PisaBulletManager : MonoBehaviour
         }
     }
 
-    public void SpawnBulletLookTarget(PisaBulletType bulletType, Transform targetTrm , Vector3 pos, int count,float delay, float speed, float vol = 1f)
+    public void SpawnBulletLookTarget(PisaBulletType bulletType, Transform targetTrm, Vector3 pos, int count, float delay, float speed, float vol = 1f)
     {
         PisaBulletTypeData target = GetBulletTypeData(bulletType);
         StartCoroutine(LookTargetBulletCoroutine(target, targetTrm, pos, count, delay, speed, vol));
@@ -84,6 +84,51 @@ public class PisaBulletManager : MonoBehaviour
             s.SetBarrage(speed, target.size, target.offset, target.bulletSprite);
             s.transform.localScale = target.localScale;
 
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
+    public void SpawnBulletLookTargetBetween(PisaBulletType bulletType, Vector3 targetposition, Vector3 startPos, float angle, int count, float delay, float speed, float vol = 1f, bool isNotAngle = false)
+    {
+        PisaBulletTypeData target = GetBulletTypeData(bulletType);
+        StartCoroutine(SpawnBulletLookTargetBetweenCoroutine(target, targetposition, startPos, angle, count, delay, speed, vol, isNotAngle));
+    }
+
+    private IEnumerator SpawnBulletLookTargetBetweenCoroutine(PisaBulletTypeData target, Vector3 targetposition, Vector3 startPos, float angle, int count, float delay, float speed, float vol = 1f, bool isNotAngle = false)
+    {
+        float plusAngle = 0f;
+        for (int i = 0; i <= count; i++)
+        {
+            CameraManager.instance.CameraShake(2f, 4f, 0.1f);
+            AudioPoolable au = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
+            au.Play(target.bulletSound, vol);
+
+            Barrage leftBarrage = PoolManager.Instance.Pop("Barrage") as Barrage;
+            leftBarrage.transform.SetParent(_bossObjectTrm);
+            Barrage rightBarrage = PoolManager.Instance.Pop("Barrage") as Barrage;
+            rightBarrage.transform.SetParent(_bossObjectTrm);
+
+            Vector3 dir = (targetposition - startPos);
+            float distanceAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+            Quaternion leftRot = Quaternion.AngleAxis(distanceAngle - 90f - angle / 2 + plusAngle, Vector3.forward);
+            Quaternion rightRot = Quaternion.AngleAxis(distanceAngle - 90f + angle / 2 + plusAngle, Vector3.forward);
+
+            leftBarrage.transform.SetPositionAndRotation(startPos, leftRot);
+            leftBarrage.SetBarrage(speed, target.size, target.offset, target.bulletSprite);
+            leftBarrage.transform.localScale = target.localScale;
+
+            rightBarrage.transform.SetPositionAndRotation(startPos, rightRot);
+            rightBarrage.SetBarrage(speed, target.size, target.offset, target.bulletSprite);
+            rightBarrage.transform.localScale = target.localScale;
+
+            if(isNotAngle == false)
+            {
+                if (i < count / 2)
+                    plusAngle -= 0.5f;
+                else
+                    plusAngle += 0.5f;
+            }
             yield return new WaitForSeconds(delay);
         }
     }
