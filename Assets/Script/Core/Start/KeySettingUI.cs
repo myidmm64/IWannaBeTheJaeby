@@ -47,7 +47,7 @@ public class KeySettingUI : MonoBehaviour
         SaveKeyData();
         //< 키 변경 >
         _startSceneManager.LockKey = false;
-        _text.SetText("< 키 변경 >");
+        _text.SetText("< Key Setting >");
     }
 
     private void SaveKeyData()
