@@ -108,13 +108,13 @@ public class VolumeManager : MonoBehaviour
 
 
         string masterText = masterResult.ToString("N0");
-        _masterText.SetText("< 전체 " + masterText + "% >");
+        _masterText.SetText("< Master " + masterText + "% >");
 
         string bGMText = bGMResult.ToString("N0");
-        _bGMText.SetText("< 배경음 " + bGMText + "% >");
+        _bGMText.SetText("< Music " + bGMText + "% >");
 
         string sfxText = sfxResult.ToString("N0");
-        _sfxText.SetText("< 효과음 " + sfxText + "% >");
+        _sfxText.SetText("< SFX " + sfxText + "% >");
     }
 }
 

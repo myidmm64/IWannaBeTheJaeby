@@ -35,7 +35,7 @@ public class ResolutionManager : MonoBehaviour
 
         Screen.SetResolution(resolutions[_resolNum].width, resolutions[_resolNum].height, _fullScreen);
         _resolutionText?.SetText("< " + resolutions[_resolNum].width + "x" + resolutions[_resolNum].height + " " + resolutions[_resolNum].refreshRate + " >");
-        _fullScreenText?.SetText(_fullScreen == false ? "< 창화면 >" : "< 전체화면 >");
+        _fullScreenText?.SetText(_fullScreen == false ? "< Windowed >" : "< FullScreen >");
     }
 
     public void ChangeResolutionUp()
@@ -63,7 +63,7 @@ public class ResolutionManager : MonoBehaviour
         _fullScreen = !_fullScreen;
         Screen.SetResolution(resolutions[_resolNum].width, resolutions[_resolNum].height, _fullScreen);
 
-        _fullScreenText?.SetText(_fullScreen == false ? "< 창화면 >" : "< 전체화면 >");
+        _fullScreenText?.SetText(_fullScreen == false ? "< Windowed >" : "< FullScreen >");
         PlayerPrefs.SetInt("FULL_SCREEN", _fullScreen == false ? 0 : 1);
     }
 
