@@ -109,7 +109,7 @@ public class BossSoldier : Boss
 
     private void Pattern3()
     {
-        _soldierUIManager.SetText("Player", "Stops", "Every 1 second", 1f, 1f, () =>
+        _soldierUIManager.SetText("Player", "Stops", "Every second", 1f, 1f, () =>
         {
             _playerStopCoroutine = StartCoroutine(PlayerStopCoroutine());
             StartCoroutine(SpawnPoop());

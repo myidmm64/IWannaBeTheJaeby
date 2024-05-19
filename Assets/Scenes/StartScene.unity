@@ -4683,8 +4683,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\uC77C\uBD80 \uD574\uC0C1\uB3C4\uC5D0\uC11C \uD0C0\uC77C\uC774
-            \uAE68\uC9C8 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+          m_StringArgument: Tiles may be broken at some resolutions.
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &906629579
