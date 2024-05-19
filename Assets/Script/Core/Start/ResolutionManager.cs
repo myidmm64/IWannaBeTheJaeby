@@ -30,8 +30,8 @@ public class ResolutionManager : MonoBehaviour
             Debug.Log(item.width + "X" + item.height + " " + item.refreshRate);
         }
 
-        _resolNum = PlayerPrefs.GetInt("RESOLUTION_NUMBER", 0);
-        _fullScreen = PlayerPrefs.GetInt("FULL_SCREEN", 0) == 0 ? false : true;
+        _resolNum = PlayerPrefs.GetInt("RESOLUTION_NUMBER", resolutions.Count - 1);
+        _fullScreen = PlayerPrefs.GetInt("FULL_SCREEN", 1) == 0 ? false : true;
 
         Screen.SetResolution(resolutions[_resolNum].width, resolutions[_resolNum].height, _fullScreen);
         _resolutionText?.SetText("< " + resolutions[_resolNum].width + "x" + resolutions[_resolNum].height + " " + resolutions[_resolNum].refreshRate + " >");

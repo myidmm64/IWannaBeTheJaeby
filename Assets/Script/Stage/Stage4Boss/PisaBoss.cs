@@ -127,7 +127,7 @@ public class PisaBoss : Boss
         _seq.Append(transform.DOMove(_pattrnZeroTrmsTwo[0].position, 1f));
         _seq.AppendCallback(() =>
         {
-            _pisaBulletManager.SpawnBulletLookTarget(PisaBulletType.SMALL, _target, transform, 60, 0.05f, 6f);
+            _pisaBulletManager.SpawnBulletLookTarget(PisaBulletType.SMALL, _target, transform, 50, 0.05f, 6f);
         });
         for (int i = 1; i < _pattrnZeroTrmsTwo.Length; i++)
         {

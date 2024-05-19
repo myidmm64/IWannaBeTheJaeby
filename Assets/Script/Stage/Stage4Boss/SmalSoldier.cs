@@ -42,7 +42,7 @@ public class SmalSoldier : MonoBehaviour
     {
         CameraManager.instance.CameraShake(5f, 20f, 0.05f * 200f, true);
         Vector3 pos = new Vector3(0f, 5f);
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 155; i++)
         {
             Barrage s = PoolManager.Instance.Pop("Barrage") as Barrage;
             s.transform.SetParent(_bossObjectTrm);

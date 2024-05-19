@@ -68,7 +68,17 @@ public class DifficultyManager : MonoBehaviour
     [ContextMenu("모든 데이터 초기화")]
     public void DeleteAllData()
     {
+        List<Resolution> resolutionTemp = new List<Resolution>();
+        resolutionTemp.AddRange(Screen.resolutions);
+        resolutionTemp = resolutionTemp.FindAll(x => x.refreshRate == 60 || x.refreshRate == 144 || x.refreshRate > 144);
+
+        var savedResolNum = PlayerPrefs.GetInt("RESOLUTION_NUMBER", resolutionTemp.Count - 1);
+        var savedFullScreen = PlayerPrefs.GetInt("FULL_SCREEN", 1) == 0 ? false : true;
+
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("RESOLUTION_NUMBER", savedResolNum);
+        PlayerPrefs.SetInt("FULL_SCREEN", savedFullScreen == false ? 0 : 1);
+
         string path = Application.dataPath + "/Save/AchieveSave.json";
         File.WriteAllText(path, "");
         OnResetGame?.Invoke();

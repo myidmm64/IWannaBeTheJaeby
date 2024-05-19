@@ -168,9 +168,9 @@ public class PisaPhaseTwo : Boss
         AudioPoolable au = PoolManager.Instance.Pop("AudioPool") as AudioPoolable;
         au.Play(_screamClip, 1f);
         CameraManager.instance.CameraShake(20f, 40f, 2f);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.02f * 70f + 0.5f);
         _pisaBulletManager.SpawnBulletLookTargetBetween(PisaBulletType.MIDDLE, targetPos, transform.position, 35f, 310, 0.02f, 6f, 0.6f);
-        yield return new WaitForSeconds(0.02f * 300f + 0.5f);
+        yield return new WaitForSeconds(0.02f * 300f + 4f);
         Pattern1();
     }
 
