@@ -24,8 +24,10 @@ public class DeathCharacterDrawer : MonoBehaviour
 	}
 
 	public void DrawCharacters()
-	{
-		RemoveCharacters();
+    {
+        if (Save.Instance.IsDeffrentMapFromSaveMap()) return; // 같은 맵일 때만 실행
+
+        RemoveCharacters();
 		int index = 1;
 		while(characterDatas.Count > 0)
 		{

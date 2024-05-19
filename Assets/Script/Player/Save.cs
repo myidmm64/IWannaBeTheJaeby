@@ -135,6 +135,17 @@ public class Save : MonoBehaviour
         SaveData();
     }
 
+    /// <summary>
+    /// 현재 맵이 SaveMap과 다르다면 true 반환
+    /// </summary>
+    /// <returns></returns>
+    public bool IsDeffrentMapFromSaveMap()
+    {
+        if (_saveMap == null || _currentMap == null) return true;
+        if (_saveMap != _currentMap) return true;
+        return false;
+    }
+
     public void SaveData()
     {
         PlayerPrefs.SetString("SAVE_MAP", $"{_saveMap.name}");
