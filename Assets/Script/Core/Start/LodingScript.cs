@@ -38,7 +38,7 @@ public class LodingScript : MonoBehaviour
                 _loadSlider.value = Mathf.Lerp(0.9f, 1f, timer);
                 if(_loadSlider.value >= 1f)
                 {
-                    _loadText.text = "로딩 완료 !!";
+                    _loadText.text = "Loaded !!";
                     operation.allowSceneActivation = true;
                     yield break;
                 }
