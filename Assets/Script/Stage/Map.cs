@@ -26,7 +26,7 @@ public class Map : MonoBehaviour
         if (_isDashable)
         {
             Save.Instance.playerMovemant.DashEnable();
-            Save.Instance.Warring("대시 가능한 지역입니다.");
+            Save.Instance.Warring("Dashable regions.");
         }
         else
         {

@@ -62,7 +62,7 @@ public class BossSoldier : Boss
 
     private void Pattern0()
     {
-        _soldierUIManager.SetText("모든 적이", "1초 뒤에", "죽는다", 1f, 1f, () =>
+        _soldierUIManager.SetText("All enemies", "Die", "In 1 second", 1f, 1f, () =>
         {
             for (int i = 0; i < _enemysTrm.childCount; i++)
             {
@@ -82,7 +82,7 @@ public class BossSoldier : Boss
 
     private void Pattern1()
     {
-        _soldierUIManager.SetText("플레이어가", "1초마다", "뛰어오른다", 0f, 1f, ()=>
+        _soldierUIManager.SetText("Player", "Jumps", "Every second", 0f, 1f, ()=>
         {
             _jumpInteractionObject.GetComponent<MoveInteraction>().TargetsReset();
             _jumpInteractionObject.GetComponent<Collider2D>().enabled = true;
@@ -100,7 +100,7 @@ public class BossSoldier : Boss
     {
         if (_seq != null)
             _seq.Kill();
-        _soldierUIManager.SetText("보스가", "탄막을", "뿌린다", 0.5f, 1f, () =>
+        _soldierUIManager.SetText("Boss", "Sprinkle", "Barrage", 0.5f, 1f, () =>
         {
             StopCoroutine(_jumpCoroutine);
             StartCoroutine(ThrowBullet());
@@ -109,7 +109,7 @@ public class BossSoldier : Boss
 
     private void Pattern3()
     {
-        _soldierUIManager.SetText("플레이어가", "1초마다", "멈춘다", 1f, 1f, () =>
+        _soldierUIManager.SetText("Player", "Stops", "Every 1 second", 1f, 1f, () =>
         {
             _playerStopCoroutine = StartCoroutine(PlayerStopCoroutine());
             StartCoroutine(SpawnPoop());
@@ -118,7 +118,7 @@ public class BossSoldier : Boss
 
     private void Pattern4()
     {
-        _soldierUIManager.SetText("보스가", "2초간", "빨라진다", 1f, 1f, () =>
+        _soldierUIManager.SetText("Boss", "Faster", "2 seconds", 1f, 1f, () =>
         {
             if (_seq != null)
                 _seq.Kill();
@@ -140,7 +140,7 @@ public class BossSoldier : Boss
 
     private void Pattern5(Vector3 returnPos)
     {
-        _soldierUIManager.SetText("보스가", "엄청나게", "커진다", 0.5f, 1f, () =>
+        _soldierUIManager.SetText("Boss", "Grows", "Enormous", 0.5f, 1f, () =>
         {
             if (_seq != null)
                 _seq.Kill();
@@ -261,6 +261,6 @@ public class BossSoldier : Boss
     }
     public void AchievementSet()
     {
-        _achievements.Popup("단어의 1인자", "'플레이어가','기쁨에','춤춘다'", 3);
+        _achievements.Popup("Number 1 of the word", "'Player','Dances','In joy'", 3);
     }
 }

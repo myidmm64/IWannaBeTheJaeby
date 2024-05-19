@@ -87,19 +87,19 @@ public class TalkInteraction : Interaction
                 break;
             case SpriteType.PLAYER:
                 _leftImage.sprite = _playerSprite;
-                _nameText.text = "나";
+                _nameText.text = "Me";
                 _leftImage.gameObject.SetActive(true);
                 _rightImage.gameObject.SetActive(false);
                 break;
             case SpriteType.WINE:
                 _leftImage.sprite = _wineSprite;
-                _nameText.text = "와인";
+                _nameText.text = "Wine";
                 _leftImage.gameObject.SetActive(true);
                 _rightImage.gameObject.SetActive(false);
                 break;
             case SpriteType.GIRL:
                 _rightImage.sprite = _girlSprite;
-                _nameText.text = "와인 한 잔을 하고 있는 초 절정 미녀";
+                _nameText.text = "A beauty with a glass of wine";
                 _rightImage.gameObject.SetActive(true);
                 _leftImage.gameObject.SetActive(false);
                 break;

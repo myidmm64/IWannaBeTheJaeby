@@ -200,7 +200,7 @@ public class PisaPhaseTwo : Boss
 
     public void AchievementSet()
     {
-        _achievements.Popup("공든 탑 무너지다", "내 손으로 끝을 보았다", 6);
+        _achievements.Popup("I tried my best, but it's going nowhere!", "I saw the end in my hand", 6);
     }
 
     public void GoEnding()

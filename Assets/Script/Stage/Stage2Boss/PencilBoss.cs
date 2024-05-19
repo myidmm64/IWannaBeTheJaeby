@@ -186,6 +186,6 @@ public class PencilBoss : Boss
 
     public void AchievementSet()
     {
-        _achievements.Popup("¹®¹æ±¸ÀÇ ´Ü°ñ¼Õ´Ô", "¿¬ÇÊ±ðÀÌ°¡ ²ÇÂ¥!!", 2);
+        _achievements.Popup("Stationery regulars", "Free Pencil sharpener!", 2);
     }
 }

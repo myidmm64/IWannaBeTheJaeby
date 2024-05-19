@@ -22,7 +22,7 @@ public class SmalSoldier : MonoBehaviour
 
     public void StartUI()
     {
-        _soldierUIManager.SetText("별들이", "무수히", "떨어진다", 1f, 1f, () =>
+        _soldierUIManager.SetText("Stars", "Countless", "Falling", 1f, 1f, () =>
         {
             StartCoroutine(SpawnPoop());
         });

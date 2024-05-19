@@ -419,6 +419,6 @@ public class FrogBoss : Boss
 
     public void AchievementSet()
     {
-        _achievements.Popup("개구리의 왕이 되다", "더이상 밟히지 않을 것 같다", 1);
+        _achievements.Popup("Become king of the frogs", "I don't think I'm going to get stepped on anymore", 1);
     }
 }

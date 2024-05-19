@@ -14,7 +14,7 @@ public class DashableTextInteraction : Interaction
 
     public override void DoEnterInteraction()
     {
-        _text.SetText("대시 가능합니다");
+        _text.SetText("dashable");
     }
 
     public override void DoExitInteraction()

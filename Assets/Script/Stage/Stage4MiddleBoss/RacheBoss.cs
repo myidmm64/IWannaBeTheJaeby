@@ -331,7 +331,7 @@ public class RacheBoss : Boss
 
     public void AchievementSet()
     {
-        _achievements.Popup("¸¶¿ÕÀ» ¹«Âî¸£´Ù", "ÇØÄ¡¿ü³ª..?", 5);
+        _achievements.Popup("Defeating the Demon", "Did you finish it..?", 5);
     }
 
     public void DieReset()
