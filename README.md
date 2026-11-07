@@ -17,7 +17,6 @@
 
 - 점프·대시로 함정을 돌파하고 보스 공략
 - Easy · Normal · Hard · Extreme 난이도
-- 세이브포인트와 이어하기 지원
 
 <table>
   <tr>
@@ -42,6 +41,5 @@
 ## 실행
 
 - **다운로드:** [itch.io](https://myidmm64.itch.io/i-wanna-be-the-jaeby)에서 KR 또는 EN ZIP을 받아 압축 해제 후 실행
-- **개발:** Unity **2021.3.38f1** → `Assets/Scenes/Splash.unity` → Play
 
 개발: [myidmm64](https://github.com/myidmm64)
